@@ -356,6 +356,9 @@
     document.querySelectorAll('.theme-toggle-icon').forEach(el => {
       el.setAttribute('data-lucide', isLight ? 'moon' : 'sun');
     });
+    document.querySelectorAll('.theme-toggle-label').forEach(el => {
+      el.textContent = isLight ? 'Dark' : 'Light';
+    });
     if (window.lucide) window.lucide.createIcons();
   }
 

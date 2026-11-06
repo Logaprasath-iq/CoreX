@@ -326,18 +326,34 @@ html.light .navbar-scrolled {
   }
 }
 
+/* Mobile navbar: hide desktop order button and theme button on small screens so hamburger has full focus */
 @media (max-width: 639px) {
-  .navbar-pill-btn.hidden {
+  #main-navbar .navbar-order-btn,
+  #main-navbar .navbar-theme-btn,
+  #main-navbar .navbar-pill-btn.hidden {
     display: none !important;
   }
 }
 
-#main-navbar a[href="order.html"] {
-  height: 2.5rem !important; /* 40px */
-  box-sizing: border-box !important;
-  display: inline-flex;
+@media (min-width: 640px) {
+  #main-navbar .navbar-order-btn {
+    display: inline-flex !important;
+    height: 2.5rem !important; /* 40px */
+    box-sizing: border-box !important;
+    align-items: center;
+    justify-content: center;
+  }
+  #main-navbar .navbar-theme-btn {
+    display: inline-flex !important;
+  }
+}
+
+#mobile-menu .mobile-order-btn {
+  display: flex !important;
+  height: 2.75rem !important;
   align-items: center;
   justify-content: center;
+  color: #FFFFFF !important;
 }
 
 /* RTL Layout Rules */
@@ -805,11 +821,32 @@ html.light #mobile-menu {
   background-color: #FFFFFF !important;
   border-color: #E2DDE0 !important;
 }
-html.light #mobile-menu a {
+html.light #mobile-menu a:not(.mobile-order-btn) {
   color: #151515 !important;
 }
-html.light #mobile-menu a:hover {
+html.light #mobile-menu a:not(.mobile-order-btn):hover {
   color: #93032E !important;
+}
+html.light #mobile-menu a.mobile-order-btn,
+html.light #mobile-menu a.mobile-order-btn span,
+html.light #mobile-menu a.mobile-order-btn i {
+  color: #FFFFFF !important;
+}
+html.light #mobile-menu .bg-neutral-900,
+html.light #mobile-menu .bg-neutral-900\/60 {
+  background-color: #F8F6F7 !important;
+  border-color: #E2DDE0 !important;
+  color: #151515 !important;
+}
+html.light #mobile-menu .border-neutral-800 {
+  border-color: #E2DDE0 !important;
+}
+html.light #mobile-menu button {
+  color: #151515 !important;
+}
+html.light #mobile-menu .text-neutral-300,
+html.light #mobile-menu .text-neutral-400 {
+  color: #404040 !important;
 }
 
 /* ------------------------------------------------------------ */
