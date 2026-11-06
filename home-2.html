@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COREX – Editorial Technology | High-Performance Hardware & Rigs</title>
+  <meta name="description" content="Explore the architectural excellence of COREX. Handcrafted hardware collections, flagship GPU & CPU benchmarks, and extreme custom workstations.">
+  <link rel="icon" type="image/png" href="images/logo/corex-symbol.png">
+
+  <!-- Tailwind CSS CDN with Official Theme Extension -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            burgundy: {
+              DEFAULT: '#93032E',
+              50: '#FDF2F4',
+              100: '#FBE6EA',
+              200: '#F7C1CC',
+              300: '#F092A6',
+              400: '#E45A7A',
+              500: '#B51B4C',
+              600: '#93032E',
+              700: '#7A0226',
+              800: '#65001F',
+              900: '#480016',
+            },
+            night: {
+              DEFAULT: '#151515',
+              secondary: '#1C1C1C',
+              card: '#202020',
+              elevated: '#252525',
+              border: '#383838',
+            },
+            metallic: {
+              silver: '#C8C8C8',
+              muted: '#858585',
+              secondary: '#B5B5B5',
+            }
+          },
+          fontFamily: {
+            heading: ['Orbitron', 'sans-serif'],
+            subheading: ['Rajdhani', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#151515] text-white selection:bg-[#93032E] selection:text-white antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="relative flex flex-col items-center">
+      <img src="images/logo/corex-logo-full.png" alt="COREX" class="h-20 w-auto object-contain animate-pulse" onerror="this.src='images/logo/corex-symbol.png'">
+      <div class="text-center mt-3">
+        <span class="text-2xl font-black font-heading tracking-widest text-white">CORE<span class="text-[#93032E] text-3xl font-black ml-0.5">X</span></span>
+        <p class="text-[10px] text-metallic-secondary tracking-[0.3em] font-semibold uppercase mt-0.5">BUILT FOR PERFORMANCE</p>
+      </div>
+      <div class="loader-bar">
+        <div class="loader-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <!-- SEARCH MODAL -->
+  <div id="search-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-start justify-center pt-20 px-4">
+    <div class="w-full max-w-2xl bg-[#1C1C1C] border border-[#383838] rounded-2xl shadow-2xl p-6 relative">
+      <button onclick="window.COREX.closeSearch()" class="absolute top-5 right-5 text-neutral-400 hover:text-white transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="flex items-center gap-3 border-b border-[#383838] pb-4">
+        <i data-lucide="search" class="w-5 h-5 text-[#93032E]"></i>
+        <input id="search-modal-input" type="text" placeholder="Search RTX 4090, Intel i9, DDR5 RAM, OLED monitors..." class="w-full bg-transparent text-white text-base focus:outline-none placeholder:text-neutral-500">
+      </div>
+      <div id="search-modal-results" class="mt-4"></div>
+    </div>
+  </div>
+
+  <!-- CART SLIDE-OUT DRAWER -->
+  <div id="cart-drawer-overlay" onclick="window.COREX.closeCartDrawer()" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-[#1C1C1C] border-l border-[#383838] z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between hidden">
+    <div class="p-5 border-b border-[#383838] flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i data-lucide="shopping-bag" class="w-5 h-5 text-[#93032E]"></i>
+        <h3 class="text-base font-bold text-white font-heading tracking-wider">YOUR ARSENAL CART</h3>
+      </div>
+      <button onclick="window.COREX.closeCartDrawer()" class="p-1.5 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800 transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-5">
+      <div id="drawer-cart-empty" class="text-center py-16 text-neutral-500">
+        <i data-lucide="shopping-cart" class="w-12 h-12 mx-auto mb-3 opacity-30 text-[#93032E]"></i>
+        <p class="text-sm font-semibold text-neutral-300">Your cart is currently empty</p>
+        <p class="text-xs text-neutral-500 mt-1">Explore our flagship GPUs, CPUs, or configure a custom rig.</p>
+        <a href="products.html" onclick="window.COREX.closeCartDrawer()" class="inline-block mt-5 px-5 py-2.5 rounded-xl bg-burgundy-grad text-white text-xs font-bold uppercase tracking-wider hover:opacity-95 transition">
+          Browse Products
+        </a>
+      </div>
+      <div id="drawer-cart-content" class="hidden space-y-3">
+        <div id="drawer-cart-items" class="space-y-3"></div>
+      </div>
+    </div>
+
+    <div class="p-5 border-t border-[#383838] bg-[#151515]">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-xs uppercase tracking-wider text-neutral-400 font-semibold">Subtotal</span>
+        <span id="drawer-cart-subtotal" class="text-lg font-bold text-white font-heading">₹0</span>
+      </div>
+      <div class="space-y-2">
+        <a href="order.html" class="w-full py-3.5 rounded-xl bg-burgundy-grad text-white text-center font-bold text-xs uppercase tracking-wider block shadow-burgundy-glow hover:scale-[1.02] transition">
+          Proceed to Guest Checkout
+        </a>
+        <button onclick="window.COREX.closeCartDrawer()" class="w-full py-2.5 rounded-xl border border-neutral-700 text-neutral-300 text-center font-semibold text-xs hover:bg-neutral-800 transition">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  </aside>
+
+    <!-- Top Burgundy Accent Line (Image 3 Match) -->
+  <div class="fixed top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#93032E] to-transparent z-50"></div>
+
+  <!-- Sticky Navbar (Image 3 Reference Match) -->
+  <header id="main-navbar" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-[#151515]/85 backdrop-blur-md border-b border-[#383838]/60">
+    <div class="container-custom flex items-center justify-between h-20">
+      
+            <!-- Brand Logo + Divider + Tagline (Exact Same in Header & Footer) -->
+      <a href="index.html" class="flex items-center gap-3 group py-1 flex-shrink-0">
+        <img src="images/logo/corex-symbol.png" alt="COREX" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.src='images/logo/corex-logo-full.png'">
+        <div class="h-8 w-[1px] bg-neutral-700 hidden sm:block"></div>
+        <div class="flex flex-col whitespace-nowrap justify-center">
+          <span class="text-2xl font-black font-heading tracking-wider text-white leading-none whitespace-nowrap">CORE<span class="text-[#93032E] text-3xl font-black inline-block ml-0.5">X</span></span>
+          <span class="text-[9px] uppercase tracking-[0.24em] text-[#C8C8C8] font-bold mt-1">BUILT FOR PERFORMANCE</span>
+        </div>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-7">
+        
+        <!-- Home Dropdown -->
+        <div class="relative group py-2">
+          <button class="nav-link active flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#93032E] hover:text-[#93032E] transition">
+            <span>Home</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div class="dropdown-menu absolute top-full left-0 w-52 bg-[#1C1C1C] border border-[#383838] rounded-xl shadow-2xl p-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-xs text-neutral-300 hover:bg-neutral-800 transition">Home 1 (Cinematic Store)</a>
+            <a href="home-2.html" class="block px-3 py-2 rounded-lg text-xs text-[#93032E] font-bold bg-neutral-900/80 hover:text-white hover:bg-neutral-800 transition">Home 2 (Editorial Tech)</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">About</a>
+        <a href="products.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Products</a>
+        <a href="pricing.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Pricing</a>
+        <a href="build-pc.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Build Your PC</a>
+        <a href="blog.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Blog</a>
+        <a href="contact.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Contact</a>
+      </nav>
+
+            <!-- Right-side Action Controls (Equal Height 40px) -->
+      <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
+        
+        <!-- Wishlist -->
+        <a href="products.html" class="navbar-pill-btn hidden sm:inline-flex items-center justify-center h-10 w-10 rounded-xl relative text-neutral-300 hover:text-white transition" title="Wishlist">
+          <i data-lucide="heart" class="w-4 h-4"></i>
+          <span class="wishlist-count-badge hidden absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#93032E] text-white text-[10px] font-bold flex items-center justify-center">0</span>
+        </a>
+
+        <!-- RTL Toggle Pill -->
+        <button onclick="window.COREX.toggleRTL()" class="navbar-pill-btn hidden sm:inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl text-xs font-bold text-neutral-300 hover:text-white transition" title="Toggle RTL / LTR">
+          <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-[#93032E]"></i>
+          <span>RTL</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button onclick="window.COREX.toggleTheme()" class="navbar-pill-btn inline-flex items-center justify-center h-10 w-10 rounded-xl text-neutral-300 hover:text-white transition" title="Toggle Light/Dark Mode">
+          <i data-lucide="sun" class="theme-toggle-icon w-4 h-4"></i>
+        </button>
+
+        <!-- Primary CTA Button: Order Now -->
+        <a href="order.html" class="h-10 px-4 sm:px-5 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-105 transition inline-flex items-center justify-center gap-2 flex-shrink-0" title="Order / Cart">
+          <i data-lucide="shopping-bag" class="w-4 h-4 flex-shrink-0"></i>
+          <span class="whitespace-nowrap">Order Now</span>
+          <span class="cart-count-badge hidden ml-0.5 px-1.5 py-0.5 rounded-full bg-white text-[#93032E] text-[10px] font-black leading-none">0</span>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobile-menu-btn" class="navbar-pill-btn lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl text-neutral-300 hover:text-white transition" aria-label="Open menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#1C1C1C] border-b border-[#383838] px-6 py-5 space-y-3">
+      <div class="border-b border-neutral-800 pb-2">
+        <span class="text-[10px] uppercase font-bold text-neutral-500 tracking-wider">Home Editions</span>
+        <div class="grid grid-cols-2 gap-2 mt-2">
+          <a href="index.html" class="px-3 py-2 rounded-lg text-xs font-bold text-[#93032E] bg-neutral-900 border border-neutral-800">Home 1 (Cinematic)</a>
+          <a href="home-2.html" class="px-3 py-2 rounded-lg text-xs font-medium text-neutral-300 bg-neutral-900/60 border border-neutral-800">Home 2 (Editorial)</a>
+        </div>
+      </div>
+      <a href="about.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">About COREX</a>
+      <a href="products.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Hardware Products</a>
+      <a href="pricing.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Prebuilt Rig Packages</a>
+      <a href="build-pc.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Build Your PC (Configurator)</a>
+      <a href="blog.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Hardware Blog</a>
+      <a href="contact.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Contact & Chennai Store</a>
+      <a href="order.html" class="block py-2 text-sm font-semibold text-[#93032E] hover:text-white">Order Status & Cart</a>
+
+      <!-- Mobile Quick Controls -->
+      <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs">
+        <a href="products.html" class="flex items-center gap-2 text-neutral-400 hover:text-white">
+          <i data-lucide="heart" class="w-4 h-4 text-[#93032E]"></i>
+          <span>Wishlist</span>
+        </a>
+        <button onclick="window.COREX.toggleRTL()" class="flex items-center gap-2 text-neutral-400 hover:text-white">
+          <i data-lucide="arrow-left-right" class="w-4 h-4 text-[#93032E]"></i>
+          <span>Toggle RTL</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow pt-20">
+
+    <!-- ========================================== -->
+    <!-- SECTION 1: CINEMATIC ALTERNATIVE HERO      -->
+    <!-- ========================================== -->
+    <section class="py-16 lg:py-24 bg-[#151515] relative overflow-hidden border-b border-[#383838]">
+      <div class="container-custom">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Left Column (7 cols): Editorial Typography -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-bold text-[#C8C8C8] uppercase tracking-wider">
+              <span class="w-2 h-2 rounded-full bg-[#93032E]"></span>
+              COMPUTER HARDWARE &amp; PERIPHERALS • CHENNAI STORE
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-black font-heading tracking-tight uppercase leading-tight text-white">
+              BUILT FOR <br>
+              <span class="bg-gradient-to-r from-white via-[#C8C8C8] to-[#93032E] bg-clip-text text-transparent">PERFORMANCE.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-[#B5B5B5] max-w-xl font-normal leading-relaxed">
+              Discover premium computer hardware and essential peripherals for home, work, study, and gaming. Authentic components backed by warranty and expert support.
+            </p>
+
+            <div class="flex flex-wrap gap-4 pt-4">
+              <a href="build-pc.html" class="px-8 py-4 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-105 transition flex items-center gap-2">
+                <i data-lucide="sliders" class="w-4 h-4"></i> Start Custom Architecture
+              </a>
+              <a href="pricing.html" class="px-8 py-4 rounded-xl bg-neutral-900 border border-neutral-700 hover:border-[#93032E] text-white font-bold text-xs uppercase tracking-wider hover:bg-neutral-800 transition flex items-center gap-2">
+                <i data-lucide="box" class="w-4 h-4 text-[#93032E]"></i> Explore Prebuilt Rigs
+              </a>
+            </div>
+
+            <!-- Architectural Specs Strip -->
+            <div class="pt-8 border-t border-neutral-800 grid grid-cols-3 gap-6 max-w-lg">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-neutral-500">Acoustic Floor</span>
+                <div class="text-lg font-black text-white font-heading mt-0.5">&lt; 28 dBA</div>
+              </div>
+              <div>
+                <span class="text-[10px] uppercase font-bold text-neutral-500">Thermal Delta</span>
+                <div class="text-lg font-black text-white font-heading mt-0.5">-14°C Drop</div>
+              </div>
+              <div>
+                <span class="text-[10px] uppercase font-bold text-neutral-500">Stress Burn-In</span>
+                <div class="text-lg font-black text-white font-heading mt-0.5">24 Hours</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (5 cols): Video / Visual Card Showcase -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative w-full aspect-square rounded-3xl overflow-hidden bg-black border border-[#383838] shadow-2xl card-3d">
+              <video autoplay muted loop playsinline poster="images/products/case-fractal-north.jpg" class="w-full h-full object-cover">
+                <source src="video/hero-alt.mp4" type="video/mp4">
+              </video>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#151515] via-transparent to-transparent"></div>
+              
+              <!-- Floating Specification Badge -->
+              <div class="absolute top-5 left-5 px-3 py-1.5 rounded-xl bg-black/75 backdrop-blur-md border border-neutral-700 text-xs text-white font-mono flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span>
+                COREX RIG LAB #04
+              </div>
+
+              <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-[#202020]/90 backdrop-blur-md border border-[#383838] flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] uppercase font-bold text-[#93032E]">Flagship Workstation</span>
+                  <h4 class="text-sm font-bold text-white">Ryzen 9 7950X3D + RTX 4090</h4>
+                </div>
+                <a href="pricing.html" class="px-3 py-1.5 rounded-lg bg-burgundy-grad text-white text-[11px] font-bold uppercase hover:opacity-90">
+                  Inspect
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 2: FEATURED HARDWARE COLLECTIONS   -->
+    <!-- ========================================== -->
+    <section class="py-20 bg-[#1C1C1C]">
+      <div class="container-custom">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <span class="text-xs uppercase tracking-[0.2em] font-bold text-neutral-400">CURATED TIERS</span>
+            <h2 class="text-3xl sm:text-4xl font-black font-heading text-white uppercase tracking-tight mt-1">
+              FEATURED HARDWARE <span class="text-[#93032E]">COLLECTIONS</span>
+            </h2>
+          </div>
+          <p class="text-xs text-neutral-400 max-w-sm mt-3 md:mt-0">
+            Engineered packages specifically calibrated for tournament response times, continuous rendering, or silent operation.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          
+          <!-- Collection 1: Student & Office PC -->
+          <div class="bg-[#202020] rounded-2xl border border-[#383838] p-6 flex flex-col justify-between h-full hover:border-[#93032E] transition card-3d">
+            <div class="flex-1 flex flex-col">
+              <div class="w-full h-44 rounded-xl overflow-hidden bg-black mb-5">
+                <img src="images/products/build-basic.jpg" alt="Student & Office PC" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              </div>
+              <span class="text-[10px] uppercase font-bold text-[#93032E] tracking-wider">Productivity Tier</span>
+              <h3 class="text-lg font-bold text-white mt-1 font-heading min-h-[3rem] flex items-center">STUDENT &amp; OFFICE PC</h3>
+              <p class="text-xs text-neutral-400 mt-2 leading-relaxed flex-1">
+                Smooth multitasking for online learning, MS Office, Zoom conferences, and coding. Reliable daily computing with fast NVMe storage.
+              </p>
+              <ul class="mt-4 space-y-1.5 text-xs text-neutral-300 font-mono">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> Intel Core i5-12400 (6-Core)</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> 16GB DDR4 3200MHz RAM</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> 512GB NVMe M.2 SSD</li>
+              </ul>
+            </div>
+            <div class="mt-auto pt-4 border-t border-neutral-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-neutral-500 uppercase">Starting at</span>
+                <div class="text-lg font-bold text-white font-heading">₹11,990</div>
+              </div>
+              <button onclick="window.COREX.addToCart('pkg-student', 1, true)" class="px-4 py-2 rounded-xl bg-burgundy-grad text-white text-xs font-bold uppercase shadow-burgundy-glow hover:opacity-90 transition">
+                Select Rig
+              </button>
+            </div>
+          </div>
+
+          <!-- Collection 2: Gaming Performance PC -->
+          <div class="bg-[#202020] rounded-2xl border border-[#383838] p-6 flex flex-col justify-between h-full hover:border-[#93032E] transition card-3d">
+            <div class="flex-1 flex flex-col">
+              <div class="w-full h-44 rounded-xl overflow-hidden bg-black mb-5">
+                <img src="images/products/build-gaming.jpg" alt="Gaming PC" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              </div>
+              <span class="text-[10px] uppercase font-bold text-[#93032E] tracking-wider">Gaming Performance Tier</span>
+              <h3 class="text-lg font-bold text-white mt-1 font-heading min-h-[3rem] flex items-center">GAMING PERFORMANCE PC</h3>
+              <p class="text-xs text-neutral-400 mt-2 leading-relaxed flex-1">
+                Tuned for high-FPS 1080p and 1440p gaming with Ray Tracing and DLSS 3. High airflow panoramic glass chassis with ARGB cooling.
+              </p>
+              <ul class="mt-4 space-y-1.5 text-xs text-neutral-300 font-mono">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> Intel Core i5-14400F (10-Core)</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> NVIDIA RTX 4060 8GB GDDR6</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> 16GB DDR5 5600MHz + 1TB NVMe</li>
+              </ul>
+            </div>
+            <div class="mt-auto pt-4 border-t border-neutral-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-neutral-500 uppercase">Starting at</span>
+                <div class="text-lg font-bold text-white font-heading">₹24,990</div>
+              </div>
+              <button onclick="window.COREX.addToCart('pkg-gaming', 1, true)" class="px-4 py-2 rounded-xl bg-burgundy-grad text-white text-xs font-bold uppercase shadow-burgundy-glow hover:opacity-90 transition">
+                Select Rig
+              </button>
+            </div>
+          </div>
+
+          <!-- Collection 3: Professional Workstation -->
+          <div class="bg-[#202020] rounded-2xl border border-[#383838] p-6 flex flex-col justify-between h-full hover:border-[#93032E] transition card-3d">
+            <div class="flex-1 flex flex-col">
+              <div class="w-full h-44 rounded-xl overflow-hidden bg-black mb-5">
+                <img src="images/products/build-pro.jpg" alt="Professional Workstation" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              </div>
+              <span class="text-[10px] uppercase font-bold text-[#93032E] tracking-wider">Creator &amp; AI Studio</span>
+              <h3 class="text-lg font-bold text-white mt-1 font-heading min-h-[3rem] flex items-center">PROFESSIONAL WORKSTATION</h3>
+              <p class="text-xs text-neutral-400 mt-2 leading-relaxed flex-1">
+                Dedicated workstation for Unreal Engine 5, 4K/8K video editing, CAD, 3D animation, and local machine learning tasks.
+              </p>
+              <ul class="mt-4 space-y-1.5 text-xs text-neutral-300 font-mono">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> Intel Core i9-14900K (24-Core)</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> NVIDIA RTX 4080 Super 16GB</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> 64GB DDR5 + 2TB NVMe Gen4</li>
+              </ul>
+            </div>
+            <div class="mt-auto pt-4 border-t border-neutral-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-neutral-500 uppercase">Starting at</span>
+                <div class="text-lg font-bold text-white font-heading">₹39,990</div>
+              </div>
+              <button onclick="window.COREX.addToCart('pkg-workstation', 1, true)" class="px-4 py-2 rounded-xl bg-burgundy-grad text-white text-xs font-bold uppercase shadow-burgundy-glow hover:opacity-90 transition">
+                Select Rig
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 3: PREMIUM GPU & CPU SHOWCASE      -->
+    <!-- ========================================== -->
+    <section class="py-24 bg-[#151515] border-b border-[#383838]">
+      <div class="container-custom">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs uppercase tracking-[0.2em] font-bold text-[#93032E]">ARCHITECTURAL HEAD-TO-HEAD</span>
+          <h2 class="text-3xl sm:text-5xl font-black font-heading text-white uppercase tracking-tight mt-1">
+            GPU & CPU <span class="text-[#93032E]">BENCHMARK LAB</span>
+          </h2>
+          <p class="text-neutral-400 text-xs sm:text-sm mt-3">
+            Real hardware metrics recorded in our Chennai lab under controlled 21°C ambient room temperatures.
+          </p>
+        </div>
+
+        <!-- Comparative Spec Matrix -->
+        <div class="bg-[#1C1C1C] rounded-2xl border border-[#383838] p-6 lg:p-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 divide-y lg:divide-y-0 lg:divide-x divide-neutral-800">
+            
+            <!-- Flagship GPU: RTX 4090 -->
+            <div class="space-y-4 lg:pr-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-bold uppercase text-[#93032E]">Top Tier Graphics</span>
+                  <h3 class="text-xl font-bold text-white font-heading">NVIDIA RTX 4090 24GB</h3>
+                </div>
+                <img src="images/products/gpu-rtx4090.jpg" alt="RTX 4090" class="w-16 h-16 object-cover rounded-xl border border-neutral-700 bg-black">
+              </div>
+
+              <!-- Bar 1: Cyberpunk 2077 4K Ray Tracing Overdrive -->
+              <div>
+                <div class="flex justify-between text-xs text-neutral-300 mb-1">
+                  <span>Cyberpunk 2077 (4K Path Tracing DLSS 3.5)</span>
+                  <span class="font-bold text-white font-mono">112 FPS</span>
+                </div>
+                <div class="w-full h-2.5 bg-neutral-800 rounded-full overflow-hidden">
+                  <div class="h-full bg-burgundy-grad rounded-full" style="width: 95%;"></div>
+                </div>
+              </div>
+
+              <!-- Bar 2: Blender BMW Render Time -->
+              <div>
+                <div class="flex justify-between text-xs text-neutral-300 mb-1">
+                  <span>Blender 4.2 GPU Render Speed</span>
+                  <span class="font-bold text-white font-mono">6.4 Seconds</span>
+                </div>
+                <div class="w-full h-2.5 bg-neutral-800 rounded-full overflow-hidden">
+                  <div class="h-full bg-burgundy-grad rounded-full" style="width: 98%;"></div>
+                </div>
+              </div>
+
+              <!-- Bar 3: VRAM Capacity -->
+              <div>
+                <div class="flex justify-between text-xs text-neutral-300 mb-1">
+                  <span>VRAM Buffer & Bandwidth</span>
+                  <span class="font-bold text-white font-mono">24GB / 1008 GB/s</span>
+                </div>
+                <div class="w-full h-2.5 bg-neutral-800 rounded-full overflow-hidden">
+                  <div class="h-full bg-burgundy-grad rounded-full" style="width: 100%;"></div>
+                </div>
+              </div>
+
+              <div class="pt-2 flex items-center justify-between">
+                <span class="text-base font-bold text-white font-heading">₹19,990</span>
+                <a href="product-details.html?id=gpu-rtx4090" class="text-xs font-bold uppercase text-[#93032E] hover:underline flex items-center gap-1">
+                  View Specifications <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Flagship CPU: Ryzen 7 7800X3D vs i9-14900KS -->
+            <div class="space-y-4 pt-6 lg:pt-0 lg:pl-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-bold uppercase text-[#93032E]">Pure Gaming Processor</span>
+                  <h3 class="text-xl font-bold text-white font-heading">AMD Ryzen 7 7800X3D</h3>
+                </div>
+                <img src="images/products/cpu-ryzen-7800x3d.jpg" alt="Ryzen 7 7800X3D" class="w-16 h-16 object-cover rounded-xl border border-neutral-700 bg-black">
+              </div>
+
+              <!-- Bar 1: CS2 1080p Low Frame Rates -->
+              <div>
+                <div class="flex justify-between text-xs text-neutral-300 mb-1">
+                  <span>Counter-Strike 2 (1080p Competitive Avg)</span>
+                  <span class="font-bold text-white font-mono">680 FPS</span>
+                </div>
+                <div class="w-full h-2.5 bg-neutral-800 rounded-full overflow-hidden">
+                  <div class="h-full bg-burgundy-grad rounded-full" style="width: 96%;"></div>
+                </div>
+              </div>
+
+              <!-- Bar 2: 1% Low Frame-Time Consistency -->
+              <div>
+                <div class="flex justify-between text-xs text-neutral-300 mb-1">
+                  <span>1% Low Frame-Time Stability</span>
+                  <span class="font-bold text-white font-mono">295 FPS</span>
+                </div>
+                <div class="w-full h-2.5 bg-neutral-800 rounded-full overflow-hidden">
+                  <div class="h-full bg-burgundy-grad rounded-full" style="width: 94%;"></div>
+                </div>
+              </div>
+
+              <!-- Bar 3: Efficiency TDP Draw -->
+              <div>
+                <div class="flex justify-between text-xs text-neutral-300 mb-1">
+                  <span>Average Gaming Power Consumption</span>
+                  <span class="font-bold text-white font-mono">58 Watts Only</span>
+                </div>
+                <div class="w-full h-2.5 bg-neutral-800 rounded-full overflow-hidden">
+                  <div class="h-full bg-burgundy-grad rounded-full" style="width: 88%;"></div>
+                </div>
+              </div>
+
+              <div class="pt-2 flex items-center justify-between">
+                <span class="text-base font-bold text-white font-heading">₹7,990</span>
+                <a href="product-details.html?id=cpu-ryzen-7800x3d" class="text-xs font-bold uppercase text-[#93032E] hover:underline flex items-center gap-1">
+                  View Specifications <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 4: GAMING PERIPHERALS              -->
+    <!-- ========================================== -->
+    <section class="py-20 bg-[#1C1C1C]">
+      <div class="container-custom">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <span class="text-xs uppercase tracking-[0.2em] font-bold text-neutral-400">TACTILE MASTERY</span>
+            <h2 class="text-3xl sm:text-4xl font-black font-heading text-white uppercase tracking-tight mt-1">
+              GAMING <span class="text-[#93032E]">PERIPHERALS</span>
+            </h2>
+          </div>
+          <a href="products.html?category=keyboards" class="mt-4 md:mt-0 text-xs font-bold uppercase tracking-wider text-[#B5B5B5] hover:text-[#93032E] transition flex items-center gap-1.5">
+            View All Gear <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          
+          <!-- Peripheral 1 -->
+          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-5 hover:border-[#93032E] transition card-3d">
+            <div class="flex-1 flex flex-col">
+              <div class="w-full h-44 rounded-xl bg-black border border-neutral-800 overflow-hidden mb-4">
+                <img src="images/products/keyboard-apex-pro.jpg" alt="Apex Pro TKL" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              </div>
+              <span class="text-[10px] uppercase font-bold text-[#93032E]">STEELSERIES</span>
+              <h3 class="text-sm font-bold text-white mt-1 line-clamp-2 min-h-[2.5rem] flex items-center">SteelSeries Apex Pro TKL Gen 3</h3>
+              <p class="text-xs text-neutral-400 mt-1 min-h-[2rem] flex items-center flex-1">Rapid Trigger mode with OmniPoint 3.0 adjustable switches.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-neutral-800 flex items-center justify-between mt-auto">
+              <span class="text-sm font-bold text-white font-heading">₹1,290</span>
+              <button onclick="window.COREX.addToCart('kb-apex-pro', 1)" class="px-3.5 py-2 rounded-xl bg-burgundy-grad text-white text-[11px] font-bold uppercase shadow-burgundy-glow hover:opacity-90">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Peripheral 2 -->
+          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-5 hover:border-[#93032E] transition card-3d">
+            <div class="flex-1 flex flex-col">
+              <div class="w-full h-44 rounded-xl bg-black border border-neutral-800 overflow-hidden mb-4">
+                <img src="images/products/mouse-pro-x-superlight.jpg" alt="Logitech MX Master 3S" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              </div>
+              <span class="text-[10px] uppercase font-bold text-[#93032E]">LOGITECH</span>
+              <h3 class="text-sm font-bold text-white mt-1 line-clamp-2 min-h-[2.5rem] flex items-center">Logitech MX Master 3S Mouse</h3>
+              <p class="text-xs text-neutral-400 mt-1 min-h-[2rem] flex items-center flex-1">8,000 DPI track-anywhere optical sensor with quiet clicks.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-neutral-800 flex items-center justify-between mt-auto">
+              <span class="text-sm font-bold text-white font-heading">₹490</span>
+              <button onclick="window.COREX.addToCart('mouse-logitech-mx3s', 1)" class="px-3.5 py-2 rounded-xl bg-burgundy-grad text-white text-[11px] font-bold uppercase shadow-burgundy-glow hover:opacity-90">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Peripheral 3 -->
+          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-5 hover:border-[#93032E] transition card-3d">
+            <div class="flex-1 flex flex-col">
+              <div class="w-full h-44 rounded-xl bg-black border border-neutral-800 overflow-hidden mb-4">
+                <img src="images/products/headset-arctis-nova.jpg" alt="Arctis Nova Pro" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              </div>
+              <span class="text-[10px] uppercase font-bold text-[#93032E]">STEELSERIES</span>
+              <h3 class="text-sm font-bold text-white mt-1 line-clamp-2 min-h-[2.5rem] flex items-center">Arctis Nova Pro Wireless Headset</h3>
+              <p class="text-xs text-neutral-400 mt-1 min-h-[2rem] flex items-center flex-1">Dual battery hot-swap with active noise cancellation.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-neutral-800 flex items-center justify-between mt-auto">
+              <span class="text-sm font-bold text-white font-heading">₹1,490</span>
+              <button onclick="window.COREX.addToCart('headset-arctis-nova', 1)" class="px-3.5 py-2 rounded-xl bg-burgundy-grad text-white text-[11px] font-bold uppercase shadow-burgundy-glow hover:opacity-90">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Peripheral 4 -->
+          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-5 hover:border-[#93032E] transition card-3d">
+            <div class="flex-1 flex flex-col">
+              <div class="w-full h-44 rounded-xl bg-black border border-neutral-800 overflow-hidden mb-4">
+                <img src="images/products/monitor-rog-pg32.jpg" alt="Dell UltraSharp" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              </div>
+              <span class="text-[10px] uppercase font-bold text-[#93032E]">DELL</span>
+              <h3 class="text-sm font-bold text-white mt-1 line-clamp-2 min-h-[2.5rem] flex items-center">Dell UltraSharp 27" 4K UHD USB-C</h3>
+              <p class="text-xs text-neutral-400 mt-1 min-h-[2rem] flex items-center flex-1">IPS Black 2000:1 contrast, 90W USB-C hub connectivity.</p>
+            </div>
+            <div class="mt-auto pt-3 border-t border-neutral-800 flex items-center justify-between mt-auto">
+              <span class="text-sm font-bold text-white font-heading">₹4,990</span>
+              <button onclick="window.COREX.addToCart('monitor-dell-ultrasharp', 1)" class="px-3.5 py-2 rounded-xl bg-burgundy-grad text-white text-[11px] font-bold uppercase shadow-burgundy-glow hover:opacity-90">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 5: CUSTOM PC BUILDS                -->
+    <!-- ========================================== -->
+    <section class="py-24 bg-[#151515] border-b border-[#383838]">
+      <div class="container-custom">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <div class="lg:col-span-5 space-y-5">
+            <span class="text-xs font-bold uppercase text-[#93032E] tracking-[0.2em]">BESPOKE COMMISSIONS</span>
+            <h2 class="text-3xl sm:text-5xl font-black font-heading text-white uppercase tracking-tight leading-tight">
+              ARCHITECTURAL <br><span class="text-[#93032E]">CRAFT</span>
+            </h2>
+            <p class="text-neutral-400 text-sm leading-relaxed">
+              Every custom machine commissioned at COREX passes through our 8-stage assembly protocol: ESD grounding, precision CPU die contact frame installation, custom length braided cable routing, leak testing, and a comprehensive 24-hour thermal soak test.
+            </p>
+
+            <div class="space-y-3 pt-2">
+              <div class="p-4 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-between">
+                <div>
+                  <h4 class="text-xs font-bold text-white uppercase">Thermal Interface Material</h4>
+                  <p class="text-[11px] text-neutral-400">Thermal Grizzly Kryonaut Extreme standard</p>
+                </div>
+                <i data-lucide="check-circle" class="w-4 h-4 text-[#93032E]"></i>
+              </div>
+
+              <div class="p-4 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-between">
+                <div>
+                  <h4 class="text-xs font-bold text-white uppercase">BIOS & XMP Optimization</h4>
+                  <p class="text-[11px] text-neutral-400">Tuned sub-timings & updated microcode</p>
+                </div>
+                <i data-lucide="check-circle" class="w-4 h-4 text-[#93032E]"></i>
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <a href="build-pc.html" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-105 transition">
+                <i data-lucide="cpu" class="w-4 h-4"></i> Build Your Custom PC Now
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-2xl overflow-hidden bg-black border border-neutral-800 aspect-square group card-3d relative">
+              <img src="images/products/case-lianli-vision.jpg" alt="Lian Li Vision" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 text-xs font-bold text-white">Lian Li O11 Vision Chrome Panoramic</div>
+            </div>
+            <div class="rounded-2xl overflow-hidden bg-black border border-neutral-800 aspect-square group card-3d relative">
+              <img src="images/products/case-fractal-north.jpg" alt="Fractal North XL" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 text-xs font-bold text-white">Fractal North XL Genuine Walnut Mesh</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 6: TECHNOLOGY BRANDS               -->
+    <!-- ========================================== -->
+    <section class="py-16 bg-[#1C1C1C] border-b border-[#383838]">
+      <div class="container-custom">
+        <div class="text-center mb-10">
+          <span class="text-xs uppercase font-bold tracking-[0.25em] text-neutral-400">AUTHORIZED DISTRIBUTOR PARTNERS</span>
+        </div>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 items-center">
+          <div class="p-4 rounded-xl bg-[#202020] border border-[#383838] text-center text-xs font-bold font-heading text-neutral-300 hover:text-white hover:border-[#93032E] transition">INTEL</div>
+          <div class="p-4 rounded-xl bg-[#202020] border border-[#383838] text-center text-xs font-bold font-heading text-neutral-300 hover:text-white hover:border-[#93032E] transition">AMD</div>
+          <div class="p-4 rounded-xl bg-[#202020] border border-[#383838] text-center text-xs font-bold font-heading text-neutral-300 hover:text-white hover:border-[#93032E] transition">NVIDIA</div>
+          <div class="p-4 rounded-xl bg-[#202020] border border-[#383838] text-center text-xs font-bold font-heading text-neutral-300 hover:text-white hover:border-[#93032E] transition">ASUS ROG</div>
+          <div class="p-4 rounded-xl bg-[#202020] border border-[#383838] text-center text-xs font-bold font-heading text-neutral-300 hover:text-white hover:border-[#93032E] transition">MSI</div>
+          <div class="p-4 rounded-xl bg-[#202020] border border-[#383838] text-center text-xs font-bold font-heading text-neutral-300 hover:text-white hover:border-[#93032E] transition">CORSAIR</div>
+          <div class="p-4 rounded-xl bg-[#202020] border border-[#383838] text-center text-xs font-bold font-heading text-neutral-300 hover:text-white hover:border-[#93032E] transition">SAMSUNG</div>
+          <div class="p-4 rounded-xl bg-[#202020] border border-[#383838] text-center text-xs font-bold font-heading text-neutral-300 hover:text-white hover:border-[#93032E] transition">RAZER</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 7: CUSTOMER REVIEWS & NEWSLETTER   -->
+    <!-- ========================================== -->
+    <section class="py-24 bg-[#151515]">
+      <div class="container-custom">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          <!-- Editorial Reviews -->
+          <div class="space-y-6">
+            <span class="text-xs uppercase font-bold tracking-[0.2em] text-[#93032E]">CRITICAL ACCLAIM</span>
+            <h2 class="text-3xl sm:text-4xl font-black font-heading text-white uppercase tracking-tight">
+              VOICES OF THE <span class="text-[#93032E]">COMMUNITY</span>
+            </h2>
+
+            <div class="space-y-4">
+              <div class="p-5 rounded-2xl bg-[#1C1C1C] border border-[#383838]">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="text-xs font-bold text-white">Rahul Dev, AI Research Engineer</div>
+                  <div class="flex text-[#93032E]"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
+                </div>
+                <p class="text-xs text-neutral-400">"The dual-chamber Lian Li build handles LLM quantization with steady 450W GPU draw without thermal throttling. Chennai delivery was prompt and well packaged."</p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-[#1C1C1C] border border-[#383838]">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="text-xs font-bold text-white">Pradeep Raj, Esports Arena Director</div>
+                  <div class="flex text-[#93032E]"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
+                </div>
+                <p class="text-xs text-neutral-400">"Commissioned 10 identical Ryzen 7800X3D + RTX 4070 Ti systems for our Chennai tournament stage. Zero crashes across three days of LAN matches."</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Newsletter Box -->
+          <div class="bg-gradient-to-br from-[#1C1C1C] via-[#202020] to-[#151515] p-8 lg:p-10 rounded-3xl border border-[#383838] shadow-2xl">
+            <span class="text-[10px] font-bold text-[#93032E] uppercase tracking-wider">RESTOCK & ARCHITECTURE NEWS</span>
+            <h3 class="text-2xl font-black font-heading text-white uppercase tracking-tight mt-1">
+              JOIN THE COREX CIRCLE
+            </h3>
+            <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
+              Receive confidential hardware inventory updates, early allocations of RTX and Ryzen chips, and benchmark whitepapers.
+            </p>
+
+            <form onsubmit="handleNewsletterSubmit(event, this)" novalidate class="mt-6 space-y-3">
+              <input type="email" required placeholder="Enter your email address..." class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-700 text-white text-xs placeholder:text-neutral-500 focus:outline-none focus:border-[#93032E] transition">
+              <button type="submit" class="w-full py-3.5 rounded-xl bg-burgundy-grad text-white text-xs font-bold uppercase tracking-wider shadow-burgundy-glow hover:opacity-95 transition">
+                Request VIP Membership
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+    <!-- ========================================== -->
+  <!-- FOOTER (MATCHING IMAGE 2 REFERENCE)        -->
+  <!-- ========================================== -->
+    <!-- ========================================== -->
+  <!-- FOOTER (ALIGNED, MATCHING IMAGE 2 & 3)     -->
+  <!-- ========================================== -->
+  <footer class="bg-[#111111] text-white pt-16 pb-10 border-t border-[#383838]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 items-start pb-14 border-b border-[#383838]">
+        
+        <!-- Column 1: Brand & Official Channels (4 cols) -->
+        <div class="lg:col-span-4 space-y-5">
+          <div class="h-10 flex items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+              <img src="images/logo/corex-symbol.png" alt="COREX" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.src='images/logo/corex-logo-full.png'">
+              <div class="h-8 w-[1px] bg-neutral-700 hidden sm:block"></div>
+              <div class="flex flex-col whitespace-nowrap justify-center">
+                <span class="text-2xl font-black font-heading tracking-wider text-white leading-none whitespace-nowrap">CORE<span class="text-[#93032E] text-3xl font-black inline-block ml-0.5">X</span></span>
+                <span class="text-[9px] uppercase tracking-[0.24em] text-[#C8C8C8] font-bold mt-1">BUILT FOR PERFORMANCE</span>
+              </div>
+            </a>
+          </div>
+
+          <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm pt-1">
+            India's dedicated premier computer hardware and custom workstation lab. Delivering extreme performance gaming rigs, verified OEM components, and cleanroom engineering across South India and PAN-India.
+          </p>
+
+          <div class="pt-2">
+            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white mb-3 font-subheading">OFFICIAL CHANNELS</h4>
+            <div class="flex items-center gap-3">
+              <!-- WhatsApp -->
+              <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-[#25D366] text-[#25D366] flex items-center justify-center hover:bg-[#25D366] hover:text-black transition shadow-[0_0_12px_rgba(37,211,102,0.25)]" title="WhatsApp Concierge">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 00-3.48-8.413z"/></svg>
+              </a>
+              <!-- Instagram -->
+              <a href="https://instagram.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-[#E1306C] text-[#E1306C] flex items-center justify-center hover:bg-[#E1306C] hover:text-white transition shadow-[0_0_12px_rgba(225,48,108,0.25)]" title="Instagram">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <!-- X (Twitter) -->
+              <a href="https://x.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-neutral-400 text-white flex items-center justify-center hover:bg-white hover:text-black transition shadow-[0_0_12px_rgba(255,255,255,0.2)]" title="X (Twitter)">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <!-- Facebook -->
+              <a href="https://facebook.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-[#1877F2] text-[#1877F2] flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition shadow-[0_0_12px_rgba(24,119,242,0.25)]" title="Facebook">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: CATALOG & STORE (2.5 cols) -->
+        <div class="lg:col-span-2 space-y-3">
+          <div class="h-10 flex items-center">
+            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CATALOG &amp; STORE</h4>
+          </div>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-neutral-400 pt-1">
+            <li><a href="index.html" class="hover:text-white transition">Home 1 (Cinematic Store)</a></li>
+            <li><a href="home-2.html" class="hover:text-white transition">Home 2 (Editorial Tech)</a></li>
+            <li><a href="products.html" class="hover:text-white transition">All Hardware Models</a></li>
+            <li><a href="products.html" class="hover:text-white transition">Gaming &amp; Workstations</a></li>
+            <li><a href="build-pc.html" class="hover:text-white transition">Custom PC Configurator</a></li>
+            <li><a href="pricing.html" class="hover:text-white transition">Prebuilt Rig Packages</a></li>
+            <li><a href="products.html" class="hover:text-white transition">Original OEM Accessories</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: CUSTOMER SUPPORT (2.5 cols) -->
+        <div class="lg:col-span-3 space-y-3">
+          <div class="h-10 flex items-center">
+            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CUSTOMER SUPPORT</h4>
+          </div>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-neutral-400 pt-1">
+            <li>
+              <a href="order.html" class="inline-flex items-center text-[#93032E] hover:text-[#B51B4C] font-semibold transition">
+                <span>Your Cart &amp; Orders</span>
+                <span class="ml-2 px-2 py-0.5 rounded text-[10px] font-bold bg-[#93032E] text-white uppercase tracking-wider">Track</span>
+              </a>
+            </li>
+            <li><a href="about.html" class="hover:text-white transition">About Our Brand &amp; Heritage</a></li>
+            <li><a href="contact.html#faqs" class="hover:text-white transition">Equipment &amp; Pricing FAQs</a></li>
+            <li><a href="about.html" class="hover:text-white transition">Cleanroom Diagnostic Lab</a></li>
+            <li><a href="blog.html" class="hover:text-white transition">Hardware Buyer Guides</a></li>
+            <li><a href="pricing.html" class="hover:text-white transition">Service &amp; Warranty Tariffs</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Contact Storefront &amp; Dispatch</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: CHENNAI OUTPOST (3 cols) -->
+        <div class="lg:col-span-3 space-y-3">
+          <div class="h-10 flex items-center">
+            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CHENNAI OUTPOST</h4>
+          </div>
+          <div class="text-xs sm:text-sm space-y-3 text-neutral-400 pt-1">
+            <div class="flex items-start gap-2.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-[#93032E] flex-shrink-0 mt-0.5"></i>
+              <div>
+                <p class="font-bold text-white leading-snug">COREX Tech Plaza — Chennai</p>
+                <p class="text-xs text-neutral-400 mt-0.5">42 Rajiv Gandhi Salai (OMR), Sholinganallur</p>
+                <p class="text-xs text-neutral-400">Chennai, Tamil Nadu 600119, India</p>
+              </div>
+            </div>
+            
+            <div class="pt-2.5 space-y-2 text-xs text-neutral-400 border-t border-neutral-800/80">
+              <div class="flex items-center gap-2.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
+                <p><span class="font-semibold text-white">Hours:</span> Mon – Sat: 09:30 AM – 08:30 PM</p>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <i data-lucide="phone" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
+                <p><span class="font-semibold text-white">Phone:</span> <a href="tel:+919876543210" class="hover:text-white transition">+91 98765 43210</a></p>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <svg class="w-3.5 h-3.5 fill-[#25D366] flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 00-3.48-8.413z"/></svg>
+                <p><span class="font-semibold text-white">WhatsApp:</span> <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="hover:text-white transition">+91 98765 43210</a></p>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <i data-lucide="mail" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
+                <p><span class="font-semibold text-white">Email:</span> <a href="mailto:support@core-x.in" class="hover:text-white transition">support@core-x.in</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sub-footer Bottom Bar -->
+      <div class="pt-8 text-center text-xs text-neutral-500">
+        <p>© 2026 COREX — High-Performance Hardware, Custom Rigs &amp; Cleanroom Lab. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

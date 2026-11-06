@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | COREX – Built for Performance</title>
+  <meta name="description" content="View technical specifications, benchmarks, warranty details and order high-performance PC hardware at COREX.">
+  <link rel="icon" type="image/png" href="images/logo/corex-symbol.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            burgundy: {
+              DEFAULT: '#93032E',
+              500: '#B51B4C',
+              600: '#93032E',
+              800: '#65001F',
+            },
+            night: {
+              DEFAULT: '#151515',
+              secondary: '#1C1C1C',
+              card: '#202020',
+              elevated: '#252525',
+              border: '#383838',
+            },
+            metallic: {
+              silver: '#C8C8C8',
+              muted: '#858585',
+              secondary: '#B5B5B5',
+            }
+          },
+          fontFamily: {
+            heading: ['Orbitron', 'sans-serif'],
+            subheading: ['Rajdhani', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#151515] text-white selection:bg-[#93032E] selection:text-white antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="relative flex flex-col items-center">
+      <img src="images/logo/corex-logo-full.png" alt="COREX" class="h-20 w-auto object-contain animate-pulse" onerror="this.src='images/logo/corex-symbol.png'">
+      <div class="text-center mt-3">
+        <span class="text-2xl font-black font-heading tracking-widest text-white">CORE<span class="text-[#93032E] text-3xl font-black ml-0.5">X</span></span>
+        <p class="text-[10px] text-metallic-secondary tracking-[0.3em] font-semibold uppercase mt-0.5">BUILT FOR PERFORMANCE</p>
+      </div>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <!-- Search Modal -->
+  <div id="search-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-start justify-center pt-20 px-4">
+    <div class="w-full max-w-2xl bg-[#1C1C1C] border border-[#383838] rounded-2xl shadow-2xl p-6 relative">
+      <button onclick="window.COREX.closeSearch()" class="absolute top-5 right-5 text-neutral-400 hover:text-white transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="flex items-center gap-3 border-b border-[#383838] pb-4">
+        <i data-lucide="search" class="w-5 h-5 text-[#93032E]"></i>
+        <input id="search-modal-input" type="text" placeholder="Search hardware..." class="w-full bg-transparent text-white text-base focus:outline-none placeholder:text-neutral-500">
+      </div>
+      <div id="search-modal-results" class="mt-4"></div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="cart-drawer-overlay" onclick="window.COREX.closeCartDrawer()" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-[#1C1C1C] border-l border-[#383838] z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between hidden">
+    <div class="p-5 border-b border-[#383838] flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i data-lucide="shopping-bag" class="w-5 h-5 text-[#93032E]"></i>
+        <h3 class="text-base font-bold text-white font-heading tracking-wider">YOUR ARSENAL CART</h3>
+      </div>
+      <button onclick="window.COREX.closeCartDrawer()" class="p-1.5 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800 transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-5">
+      <div id="drawer-cart-empty" class="text-center py-16 text-neutral-500">
+        <i data-lucide="shopping-cart" class="w-12 h-12 mx-auto mb-3 opacity-30 text-[#93032E]"></i>
+        <p class="text-sm font-semibold text-neutral-300">Your cart is currently empty</p>
+      </div>
+      <div id="drawer-cart-content" class="hidden space-y-3">
+        <div id="drawer-cart-items" class="space-y-3"></div>
+      </div>
+    </div>
+    <div class="p-5 border-t border-[#383838] bg-[#151515]">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-xs uppercase tracking-wider text-neutral-400 font-semibold">Subtotal</span>
+        <span id="drawer-cart-subtotal" class="text-lg font-bold text-white font-heading">₹0</span>
+      </div>
+      <a href="order.html" class="w-full py-3.5 rounded-xl bg-burgundy-grad text-white text-center font-bold text-xs uppercase tracking-wider block shadow-burgundy-glow hover:scale-[1.02] transition">
+        Proceed to Guest Checkout
+      </a>
+    </div>
+  </aside>
+
+    <!-- Top Burgundy Accent Line (Image 3 Match) -->
+  <div class="fixed top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#93032E] to-transparent z-50"></div>
+
+  <!-- Sticky Navbar (Image 3 Reference Match) -->
+  <header id="main-navbar" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-[#151515]/85 backdrop-blur-md border-b border-[#383838]/60">
+    <div class="container-custom flex items-center justify-between h-20">
+      
+            <!-- Brand Logo + Divider + Tagline (Exact Same in Header & Footer) -->
+      <a href="index.html" class="flex items-center gap-3 group py-1 flex-shrink-0">
+        <img src="images/logo/corex-symbol.png" alt="COREX" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.src='images/logo/corex-logo-full.png'">
+        <div class="h-8 w-[1px] bg-neutral-700 hidden sm:block"></div>
+        <div class="flex flex-col whitespace-nowrap justify-center">
+          <span class="text-2xl font-black font-heading tracking-wider text-white leading-none whitespace-nowrap">CORE<span class="text-[#93032E] text-3xl font-black inline-block ml-0.5">X</span></span>
+          <span class="text-[9px] uppercase tracking-[0.24em] text-[#C8C8C8] font-bold mt-1">BUILT FOR PERFORMANCE</span>
+        </div>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-7">
+        
+        <!-- Home Dropdown -->
+        <div class="relative group py-2">
+          <button class="nav-link flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-[#93032E] transition">
+            <span>Home</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div class="dropdown-menu absolute top-full left-0 w-52 bg-[#1C1C1C] border border-[#383838] rounded-xl shadow-2xl p-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-xs text-neutral-300 hover:bg-neutral-800 transition">Home 1 (Cinematic Store)</a>
+            <a href="home-2.html" class="block px-3 py-2 rounded-lg text-xs text-neutral-300 hover:text-white hover:bg-neutral-800 transition">Home 2 (Editorial Tech)</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">About</a>
+        <a href="products.html" class="nav-link active text-xs font-bold uppercase tracking-wider text-[#93032E] hover:text-[#93032E] transition">Products</a>
+        <a href="pricing.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Pricing</a>
+        <a href="build-pc.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Build Your PC</a>
+        <a href="blog.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Blog</a>
+        <a href="contact.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Contact</a>
+      </nav>
+
+            <!-- Right-side Action Controls (Equal Height 40px) -->
+      <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
+        
+        <!-- Wishlist -->
+        <a href="products.html" class="navbar-pill-btn hidden sm:inline-flex items-center justify-center h-10 w-10 rounded-xl relative text-neutral-300 hover:text-white transition" title="Wishlist">
+          <i data-lucide="heart" class="w-4 h-4"></i>
+          <span class="wishlist-count-badge hidden absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#93032E] text-white text-[10px] font-bold flex items-center justify-center">0</span>
+        </a>
+
+        <!-- RTL Toggle Pill -->
+        <button onclick="window.COREX.toggleRTL()" class="navbar-pill-btn hidden sm:inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl text-xs font-bold text-neutral-300 hover:text-white transition" title="Toggle RTL / LTR">
+          <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-[#93032E]"></i>
+          <span>RTL</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button onclick="window.COREX.toggleTheme()" class="navbar-pill-btn inline-flex items-center justify-center h-10 w-10 rounded-xl text-neutral-300 hover:text-white transition" title="Toggle Light/Dark Mode">
+          <i data-lucide="sun" class="theme-toggle-icon w-4 h-4"></i>
+        </button>
+
+        <!-- Primary CTA Button: Order Now -->
+        <a href="order.html" class="h-10 px-4 sm:px-5 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-105 transition inline-flex items-center justify-center gap-2 flex-shrink-0" title="Order / Cart">
+          <i data-lucide="shopping-bag" class="w-4 h-4 flex-shrink-0"></i>
+          <span class="whitespace-nowrap">Order Now</span>
+          <span class="cart-count-badge hidden ml-0.5 px-1.5 py-0.5 rounded-full bg-white text-[#93032E] text-[10px] font-black leading-none">0</span>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobile-menu-btn" class="navbar-pill-btn lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl text-neutral-300 hover:text-white transition" aria-label="Open menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#1C1C1C] border-b border-[#383838] px-6 py-5 space-y-3">
+      <div class="border-b border-neutral-800 pb-2">
+        <span class="text-[10px] uppercase font-bold text-neutral-500 tracking-wider">Home Editions</span>
+        <div class="grid grid-cols-2 gap-2 mt-2">
+          <a href="index.html" class="px-3 py-2 rounded-lg text-xs font-bold text-[#93032E] bg-neutral-900 border border-neutral-800">Home 1 (Cinematic)</a>
+          <a href="home-2.html" class="px-3 py-2 rounded-lg text-xs font-medium text-neutral-300 bg-neutral-900/60 border border-neutral-800">Home 2 (Editorial)</a>
+        </div>
+      </div>
+      <a href="about.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">About COREX</a>
+      <a href="products.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Hardware Products</a>
+      <a href="pricing.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Prebuilt Rig Packages</a>
+      <a href="build-pc.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Build Your PC (Configurator)</a>
+      <a href="blog.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Hardware Blog</a>
+      <a href="contact.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Contact & Chennai Store</a>
+      <a href="order.html" class="block py-2 text-sm font-semibold text-[#93032E] hover:text-white">Order Status & Cart</a>
+
+      <!-- Mobile Quick Controls -->
+      <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs">
+        <a href="products.html" class="flex items-center gap-2 text-neutral-400 hover:text-white">
+          <i data-lucide="heart" class="w-4 h-4 text-[#93032E]"></i>
+          <span>Wishlist</span>
+        </a>
+        <button onclick="window.COREX.toggleRTL()" class="flex items-center gap-2 text-neutral-400 hover:text-white">
+          <i data-lucide="arrow-left-right" class="w-4 h-4 text-[#93032E]"></i>
+          <span>Toggle RTL</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow pt-20">
+
+    <!-- ========================================== -->
+    <!-- SECTION 1: BREADCRUMB NAVIGATION           -->
+    <!-- ========================================== -->
+    <div class="py-4 bg-[#1C1C1C] border-b border-[#383838]">
+      <div class="container-custom">
+        <nav class="flex items-center gap-2 text-xs text-neutral-400">
+          <a href="index.html" class="hover:text-white transition">Home</a>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          <a href="products.html" class="hover:text-white transition">Products</a>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          <span id="breadcrumb-category" class="hover:text-white transition cursor-pointer">Graphics Cards</span>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          <span id="breadcrumb-product-name" class="text-white font-semibold truncate max-w-xs">Loading Component...</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SECTION 2 & 3: GALLERY, SPECS, ACTIONS     -->
+    <!-- ========================================== -->
+    <section class="py-12 bg-[#151515] border-b border-[#383838]">
+      <div class="container-custom">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Product Gallery (5 cols) -->
+          <div class="lg:col-span-5 space-y-4">
+            <!-- Main Image with Zoom container -->
+            <div id="main-image-frame" class="w-full aspect-square rounded-2xl bg-black border border-[#383838] overflow-hidden relative group cursor-crosshair">
+              <img id="detail-main-img" src="images/products/gpu-rtx4090.jpg" alt="Product Image" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-125" onerror="this.src='images/logo/corex-symbol.png'">
+              <span id="detail-badge" class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#93032E] text-white text-[10px] font-bold uppercase tracking-wider">
+                FLAGSHIP BEAST
+              </span>
+            </div>
+
+            <!-- Thumbnails Row -->
+            <div class="grid grid-cols-4 gap-3">
+              <button onclick="changeMainImage(this.querySelector('img').src)" class="aspect-square rounded-xl bg-black border-2 border-[#93032E] overflow-hidden p-1 transition thumb-btn">
+                <img id="thumb-1" src="images/products/gpu-rtx4090.jpg" class="w-full h-full object-cover rounded-lg">
+              </button>
+              <button onclick="changeMainImage(this.querySelector('img').src)" class="aspect-square rounded-xl bg-black border border-neutral-800 hover:border-[#93032E] overflow-hidden p-1 transition thumb-btn">
+                <img id="thumb-2" src="images/categories/graphics-cards.jpg" class="w-full h-full object-cover rounded-lg">
+              </button>
+              <button onclick="changeMainImage(this.querySelector('img').src)" class="aspect-square rounded-xl bg-black border border-neutral-800 hover:border-[#93032E] overflow-hidden p-1 transition thumb-btn">
+                <img id="thumb-3" src="images/hero/hero-pc-showcase.jpg" class="w-full h-full object-cover rounded-lg">
+              </button>
+              <button onclick="changeMainImage(this.querySelector('img').src)" class="aspect-square rounded-xl bg-black border border-neutral-800 hover:border-[#93032E] overflow-hidden p-1 transition thumb-btn">
+                <img id="thumb-4" src="images/logo/corex-symbol.png" class="w-full h-full object-contain rounded-lg">
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Main Info & Checkout (7 cols) -->
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <div class="flex items-center gap-3 mb-2">
+                <span id="detail-brand" class="text-xs font-bold uppercase text-[#93032E] tracking-wider">ASUS ROG</span>
+                <span class="text-neutral-600">•</span>
+                <div class="flex items-center gap-1 text-xs text-yellow-400">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                  <span id="detail-rating" class="font-bold text-white">4.9</span>
+                  <span id="detail-reviews-count" class="text-neutral-500">(142 verified reviews)</span>
+                </div>
+              </div>
+
+              <h1 id="detail-name" class="text-2xl sm:text-4xl font-black font-heading text-white uppercase tracking-tight leading-tight">
+                ASUS ROG Strix GeForce RTX 4090 OC 24GB
+              </h1>
+              <p id="detail-short-desc" class="text-neutral-400 text-sm mt-3 leading-relaxed">
+                The pinnacle of GPU engineering with 24GB GDDR6X, Ada Lovelace architecture, and patented vapor chamber.
+              </p>
+            </div>
+
+            <!-- Price & Availability Block -->
+            <div class="p-5 rounded-2xl bg-[#1C1C1C] border border-[#383838] flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-neutral-400">Direct Showroom Price</span>
+                <div class="flex items-baseline gap-3">
+                  <span id="detail-price" class="text-3xl font-black text-white font-heading">₹4,490</span>
+                  <span id="detail-orig-price" class="text-sm text-neutral-500 line-through">₹5,790</span>
+                  <span id="detail-discount" class="text-xs text-green-400 font-bold">22% OFF</span>
+                </div>
+                <div class="text-[11px] text-neutral-500 mt-1">Inclusive of all Indian GST (18%). GST invoice provided.</div>
+              </div>
+
+              <div class="text-right">
+                <span id="detail-stock" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-green-950/80 text-green-400 border border-green-800">
+                  <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> In Stock (Ready to Dispatch)
+                </span>
+                <div class="text-[11px] text-neutral-400 mt-1.5">Dispatches in 24 hrs from Chennai</div>
+              </div>
+            </div>
+
+            <!-- Key Specs Pills -->
+            <div id="detail-key-specs" class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Quantity & Actions -->
+            <div class="pt-4 border-t border-neutral-800 flex flex-wrap items-center gap-4">
+              <!-- Quantity Selector -->
+              <div class="flex items-center border border-neutral-700 rounded-xl bg-neutral-900 px-3 py-2 gap-3">
+                <button onclick="updateQty(-1)" class="text-neutral-400 hover:text-white font-bold text-sm px-1">-</button>
+                <span id="qty-display" class="font-bold text-white text-sm w-6 text-center">1</span>
+                <button onclick="updateQty(1)" class="text-neutral-400 hover:text-white font-bold text-sm px-1">+</button>
+              </div>
+
+              <!-- Add to Cart -->
+              <button id="add-to-cart-btn" onclick="addCurrentProductToCart()" class="flex-1 min-w-[200px] py-4 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-105 transition flex items-center justify-center gap-2">
+                <i data-lucide="shopping-bag" class="w-4 h-4"></i> Add to Cart
+              </button>
+
+              <!-- Wishlist Button -->
+              <button id="detail-wishlist-btn" onclick="toggleCurrentWishlist()" class="p-4 rounded-xl border border-neutral-700 hover:border-[#93032E] text-neutral-300 hover:text-white transition">
+                <i data-lucide="heart" class="w-5 h-5"></i>
+              </button>
+            </div>
+
+            <!-- Assurance Badges -->
+            <div class="grid grid-cols-3 gap-3 pt-4 text-center">
+              <div class="p-3 rounded-xl bg-[#202020] border border-[#383838]">
+                <i data-lucide="shield-check" class="w-5 h-5 mx-auto text-[#93032E] mb-1"></i>
+                <div class="text-[11px] font-bold text-white">3 Years OEM Warranty</div>
+              </div>
+              <div class="p-3 rounded-xl bg-[#202020] border border-[#383838]">
+                <i data-lucide="truck" class="w-5 h-5 mx-auto text-[#93032E] mb-1"></i>
+                <div class="text-[11px] font-bold text-white">Insured Transit</div>
+              </div>
+              <div class="p-3 rounded-xl bg-[#202020] border border-[#383838]">
+                <i data-lucide="rotate-ccw" class="w-5 h-5 mx-auto text-[#93032E] mb-1"></i>
+                <div class="text-[11px] font-bold text-white">7 Days Replacement</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 4 & 5: SPECS TABLE & FEATURES      -->
+    <!-- ========================================== -->
+    <section class="py-16 bg-[#1C1C1C] border-b border-[#383838]">
+      <div class="container-custom">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          <!-- Detailed Specs Table (7 cols) -->
+          <div class="lg:col-span-7 space-y-4">
+            <h3 class="text-xl font-bold font-heading text-white uppercase tracking-tight flex items-center gap-2">
+              <i data-lucide="cpu" class="w-5 h-5 text-[#93032E]"></i> Technical Specifications
+            </h3>
+            <div class="rounded-2xl border border-[#383838] overflow-hidden bg-[#202020]">
+              <table id="tech-specs-table" class="w-full text-left text-xs">
+                <!-- Dynamically Populated -->
+              </table>
+            </div>
+          </div>
+
+          <!-- Description & Architecture Features (5 cols) -->
+          <div class="lg:col-span-5 space-y-4">
+            <h3 class="text-xl font-bold font-heading text-white uppercase tracking-tight flex items-center gap-2">
+              <i data-lucide="layers" class="w-5 h-5 text-[#93032E]"></i> Architecture Highlights
+            </h3>
+            <div class="p-6 rounded-2xl bg-[#202020] border border-[#383838] text-xs text-neutral-300 leading-relaxed space-y-3">
+              <p>
+                Engineered for maximum thermal dissipation, this component utilizes patented CNC vapor-chamber technology with precision-milled cold plates to eliminate hot spots.
+              </p>
+              <p>
+                Factory tuned clock curves allow instantaneous turbo frequencies without manual voltage tweaking, while keeping power phase temperatures exceptionally stable.
+              </p>
+              <div class="p-3 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-400">
+                <strong class="text-white">COREX Lab Verification:</strong> Passes full 24-hr multi-thread burn-in load in our Chennai facility prior to packing.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 6: RELATED PRODUCTS                -->
+    <!-- ========================================== -->
+    <section class="py-16 bg-[#151515] border-b border-[#383838]">
+      <div class="container-custom">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <span class="text-xs uppercase font-bold text-[#93032E] tracking-wider">ECOSYSTEM SYNERGY</span>
+            <h3 class="text-2xl font-black font-heading text-white uppercase mt-0.5">RELATED HARDWARE</h3>
+          </div>
+          <a href="products.html" class="text-xs font-bold uppercase text-neutral-400 hover:text-white">Browse All</a>
+        </div>
+        <div id="related-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Dynamically Populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 7: CUSTOMER REVIEWS                -->
+    <!-- ========================================== -->
+    <section class="py-16 bg-[#1C1C1C]">
+      <div class="container-custom">
+        <h3 class="text-2xl font-black font-heading text-white uppercase tracking-tight mb-8">
+          VERIFIED OWNER <span class="text-[#93032E]">REVIEWS</span>
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-5 rounded-2xl bg-[#202020] border border-[#383838]">
+            <div class="flex items-center text-[#93032E] mb-2">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <h4 class="text-xs font-bold text-white uppercase">Exceeded All Expectations</h4>
+            <p class="text-xs text-neutral-400 mt-1 leading-relaxed">Runs silent even under 4K 144Hz Cyberpunk benchmarks. Shipped next day to Chennai.</p>
+            <div class="mt-4 pt-3 border-t border-neutral-800 text-[10px] text-neutral-500 font-mono">By Arvind S. • Verified Buyer</div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#202020] border border-[#383838]">
+            <div class="flex items-center text-[#93032E] mb-2">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <h4 class="text-xs font-bold text-white uppercase">Authentic Brand Seal</h4>
+            <p class="text-xs text-neutral-400 mt-1 leading-relaxed">Official Indian distributor warranty sticker attached and registered online smoothly.</p>
+            <div class="mt-4 pt-3 border-t border-neutral-800 text-[10px] text-neutral-500 font-mono">By Tarun K. • Verified Buyer</div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#202020] border border-[#383838]">
+            <div class="flex items-center text-[#93032E] mb-2">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <h4 class="text-xs font-bold text-white uppercase">Best Gaming Investment</h4>
+            <p class="text-xs text-neutral-400 mt-1 leading-relaxed">Frametimes are rock steady and temperatures stay cool. COREX customer service was super helpful.</p>
+            <div class="mt-4 pt-3 border-t border-neutral-800 text-[10px] text-neutral-500 font-mono">By Deepa M. • Verified Buyer</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+    <!-- ========================================== -->
+  <!-- FOOTER (MATCHING IMAGE 2 REFERENCE)        -->
+  <!-- ========================================== -->
+    <!-- ========================================== -->
+  <!-- FOOTER (ALIGNED, MATCHING IMAGE 2 & 3)     -->
+  <!-- ========================================== -->
+  <footer class="bg-[#111111] text-white pt-16 pb-10 border-t border-[#383838]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 items-start pb-14 border-b border-[#383838]">
+        
+        <!-- Column 1: Brand & Official Channels (4 cols) -->
+        <div class="lg:col-span-4 space-y-5">
+          <div class="h-10 flex items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+              <img src="images/logo/corex-symbol.png" alt="COREX" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.src='images/logo/corex-logo-full.png'">
+              <div class="h-8 w-[1px] bg-neutral-700 hidden sm:block"></div>
+              <div class="flex flex-col whitespace-nowrap justify-center">
+                <span class="text-2xl font-black font-heading tracking-wider text-white leading-none whitespace-nowrap">CORE<span class="text-[#93032E] text-3xl font-black inline-block ml-0.5">X</span></span>
+                <span class="text-[9px] uppercase tracking-[0.24em] text-[#C8C8C8] font-bold mt-1">BUILT FOR PERFORMANCE</span>
+              </div>
+            </a>
+          </div>
+
+          <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm pt-1">
+            India's dedicated premier computer hardware and custom workstation lab. Delivering extreme performance gaming rigs, verified OEM components, and cleanroom engineering across South India and PAN-India.
+          </p>
+
+          <div class="pt-2">
+            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white mb-3 font-subheading">OFFICIAL CHANNELS</h4>
+            <div class="flex items-center gap-3">
+              <!-- WhatsApp -->
+              <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-[#25D366] text-[#25D366] flex items-center justify-center hover:bg-[#25D366] hover:text-black transition shadow-[0_0_12px_rgba(37,211,102,0.25)]" title="WhatsApp Concierge">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 00-3.48-8.413z"/></svg>
+              </a>
+              <!-- Instagram -->
+              <a href="https://instagram.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-[#E1306C] text-[#E1306C] flex items-center justify-center hover:bg-[#E1306C] hover:text-white transition shadow-[0_0_12px_rgba(225,48,108,0.25)]" title="Instagram">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <!-- X (Twitter) -->
+              <a href="https://x.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-neutral-400 text-white flex items-center justify-center hover:bg-white hover:text-black transition shadow-[0_0_12px_rgba(255,255,255,0.2)]" title="X (Twitter)">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <!-- Facebook -->
+              <a href="https://facebook.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-[#1877F2] text-[#1877F2] flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition shadow-[0_0_12px_rgba(24,119,242,0.25)]" title="Facebook">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: CATALOG & STORE (2.5 cols) -->
+        <div class="lg:col-span-2 space-y-3">
+          <div class="h-10 flex items-center">
+            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CATALOG &amp; STORE</h4>
+          </div>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-neutral-400 pt-1">
+            <li><a href="index.html" class="hover:text-white transition">Home 1 (Cinematic Store)</a></li>
+            <li><a href="home-2.html" class="hover:text-white transition">Home 2 (Editorial Tech)</a></li>
+            <li><a href="products.html" class="hover:text-white transition">All Hardware Models</a></li>
+            <li><a href="products.html" class="hover:text-white transition">Gaming &amp; Workstations</a></li>
+            <li><a href="build-pc.html" class="hover:text-white transition">Custom PC Configurator</a></li>
+            <li><a href="pricing.html" class="hover:text-white transition">Prebuilt Rig Packages</a></li>
+            <li><a href="products.html" class="hover:text-white transition">Original OEM Accessories</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: CUSTOMER SUPPORT (2.5 cols) -->
+        <div class="lg:col-span-3 space-y-3">
+          <div class="h-10 flex items-center">
+            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CUSTOMER SUPPORT</h4>
+          </div>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-neutral-400 pt-1">
+            <li>
+              <a href="order.html" class="inline-flex items-center text-[#93032E] hover:text-[#B51B4C] font-semibold transition">
+                <span>Your Cart &amp; Orders</span>
+                <span class="ml-2 px-2 py-0.5 rounded text-[10px] font-bold bg-[#93032E] text-white uppercase tracking-wider">Track</span>
+              </a>
+            </li>
+            <li><a href="about.html" class="hover:text-white transition">About Our Brand &amp; Heritage</a></li>
+            <li><a href="contact.html#faqs" class="hover:text-white transition">Equipment &amp; Pricing FAQs</a></li>
+            <li><a href="about.html" class="hover:text-white transition">Cleanroom Diagnostic Lab</a></li>
+            <li><a href="blog.html" class="hover:text-white transition">Hardware Buyer Guides</a></li>
+            <li><a href="pricing.html" class="hover:text-white transition">Service &amp; Warranty Tariffs</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Contact Storefront &amp; Dispatch</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: CHENNAI OUTPOST (3 cols) -->
+        <div class="lg:col-span-3 space-y-3">
+          <div class="h-10 flex items-center">
+            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CHENNAI OUTPOST</h4>
+          </div>
+          <div class="text-xs sm:text-sm space-y-3 text-neutral-400 pt-1">
+            <div class="flex items-start gap-2.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-[#93032E] flex-shrink-0 mt-0.5"></i>
+              <div>
+                <p class="font-bold text-white leading-snug">COREX Tech Plaza — Chennai</p>
+                <p class="text-xs text-neutral-400 mt-0.5">42 Rajiv Gandhi Salai (OMR), Sholinganallur</p>
+                <p class="text-xs text-neutral-400">Chennai, Tamil Nadu 600119, India</p>
+              </div>
+            </div>
+            
+            <div class="pt-2.5 space-y-2 text-xs text-neutral-400 border-t border-neutral-800/80">
+              <div class="flex items-center gap-2.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
+                <p><span class="font-semibold text-white">Hours:</span> Mon – Sat: 09:30 AM – 08:30 PM</p>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <i data-lucide="phone" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
+                <p><span class="font-semibold text-white">Phone:</span> <a href="tel:+919876543210" class="hover:text-white transition">+91 98765 43210</a></p>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <svg class="w-3.5 h-3.5 fill-[#25D366] flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 00-3.48-8.413z"/></svg>
+                <p><span class="font-semibold text-white">WhatsApp:</span> <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="hover:text-white transition">+91 98765 43210</a></p>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <i data-lucide="mail" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
+                <p><span class="font-semibold text-white">Email:</span> <a href="mailto:support@core-x.in" class="hover:text-white transition">support@core-x.in</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sub-footer Bottom Bar -->
+      <div class="pt-8 text-center text-xs text-neutral-500">
+        <p>© 2026 COREX — High-Performance Hardware, Custom Rigs &amp; Cleanroom Lab. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Product Details Page Logic -->
+  <script>
+    let currentProduct = null;
+    let selectedQuantity = 1;
+
+    function getParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    function changeMainImage(src) {
+      document.getElementById('detail-main-img').src = src;
+      document.querySelectorAll('.thumb-btn').forEach(btn => {
+        if (btn.querySelector('img').src === src) {
+          btn.classList.add('border-[#93032E]', 'border-2');
+          btn.classList.remove('border-neutral-800');
+        } else {
+          btn.classList.remove('border-[#93032E]', 'border-2');
+          btn.classList.add('border-neutral-800');
+        }
+      });
+    }
+
+    function updateQty(delta) {
+      selectedQuantity = Math.max(1, selectedQuantity + delta);
+      document.getElementById('qty-display').textContent = selectedQuantity;
+    }
+
+    function addCurrentProductToCart() {
+      if (currentProduct) {
+        window.COREX.addToCart(currentProduct.id, selectedQuantity);
+      }
+    }
+
+    function toggleCurrentWishlist() {
+      if (currentProduct) {
+        const added = window.COREX.toggleWishlist(currentProduct.id);
+        const btn = document.getElementById('detail-wishlist-btn');
+        if (added) {
+          btn.classList.add('text-[#93032E]', 'border-[#93032E]');
+        } else {
+          btn.classList.remove('text-[#93032E]', 'border-[#93032E]');
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const rawId = getParam('id') || 'gpu-rtx4090';
+      const id = (window.COREX && window.COREX.resolveProductId) ? window.COREX.resolveProductId(rawId) : rawId;
+      currentProduct = COREX_PRODUCTS.find(p => p.id === id) || COREX_PRODUCTS[0];
+
+      if (currentProduct) {
+        document.title = `${currentProduct.name} | COREX`;
+        document.getElementById('breadcrumb-category').textContent = currentProduct.category;
+        document.getElementById('breadcrumb-product-name').textContent = currentProduct.name;
+        document.getElementById('detail-main-img').src = currentProduct.image;
+        document.getElementById('thumb-1').src = currentProduct.image;
+        document.getElementById('detail-badge').textContent = currentProduct.badge || currentProduct.category;
+        document.getElementById('detail-brand').textContent = currentProduct.brand;
+        document.getElementById('detail-rating').textContent = currentProduct.rating;
+        document.getElementById('detail-reviews-count').textContent = `(${currentProduct.reviewsCount} verified reviews)`;
+        document.getElementById('detail-name').textContent = currentProduct.name;
+        document.getElementById('detail-short-desc').textContent = currentProduct.shortDesc;
+        document.getElementById('detail-price').textContent = '₹' + currentProduct.price.toLocaleString('en-IN');
+        
+        if (currentProduct.originalPrice) {
+          document.getElementById('detail-orig-price').textContent = '₹' + currentProduct.originalPrice.toLocaleString('en-IN');
+        }
+        if (currentProduct.discount) {
+          document.getElementById('detail-discount').textContent = currentProduct.discount;
+        }
+
+        // Specs pills
+        if (currentProduct.specs) {
+          const pills = document.getElementById('detail-key-specs');
+          pills.innerHTML = currentProduct.specs.map(s => `
+            <div class="p-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-[11px] font-mono text-neutral-300 text-center">
+              ${s}
+            </div>
+          `).join('');
+        }
+
+        // Table
+        if (currentProduct.fullSpecs) {
+          const table = document.getElementById('tech-specs-table');
+          table.innerHTML = Object.entries(currentProduct.fullSpecs).map(([k, v], idx) => `
+            <tr class="${idx % 2 === 0 ? 'bg-neutral-900/60' : 'bg-neutral-900/20'} border-b border-neutral-800">
+              <td class="py-3 px-4 font-semibold text-neutral-400 w-1/3">${k}</td>
+              <td class="py-3 px-4 font-mono text-white">${v}</td>
+            </tr>
+          `).join('');
+        }
+
+        // Related Products
+        let related = COREX_PRODUCTS.filter(p => p.id !== currentProduct.id && (p.category === currentProduct.category || p.brand === currentProduct.brand));
+        if (related.length < 4) {
+          const others = COREX_PRODUCTS.filter(p => p.id !== currentProduct.id && !related.includes(p));
+          related = related.concat(others.slice(0, 4 - related.length));
+        }
+        related = related.slice(0, 4);
+
+        const relatedGrid = document.getElementById('related-products-grid');
+        if (related.length > 0) {
+          relatedGrid.innerHTML = related.map(p => `
+            <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-5 hover:border-[#93032E] transition card-3d">
+              <div>
+                <div class="w-full h-36 rounded-xl bg-black border border-neutral-800 overflow-hidden mb-3">
+                  <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover" onerror="this.src='images/logo/corex-symbol.png'">
+                </div>
+                <span class="text-[10px] uppercase font-bold text-[#93032E]">${p.brand}</span>
+                <h4 class="text-xs font-bold text-white mt-1 truncate">${p.name}</h4>
+                <div class="text-sm font-bold text-white font-heading mt-2">₹${p.price.toLocaleString('en-IN')}</div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-neutral-800">
+                <a href="product-details.html?id=${p.id}" class="block w-full py-2 rounded-xl bg-neutral-900 hover:bg-[#93032E] text-white text-center text-[11px] font-bold uppercase transition">
+                  View Specs
+                </a>
+              </div>
+            </div>
+          `).join('');
+        } else {
+          relatedGrid.innerHTML = '<p class="text-xs text-neutral-500 col-span-4">No direct alternatives found.</p>';
+        }
+      }
+
+      if (window.lucide) window.lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

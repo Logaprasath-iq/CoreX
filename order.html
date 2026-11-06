@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guest Checkout & Order Status | COREX</title>
+  <meta name="description" content="Complete your hardware purchase or review your custom PC build order with instant guest checkout at COREX.">
+  <link rel="icon" type="image/png" href="images/logo/corex-symbol.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            burgundy: {
+              DEFAULT: '#93032E',
+              500: '#B51B4C',
+              600: '#93032E',
+              800: '#65001F',
+            },
+            night: {
+              DEFAULT: '#151515',
+              secondary: '#1C1C1C',
+              card: '#202020',
+              elevated: '#252525',
+              border: '#383838',
+            },
+            metallic: {
+              silver: '#C8C8C8',
+              muted: '#858585',
+              secondary: '#B5B5B5',
+            }
+          },
+          fontFamily: {
+            heading: ['Orbitron', 'sans-serif'],
+            subheading: ['Rajdhani', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#151515] text-white selection:bg-[#93032E] selection:text-white antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="relative flex flex-col items-center">
+      <img src="images/logo/corex-logo-full.png" alt="COREX" class="h-20 w-auto object-contain animate-pulse" onerror="this.src='images/logo/corex-symbol.png'">
+      <div class="text-center mt-3">
+        <span class="text-2xl font-black font-heading tracking-widest text-white">CORE<span class="text-[#93032E] text-3xl font-black ml-0.5">X</span></span>
+        <p class="text-[10px] text-metallic-secondary tracking-[0.3em] font-semibold uppercase mt-0.5">BUILT FOR PERFORMANCE</p>
+      </div>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <!-- Search Modal -->
+  <div id="search-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-start justify-center pt-20 px-4">
+    <div class="w-full max-w-2xl bg-[#1C1C1C] border border-[#383838] rounded-2xl shadow-2xl p-6 relative">
+      <button onclick="window.COREX.closeSearch()" class="absolute top-5 right-5 text-neutral-400 hover:text-white transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="flex items-center gap-3 border-b border-[#383838] pb-4">
+        <i data-lucide="search" class="w-5 h-5 text-[#93032E]"></i>
+        <input id="search-modal-input" type="text" placeholder="Search hardware..." class="w-full bg-transparent text-white text-base focus:outline-none placeholder:text-neutral-500">
+      </div>
+      <div id="search-modal-results" class="mt-4"></div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="cart-drawer-overlay" onclick="window.COREX.closeCartDrawer()" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-[#1C1C1C] border-l border-[#383838] z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between hidden">
+    <div class="p-5 border-b border-[#383838] flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i data-lucide="shopping-bag" class="w-5 h-5 text-[#93032E]"></i>
+        <h3 class="text-base font-bold text-white font-heading tracking-wider">YOUR ARSENAL CART</h3>
+      </div>
+      <button onclick="window.COREX.closeCartDrawer()" class="p-1.5 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800 transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-5">
+      <div id="drawer-cart-empty" class="text-center py-16 text-neutral-500">
+        <i data-lucide="shopping-cart" class="w-12 h-12 mx-auto mb-3 opacity-30 text-[#93032E]"></i>
+        <p class="text-sm font-semibold text-neutral-300">Your cart is currently empty</p>
+      </div>
+      <div id="drawer-cart-content" class="hidden space-y-3">
+        <div id="drawer-cart-items" class="space-y-3"></div>
+      </div>
+    </div>
+    <div class="p-5 border-t border-[#383838] bg-[#151515]">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-xs uppercase tracking-wider text-neutral-400 font-semibold">Subtotal</span>
+        <span id="drawer-cart-subtotal" class="text-lg font-bold text-white font-heading">₹0</span>
+      </div>
+      <button onclick="window.COREX.closeCartDrawer()" class="w-full py-3.5 rounded-xl bg-burgundy-grad text-white text-center font-bold text-xs uppercase tracking-wider block shadow-burgundy-glow hover:scale-[1.02] transition">
+        Return to Checkout Form
+      </button>
+    </div>
+  </aside>
+
+    <!-- Top Burgundy Accent Line (Image 3 Match) -->
+  <div class="fixed top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#93032E] to-transparent z-50"></div>
+
+  <!-- Sticky Navbar (Image 3 Reference Match) -->
+  <header id="main-navbar" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-[#151515]/85 backdrop-blur-md border-b border-[#383838]/60">
+    <div class="container-custom flex items-center justify-between h-20">
+      
+            <!-- Brand Logo + Divider + Tagline (Exact Same in Header & Footer) -->
+      <a href="index.html" class="flex items-center gap-3 group py-1 flex-shrink-0">
+        <img src="images/logo/corex-symbol.png" alt="COREX" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.src='images/logo/corex-logo-full.png'">
+        <div class="h-8 w-[1px] bg-neutral-700 hidden sm:block"></div>
+        <div class="flex flex-col whitespace-nowrap justify-center">
+          <span class="text-2xl font-black font-heading tracking-wider text-white leading-none whitespace-nowrap">CORE<span class="text-[#93032E] text-3xl font-black inline-block ml-0.5">X</span></span>
+          <span class="text-[9px] uppercase tracking-[0.24em] text-[#C8C8C8] font-bold mt-1">BUILT FOR PERFORMANCE</span>
+        </div>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-7">
+        
+        <!-- Home Dropdown -->
+        <div class="relative group py-2">
+          <button class="nav-link flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-[#93032E] transition">
+            <span>Home</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div class="dropdown-menu absolute top-full left-0 w-52 bg-[#1C1C1C] border border-[#383838] rounded-xl shadow-2xl p-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-xs text-neutral-300 hover:bg-neutral-800 transition">Home 1 (Cinematic Store)</a>
+            <a href="home-2.html" class="block px-3 py-2 rounded-lg text-xs text-neutral-300 hover:text-white hover:bg-neutral-800 transition">Home 2 (Editorial Tech)</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">About</a>
+        <a href="products.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Products</a>
+        <a href="pricing.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Pricing</a>
+        <a href="build-pc.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Build Your PC</a>
+        <a href="blog.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Blog</a>
+        <a href="contact.html" class="nav-link text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition">Contact</a>
+      </nav>
+
+            <!-- Right-side Action Controls (Equal Height 40px) -->
+      <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
+        
+        <!-- Wishlist -->
+        <a href="products.html" class="navbar-pill-btn hidden sm:inline-flex items-center justify-center h-10 w-10 rounded-xl relative text-neutral-300 hover:text-white transition" title="Wishlist">
+          <i data-lucide="heart" class="w-4 h-4"></i>
+          <span class="wishlist-count-badge hidden absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#93032E] text-white text-[10px] font-bold flex items-center justify-center">0</span>
+        </a>
+
+        <!-- RTL Toggle Pill -->
+        <button onclick="window.COREX.toggleRTL()" class="navbar-pill-btn hidden sm:inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl text-xs font-bold text-neutral-300 hover:text-white transition" title="Toggle RTL / LTR">
+          <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-[#93032E]"></i>
+          <span>RTL</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button onclick="window.COREX.toggleTheme()" class="navbar-pill-btn inline-flex items-center justify-center h-10 w-10 rounded-xl text-neutral-300 hover:text-white transition" title="Toggle Light/Dark Mode">
+          <i data-lucide="sun" class="theme-toggle-icon w-4 h-4"></i>
+        </button>
+
+        <!-- Primary CTA Button: Order Now -->
+        <a href="order.html" class="h-10 px-4 sm:px-5 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-105 transition inline-flex items-center justify-center gap-2 flex-shrink-0" title="Order / Cart">
+          <i data-lucide="shopping-bag" class="w-4 h-4 flex-shrink-0"></i>
+          <span class="whitespace-nowrap">Order Now</span>
+          <span class="cart-count-badge hidden ml-0.5 px-1.5 py-0.5 rounded-full bg-white text-[#93032E] text-[10px] font-black leading-none">0</span>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobile-menu-btn" class="navbar-pill-btn lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl text-neutral-300 hover:text-white transition" aria-label="Open menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#1C1C1C] border-b border-[#383838] px-6 py-5 space-y-3">
+      <div class="border-b border-neutral-800 pb-2">
+        <span class="text-[10px] uppercase font-bold text-neutral-500 tracking-wider">Home Editions</span>
+        <div class="grid grid-cols-2 gap-2 mt-2">
+          <a href="index.html" class="px-3 py-2 rounded-lg text-xs font-bold text-[#93032E] bg-neutral-900 border border-neutral-800">Home 1 (Cinematic)</a>
+          <a href="home-2.html" class="px-3 py-2 rounded-lg text-xs font-medium text-neutral-300 bg-neutral-900/60 border border-neutral-800">Home 2 (Editorial)</a>
+        </div>
+      </div>
+      <a href="about.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">About COREX</a>
+      <a href="products.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Hardware Products</a>
+      <a href="pricing.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Prebuilt Rig Packages</a>
+      <a href="build-pc.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Build Your PC (Configurator)</a>
+      <a href="blog.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Hardware Blog</a>
+      <a href="contact.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">Contact & Chennai Store</a>
+      <a href="order.html" class="block py-2 text-sm font-semibold text-[#93032E] hover:text-white">Order Status & Cart</a>
+
+      <!-- Mobile Quick Controls -->
+      <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs">
+        <a href="products.html" class="flex items-center gap-2 text-neutral-400 hover:text-white">
+          <i data-lucide="heart" class="w-4 h-4 text-[#93032E]"></i>
+          <span>Wishlist</span>
+        </a>
+        <button onclick="window.COREX.toggleRTL()" class="flex items-center gap-2 text-neutral-400 hover:text-white">
+          <i data-lucide="arrow-left-right" class="w-4 h-4 text-[#93032E]"></i>
+          <span>Toggle RTL</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow pt-20">
+
+    <!-- ========================================== -->
+    <!-- SECTION 1: ORDER HERO (CINEMATIC)          -->
+    <!-- ========================================== -->
+    <section class="hero-cinematic relative min-h-[440px] lg:min-h-[480px] flex items-center justify-center overflow-hidden border-b border-[#383838]">
+      <div class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+        <img src="images/hero/hero-order.jpg" alt="Guest Hardware Procurement" class="w-full h-full object-cover filter brightness-[0.35] contrast-125 scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#151515] via-[#151515]/70 to-[#151515]/60"></div>
+        <div class="absolute inset-0 bg-radial-gradient from-transparent via-[#151515]/60 to-[#151515]"></div>
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#93032E]/25 rounded-full blur-[140px] pointer-events-none"></div>
+      </div>
+
+      <div class="container-custom relative z-10 py-16 text-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-900/90 border border-neutral-700/80 mb-5 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-[#93032E]"></span>
+          <span class="text-xs uppercase font-bold tracking-[0.2em] text-[#C8C8C8]">GUEST HARDWARE PROCUREMENT</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-black font-heading text-white uppercase tracking-tight leading-tight max-w-4xl mx-auto drop-shadow-2xl">
+          GUEST <span class="bg-gradient-to-r from-white via-[#C8C8C8] to-[#93032E] bg-clip-text text-transparent">CHECKOUT</span>
+        </h1>
+        <p class="text-sm sm:text-base md:text-lg text-neutral-300 mt-4 leading-relaxed max-w-2xl mx-auto font-normal">
+          No account creation or mandatory signup required. Enter your delivery coordinates and submit your hardware consignment order with zero friction.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ORDER FORM & CART CONTAINER                -->
+    <!-- ========================================== -->
+    <section class="py-12 bg-[#151515]">
+      <div class="container-custom">
+        
+        <!-- CONFIRMATION VIEW (Initially Hidden) -->
+        <div id="order-confirmation-box" class="hidden bg-gradient-to-r from-neutral-950 via-[#1C1C1C] to-neutral-950 rounded-3xl border border-green-800 p-8 lg:p-12 mb-12 shadow-2xl text-center">
+          <div class="w-16 h-16 rounded-full bg-green-950 border-2 border-green-500 text-green-400 flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="check" class="w-8 h-8"></i>
+          </div>
+          <span class="text-xs uppercase font-bold text-green-400 tracking-widest">ORDER CONSIGNMENT REGISTERED</span>
+          <h2 class="text-2xl sm:text-4xl font-black font-heading text-white uppercase mt-1">
+            THANK YOU FOR CHOOSING COREX
+          </h2>
+          <p class="text-sm text-neutral-400 mt-2 max-w-lg mx-auto">
+            Your demonstration order reference has been generated and transmitted to our Chennai hardware dispatch bench.
+          </p>
+
+          <div class="mt-6 p-4 rounded-xl bg-black/60 border border-neutral-700 max-w-md mx-auto">
+            <div class="text-xs text-neutral-400 uppercase font-mono">Demo Order Reference:</div>
+            <div id="confirmed-order-id" class="text-2xl font-black font-mono text-rose-400 mt-1">CRX-2026-XXXX</div>
+          </div>
+
+          <div id="confirmed-order-summary" class="mt-6 max-w-lg mx-auto text-left text-xs text-neutral-300 space-y-2 bg-neutral-900/60 p-4 rounded-xl border border-neutral-800">
+            <!-- Populated via JS -->
+          </div>
+
+          <div class="mt-8 flex justify-center gap-4">
+            <a href="products.html" class="px-6 py-3 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow">
+              Continue Browsing Hardware
+            </a>
+            <button onclick="document.getElementById('order-confirmation-box').classList.add('hidden')" class="px-6 py-3 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-xs uppercase tracking-wider">
+              New Order
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- LEFT: CART ITEMS & SUMMARY (7 cols) -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <div class="p-6 rounded-2xl bg-[#1C1C1C] border border-[#383838]">
+              <div class="flex items-center justify-between pb-4 border-b border-neutral-800 mb-4">
+                <h3 class="text-base font-bold text-white font-heading uppercase flex items-center gap-2">
+                  <i data-lucide="shopping-cart" class="w-4 h-4 text-[#93032E]"></i> Selected Hardware Cart
+                </h3>
+                <button onclick="window.COREX.clearCart()" class="text-xs text-red-400 hover:text-red-300 font-semibold underline">
+                  Clear All
+                </button>
+              </div>
+
+              <!-- Cart Items List Container -->
+              <div id="order-cart-list" class="space-y-4">
+                <!-- Dynamically Populated -->
+              </div>
+
+              <!-- Empty State -->
+              <div id="order-cart-empty" class="hidden text-center py-12 text-neutral-400">
+                <i data-lucide="shopping-bag" class="w-12 h-12 mx-auto text-[#93032E] opacity-40 mb-3"></i>
+                <h4 class="text-base font-bold text-white">Your cart is empty</h4>
+                <p class="text-xs text-neutral-500 mt-1">Add components from our catalogue or choose a prebuilt tier.</p>
+                <div class="mt-4 flex justify-center gap-3">
+                  <a href="products.html" class="px-4 py-2 rounded-xl bg-neutral-800 text-white text-xs font-bold uppercase hover:bg-neutral-700">
+                    Hardware Catalogue
+                  </a>
+                  <a href="pricing.html" class="px-4 py-2 rounded-xl bg-burgundy-grad text-white text-xs font-bold uppercase">
+                    Prebuilt Packages
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Price Breakdown Block -->
+            <div class="p-6 rounded-2xl bg-[#1C1C1C] border border-[#383838] space-y-3 text-xs">
+              <h4 class="text-sm font-bold text-white uppercase font-heading mb-2">Price Breakdown</h4>
+              <div class="flex justify-between text-neutral-400">
+                <span>Hardware Subtotal:</span>
+                <span id="order-subtotal" class="font-bold text-white font-mono">₹0</span>
+              </div>
+              <div class="flex justify-between text-neutral-400">
+                <span>Integrated GST (18% Included):</span>
+                <span id="order-tax" class="font-mono text-neutral-300">₹0</span>
+              </div>
+              <div class="flex justify-between text-neutral-400">
+                <span>Insured Freight & Hand-Assembly:</span>
+                <span class="text-green-400 font-bold font-mono">COMPLIMENTARY (₹0)</span>
+              </div>
+              <div class="pt-3 border-t border-neutral-800 flex justify-between items-baseline">
+                <span class="text-sm font-bold text-white uppercase font-heading">Total Procurement Price:</span>
+                <span id="order-grand-total" class="text-2xl font-black text-white font-heading">₹0</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: GUEST DELIVERY DETAILS FORM (5 cols) -->
+          <div class="lg:col-span-5">
+            <div class="p-6 rounded-2xl bg-[#1C1C1C] border border-[#383838] space-y-5">
+              <h3 class="text-base font-bold text-white font-heading uppercase flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4 text-[#93032E]"></i> Customer Delivery Coordinates
+              </h3>
+
+              <form id="checkout-form" onsubmit="handlePlaceOrder(event)" novalidate class="space-y-4">
+                
+                <div>
+                  <label class="block text-xs font-semibold text-neutral-300 uppercase mb-1">Full Name *</label>
+                  <input type="text" id="cust-name" data-validate="name" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-3 rounded-xl bg-[#202020] border border-neutral-700 text-white text-xs focus:outline-none focus:border-[#93032E] transition">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-xs font-semibold text-neutral-300 uppercase mb-1">Email Address *</label>
+                    <input type="email" id="cust-email" data-validate="email" required placeholder="rahul@domain.com" class="w-full px-4 py-3 rounded-xl bg-[#202020] border border-neutral-700 text-white text-xs focus:outline-none focus:border-[#93032E] transition">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-neutral-300 uppercase mb-1">Mobile Number *</label>
+                    <input type="tel" id="cust-phone" data-validate="phone" required placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-[#202020] border border-neutral-700 text-white text-xs focus:outline-none focus:border-[#93032E] transition">
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-neutral-300 uppercase mb-1">Street Address *</label>
+                  <textarea id="cust-address" required rows="2" placeholder="House/Flat number, Street name, Landmark..." class="w-full px-4 py-3 rounded-xl bg-[#202020] border border-neutral-700 text-white text-xs focus:outline-none focus:border-[#93032E] transition"></textarea>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3">
+                  <div>
+                    <label class="block text-xs font-semibold text-neutral-300 uppercase mb-1">City *</label>
+                    <input type="text" id="cust-city" data-validate="city" required placeholder="Chennai" class="w-full px-4 py-3 rounded-xl bg-[#202020] border border-neutral-700 text-white text-xs focus:outline-none focus:border-[#93032E] transition">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-neutral-300 uppercase mb-1">State *</label>
+                    <input type="text" id="cust-state" data-validate="state" required placeholder="Tamil Nadu" class="w-full px-4 py-3 rounded-xl bg-[#202020] border border-neutral-700 text-white text-xs focus:outline-none focus:border-[#93032E] transition">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-neutral-300 uppercase mb-1">PIN Code *</label>
+                    <input type="text" id="cust-pin" data-validate="pincode" required placeholder="600001" class="w-full px-4 py-3 rounded-xl bg-[#202020] border border-neutral-700 text-white text-xs focus:outline-none focus:border-[#93032E] transition">
+                  </div>
+                </div>
+
+                <!-- Demo Payment Method Selector -->
+                <div class="pt-3 border-t border-neutral-800">
+                  <label class="block text-xs font-semibold text-neutral-300 uppercase mb-2">Select Demonstration Settlement Channel</label>
+                  <div class="space-y-2">
+                    <label class="flex items-center gap-3 p-3 rounded-xl bg-[#202020] border border-neutral-700 cursor-pointer hover:border-[#93032E]">
+                      <input type="radio" name="payment-method" value="upi" checked class="accent-[#93032E]">
+                      <span class="text-xs font-semibold text-white">Instant UPI / QR Code Verification</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 rounded-xl bg-[#202020] border border-neutral-700 cursor-pointer hover:border-[#93032E]">
+                      <input type="radio" name="payment-method" value="card" class="accent-[#93032E]">
+                      <span class="text-xs font-semibold text-white">Credit / Debit Card (No Cost EMI)</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 rounded-xl bg-[#202020] border border-neutral-700 cursor-pointer hover:border-[#93032E]">
+                      <input type="radio" name="payment-method" value="cod" class="accent-[#93032E]">
+                      <span class="text-xs font-semibold text-white">White-Glove Pay on Hand Delivery (Chennai)</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="pt-3">
+                  <button type="submit" class="w-full py-4 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-[1.02] transition flex items-center justify-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i> Complete Demonstration Order
+                  </button>
+                  <p class="text-[10px] text-neutral-500 text-center mt-2">
+                    Demo frontend checkout. No real financial transaction will take place.
+                  </p>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+    <!-- ========================================== -->
+  <!-- FOOTER (MATCHING IMAGE 2 REFERENCE)        -->
+  <!-- ========================================== -->
+    <!-- ========================================== -->
+  <!-- FOOTER (ALIGNED, MATCHING IMAGE 2 & 3)     -->
+  <!-- ========================================== -->
+  <footer class="bg-[#111111] text-white pt-16 pb-10 border-t border-[#383838]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 items-start pb-14 border-b border-[#383838]">
+        
+        <!-- Column 1: Brand & Official Channels (4 cols) -->
+        <div class="lg:col-span-4 space-y-5">
+          <div class="h-10 flex items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+              <img src="images/logo/corex-symbol.png" alt="COREX" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.src='images/logo/corex-logo-full.png'">
+              <div class="h-8 w-[1px] bg-neutral-700 hidden sm:block"></div>
+              <div class="flex flex-col whitespace-nowrap justify-center">
+                <span class="text-2xl font-black font-heading tracking-wider text-white leading-none whitespace-nowrap">CORE<span class="text-[#93032E] text-3xl font-black inline-block ml-0.5">X</span></span>
+                <span class="text-[9px] uppercase tracking-[0.24em] text-[#C8C8C8] font-bold mt-1">BUILT FOR PERFORMANCE</span>
+              </div>
+            </a>
+          </div>
+
+          <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm pt-1">
+            India's dedicated premier computer hardware and custom workstation lab. Delivering extreme performance gaming rigs, verified OEM components, and cleanroom engineering across South India and PAN-India.
+          </p>
+
+          <div class="pt-2">
+            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white mb-3 font-subheading">OFFICIAL CHANNELS</h4>
+            <div class="flex items-center gap-3">
+              <!-- WhatsApp -->
+              <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-[#25D366] text-[#25D366] flex items-center justify-center hover:bg-[#25D366] hover:text-black transition shadow-[0_0_12px_rgba(37,211,102,0.25)]" title="WhatsApp Concierge">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 00-3.48-8.413z"/></svg>
+              </a>
+              <!-- Instagram -->
+              <a href="https://instagram.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-[#E1306C] text-[#E1306C] flex items-center justify-center hover:bg-[#E1306C] hover:text-white transition shadow-[0_0_12px_rgba(225,48,108,0.25)]" title="Instagram">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <!-- X (Twitter) -->
+              <a href="https://x.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-neutral-400 text-white flex items-center justify-center hover:bg-white hover:text-black transition shadow-[0_0_12px_rgba(255,255,255,0.2)]" title="X (Twitter)">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <!-- Facebook -->
+              <a href="https://facebook.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-[#1877F2] text-[#1877F2] flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition shadow-[0_0_12px_rgba(24,119,242,0.25)]" title="Facebook">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: CATALOG & STORE (2.5 cols) -->
+        <div class="lg:col-span-2 space-y-3">
+          <div class="h-10 flex items-center">
+            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CATALOG &amp; STORE</h4>
+          </div>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-neutral-400 pt-1">
+            <li><a href="index.html" class="hover:text-white transition">Home 1 (Cinematic Store)</a></li>
+            <li><a href="home-2.html" class="hover:text-white transition">Home 2 (Editorial Tech)</a></li>
+            <li><a href="products.html" class="hover:text-white transition">All Hardware Models</a></li>
+            <li><a href="products.html" class="hover:text-white transition">Gaming &amp; Workstations</a></li>
+            <li><a href="build-pc.html" class="hover:text-white transition">Custom PC Configurator</a></li>
+            <li><a href="pricing.html" class="hover:text-white transition">Prebuilt Rig Packages</a></li>
+            <li><a href="products.html" class="hover:text-white transition">Original OEM Accessories</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: CUSTOMER SUPPORT (2.5 cols) -->
+        <div class="lg:col-span-3 space-y-3">
+          <div class="h-10 flex items-center">
+            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CUSTOMER SUPPORT</h4>
+          </div>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-neutral-400 pt-1">
+            <li>
+              <a href="order.html" class="inline-flex items-center text-[#93032E] hover:text-[#B51B4C] font-semibold transition">
+                <span>Your Cart &amp; Orders</span>
+                <span class="ml-2 px-2 py-0.5 rounded text-[10px] font-bold bg-[#93032E] text-white uppercase tracking-wider">Track</span>
+              </a>
+            </li>
+            <li><a href="about.html" class="hover:text-white transition">About Our Brand &amp; Heritage</a></li>
+            <li><a href="contact.html#faqs" class="hover:text-white transition">Equipment &amp; Pricing FAQs</a></li>
+            <li><a href="about.html" class="hover:text-white transition">Cleanroom Diagnostic Lab</a></li>
+            <li><a href="blog.html" class="hover:text-white transition">Hardware Buyer Guides</a></li>
+            <li><a href="pricing.html" class="hover:text-white transition">Service &amp; Warranty Tariffs</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Contact Storefront &amp; Dispatch</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: CHENNAI OUTPOST (3 cols) -->
+        <div class="lg:col-span-3 space-y-3">
+          <div class="h-10 flex items-center">
+            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CHENNAI OUTPOST</h4>
+          </div>
+          <div class="text-xs sm:text-sm space-y-3 text-neutral-400 pt-1">
+            <div class="flex items-start gap-2.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-[#93032E] flex-shrink-0 mt-0.5"></i>
+              <div>
+                <p class="font-bold text-white leading-snug">COREX Tech Plaza — Chennai</p>
+                <p class="text-xs text-neutral-400 mt-0.5">42 Rajiv Gandhi Salai (OMR), Sholinganallur</p>
+                <p class="text-xs text-neutral-400">Chennai, Tamil Nadu 600119, India</p>
+              </div>
+            </div>
+            
+            <div class="pt-2.5 space-y-2 text-xs text-neutral-400 border-t border-neutral-800/80">
+              <div class="flex items-center gap-2.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
+                <p><span class="font-semibold text-white">Hours:</span> Mon – Sat: 09:30 AM – 08:30 PM</p>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <i data-lucide="phone" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
+                <p><span class="font-semibold text-white">Phone:</span> <a href="tel:+919876543210" class="hover:text-white transition">+91 98765 43210</a></p>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <svg class="w-3.5 h-3.5 fill-[#25D366] flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 00-3.48-8.413z"/></svg>
+                <p><span class="font-semibold text-white">WhatsApp:</span> <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="hover:text-white transition">+91 98765 43210</a></p>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <i data-lucide="mail" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
+                <p><span class="font-semibold text-white">Email:</span> <a href="mailto:support@core-x.in" class="hover:text-white transition">support@core-x.in</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sub-footer Bottom Bar -->
+      <div class="pt-8 text-center text-xs text-neutral-500">
+        <p>© 2026 COREX — High-Performance Hardware, Custom Rigs &amp; Cleanroom Lab. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Order Page Logic -->
+  <script>
+    function getStoredCart() {
+      try {
+        return JSON.parse(localStorage.getItem('corex_cart')) || [];
+      } catch(e) {
+        return [];
+      }
+    }
+
+    window.renderOrderPage = function() {
+      const cart = getStoredCart();
+      const listEl = document.getElementById('order-cart-list');
+      const emptyEl = document.getElementById('order-cart-empty');
+      const subtotalEl = document.getElementById('order-subtotal');
+      const taxEl = document.getElementById('order-tax');
+      const grandTotalEl = document.getElementById('order-grand-total');
+
+      if (cart.length === 0) {
+        listEl.innerHTML = '';
+        emptyEl.classList.remove('hidden');
+        subtotalEl.textContent = '₹0';
+        taxEl.textContent = '₹0';
+        grandTotalEl.textContent = '₹0';
+        return;
+      }
+
+      emptyEl.classList.add('hidden');
+      const subtotal = cart.reduce((sum, item) => sum + ((item.price || 0) * (item.qty || 1)), 0);
+      const taxIncluded = Math.round(subtotal * 0.18 / 1.18);
+
+      subtotalEl.textContent = '₹' + subtotal.toLocaleString('en-IN');
+      taxEl.textContent = '₹' + taxIncluded.toLocaleString('en-IN');
+      grandTotalEl.textContent = '₹' + subtotal.toLocaleString('en-IN');
+
+      listEl.innerHTML = cart.map((item, idx) => `
+        <div class="flex items-center gap-4 p-4 rounded-xl bg-black/40 border border-neutral-800">
+          <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg bg-black border border-neutral-700 flex-shrink-0" onerror="this.src='images/logo/corex-symbol.png'">
+          <div class="min-w-0 flex-1">
+            <h4 class="text-xs font-bold text-white truncate">${item.name}</h4>
+            <p class="text-[11px] text-neutral-400 truncate mt-0.5">${item.specs || ''}</p>
+            <div class="flex items-center gap-3 mt-2">
+              <span class="text-xs font-bold text-white">₹${(item.price * item.qty).toLocaleString('en-IN')}</span>
+              <span class="text-[10px] text-neutral-500">(₹${item.price.toLocaleString('en-IN')} each)</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="flex items-center border border-neutral-700 rounded-lg px-2 py-0.5 bg-neutral-900">
+              <button onclick="window.COREX.updateCartQty(${idx}, -1)" class="text-neutral-400 hover:text-white text-xs px-1">-</button>
+              <span class="text-xs font-bold text-white px-2">${item.qty}</span>
+              <button onclick="window.COREX.updateCartQty(${idx}, 1)" class="text-neutral-400 hover:text-white text-xs px-1">+</button>
+            </div>
+            <button onclick="window.COREX.removeFromCart(${idx})" class="p-1.5 text-neutral-500 hover:text-red-400 transition" title="Delete">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    };
+
+    function handlePlaceOrder(e) {
+      e.preventDefault();
+      const cart = getStoredCart();
+      if (cart.length === 0) {
+        window.COREX.showToast('Please add items to your cart before checking out', 'error');
+        return;
+      }
+
+      const nameInput = document.getElementById('cust-name');
+      const emailInput = document.getElementById('cust-email');
+      const phoneInput = document.getElementById('cust-phone');
+      const addressInput = document.getElementById('cust-address');
+      const cityInput = document.getElementById('cust-city');
+      const stateInput = document.getElementById('cust-state');
+      const pinInput = document.getElementById('cust-pin');
+
+      let firstInvalid = null;
+
+      // 1. Name: Min 3 chars, letters only, NO numbers
+      const nameRes = window.COREX.validators.validateName(nameInput.value);
+      if (!nameRes.valid) {
+        window.COREX.showFieldError(nameInput, nameRes.message);
+        if (!firstInvalid) firstInvalid = nameInput;
+      } else {
+        window.COREX.clearFieldError(nameInput, true);
+      }
+
+      // 2. Email: Valid format with @ and domain
+      const emailRes = window.COREX.validators.validateEmail(emailInput.value);
+      if (!emailRes.valid) {
+        window.COREX.showFieldError(emailInput, emailRes.message);
+        if (!firstInvalid) firstInvalid = emailInput;
+      } else {
+        window.COREX.clearFieldError(emailInput, true);
+      }
+
+      // 3. Mobile Number: Numbers only, min 10 digits, NO letters
+      const phoneRes = window.COREX.validators.validatePhone(phoneInput.value);
+      if (!phoneRes.valid) {
+        window.COREX.showFieldError(phoneInput, phoneRes.message);
+        if (!firstInvalid) firstInvalid = phoneInput;
+      } else {
+        window.COREX.clearFieldError(phoneInput, true);
+      }
+
+      // 4. Street Address: Min 5 chars
+      const addrRes = window.COREX.validators.validateAddress(addressInput.value);
+      if (!addrRes.valid) {
+        window.COREX.showFieldError(addressInput, addrRes.message);
+        if (!firstInvalid) firstInvalid = addressInput;
+      } else {
+        window.COREX.clearFieldError(addressInput, true);
+      }
+
+      // 5. City: Letters only, min 2 chars, NO numbers
+      const cityRes = window.COREX.validators.validateCity(cityInput.value);
+      if (!cityRes.valid) {
+        window.COREX.showFieldError(cityInput, cityRes.message);
+        if (!firstInvalid) firstInvalid = cityInput;
+      } else {
+        window.COREX.clearFieldError(cityInput, true);
+      }
+
+      // 6. State: Letters only, min 2 chars, NO numbers
+      const stateRes = window.COREX.validators.validateState(stateInput.value);
+      if (!stateRes.valid) {
+        window.COREX.showFieldError(stateInput, stateRes.message);
+        if (!firstInvalid) firstInvalid = stateInput;
+      } else {
+        window.COREX.clearFieldError(stateInput, true);
+      }
+
+      // 7. PIN Code: Numbers only, exactly 6 digits
+      const pinRes = window.COREX.validators.validatePincode(pinInput.value);
+      if (!pinRes.valid) {
+        window.COREX.showFieldError(pinInput, pinRes.message);
+        if (!firstInvalid) firstInvalid = pinInput;
+      } else {
+        window.COREX.clearFieldError(pinInput, true);
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        window.COREX.showToast('Please fix the delivery details before placing order', 'error');
+        return;
+      }
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const phone = phoneInput.value.trim();
+      const address = addressInput.value.trim();
+      const city = cityInput.value.trim();
+      const state = stateInput.value.trim();
+      const pin = pinInput.value.trim();
+
+      // Generate Reference Code
+      const randRef = 'CRX-2026-' + Math.floor(100000 + Math.random() * 900000);
+      const subtotal = cart.reduce((sum, item) => sum + ((item.price || 0) * (item.qty || 1)), 0);
+
+      document.getElementById('confirmed-order-id').textContent = randRef;
+      document.getElementById('confirmed-order-summary').innerHTML = `
+        <div><strong>Recipient:</strong> ${name} (${phone})</div>
+        <div><strong>Email Confirmation:</strong> ${email}</div>
+        <div><strong>Shipping Destination:</strong> ${address}, ${city}, ${state} - ${pin}</div>
+        <div><strong>Items Count:</strong> ${cart.length} item(s) • Total: ₹${subtotal.toLocaleString('en-IN')}</div>
+        <div><strong>Status:</strong> Verification &amp; Bench Allocation Active</div>
+      `;
+
+      // Clear Cart & Reset form with cleaned border styles
+      window.COREX.clearCart();
+      const form = document.getElementById('checkout-form');
+      form.reset();
+      form.querySelectorAll('.border-emerald-500').forEach(el => el.classList.remove('border-emerald-500'));
+
+      // Show Confirmation Box & Scroll to it
+      const confirmBox = document.getElementById('order-confirmation-box');
+      confirmBox.classList.remove('hidden');
+      confirmBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      window.COREX.showToast(`Order ${randRef} generated successfully!`, 'success');
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.renderOrderPage();
+    });
+  </script>
+</body>
+</html>

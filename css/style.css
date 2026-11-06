@@ -1,0 +1,1178 @@
+/* COREX - BUILT FOR PERFORMANCE */
+/* Official Burgundy & Night Design System */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-main: #151515;
+  --bg-secondary: #1C1C1C;
+  --bg-card: #202020;
+  --bg-card-elevated: #252525;
+  --border-color: #383838;
+  --primary-burgundy: #93032E;
+  --soft-burgundy: #B51B4C;
+  --dark-burgundy: #65001F;
+  --metallic-silver: #C8C8C8;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B5B5B5;
+  --text-muted: #858585;
+  --font-heading: 'Orbitron', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-subheading: 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html.light {
+  --bg-main: #F5F3F4;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-elevated: #F9F8F9;
+  --border-color: #E2DDE0;
+  --primary-burgundy: #93032E;
+  --soft-burgundy: #B51B4C;
+  --dark-burgundy: #65001F;
+  --metallic-silver: #4A4A4A;
+  --text-primary: #151515;
+  --text-secondary: #666666;
+  --text-muted: #888888;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: 0.04em;
+}
+
+h4, h5, h6, .font-subheading {
+  font-family: var(--font-subheading);
+  letter-spacing: 0.02em;
+}
+
+/* Container specification */
+.container-custom {
+  width: min(100% - 48px, 1440px);
+  margin-inline: auto;
+}
+@media (max-width: 1024px) {
+  .container-custom {
+    width: min(100% - 40px, 1440px);
+  }
+}
+@media (max-width: 768px) {
+  .container-custom {
+    width: min(100% - 28px, 1440px);
+  }
+}
+@media (max-width: 360px) {
+  .container-custom {
+    width: min(100% - 16px, 1440px);
+  }
+}
+
+/* Cart Drawer off-canvas viewport protection */
+#cart-drawer {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
+}
+#cart-drawer.translate-x-full {
+  visibility: hidden;
+}
+.bg-burgundy-grad {
+  background: linear-gradient(135deg, #65001F, #93032E, #B51B4C);
+}
+
+.bg-burgundy-grad-hover {
+  transition: all 0.3s ease;
+}
+.bg-burgundy-grad-hover:hover {
+  background: linear-gradient(135deg, #93032E, #B51B4C, #65001F);
+  box-shadow: 0 0 25px rgba(147, 3, 46, 0.45);
+}
+
+.glow-burgundy {
+  box-shadow: 0 0 25px rgba(147, 3, 46, 0.35);
+}
+
+.glow-burgundy-lg {
+  box-shadow: 0 0 45px rgba(147, 3, 46, 0.55);
+}
+
+.text-metallic {
+  color: var(--metallic-silver);
+}
+
+.border-theme {
+  border-color: var(--border-color);
+}
+
+.bg-theme-main {
+  background-color: var(--bg-main);
+}
+
+.bg-theme-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.bg-theme-card {
+  background-color: var(--bg-card);
+}
+
+.bg-theme-card-elevated {
+  background-color: var(--bg-card-elevated);
+}
+
+.text-theme-primary {
+  color: var(--text-primary);
+}
+
+.text-theme-secondary {
+  color: var(--text-secondary);
+}
+
+.text-theme-muted {
+  color: var(--text-muted);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #151515;
+}
+html.light ::-webkit-scrollbar-track {
+  background: #E2DDE0;
+}
+::-webkit-scrollbar-thumb {
+  background: #93032E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B51B4C;
+}
+
+/* Sticky Navbar Transitions */
+.navbar-scrolled {
+  background-color: rgba(21, 21, 21, 0.92) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid #383838;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+html.light .navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.94) !important;
+  border-bottom: 1px solid #E2DDE0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 3D Card Hover & Perspective */
+.card-3d {
+  perspective: 1000px;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.card-3d:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.4), 0 0 20px rgba(147, 3, 46, 0.3);
+  border-color: #93032E !important;
+}
+
+/* Metallic Sheen Effect */
+.metallic-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.metallic-sheen::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: all 0.75s ease;
+}
+.metallic-sheen:hover::after {
+  left: 130%;
+}
+
+/* 3D Floating Animation */
+@keyframes floatY {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0.8deg);
+  }
+}
+.animate-float {
+  animation: floatY 6s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 18px rgba(147, 3, 46, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(181, 27, 76, 0.65);
+  }
+}
+.animate-pulse-glow {
+  animation: pulseGlow 3.5s ease-in-out infinite;
+}
+
+/* Scroll Animation Classes */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-init.reveal-left {
+  transform: translateX(-35px);
+}
+.reveal-init.reveal-right {
+  transform: translateX(35px);
+}
+.reveal-init.revealed {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-float, .animate-pulse-glow {
+    animation: none !important;
+  }
+}
+
+/* Active Nav Link Indicator */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2.5px;
+  background: linear-gradient(90deg, #93032E, #B51B4C);
+  transition: width 0.25s ease;
+  border-radius: 2px;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100% !important;
+}
+.nav-link.active {
+  color: #93032E !important;
+  font-weight: 700 !important;
+}
+.nav-link.active::after {
+  box-shadow: 0 0 8px rgba(147, 3, 46, 0.6);
+}
+
+/* Navbar Action Controls - Strict Equal Height (40px) */
+.navbar-pill-btn {
+  height: 2.5rem !important; /* 40px */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: rgba(38, 38, 38, 0.85);
+  border: 1px solid rgba(82, 82, 82, 0.7);
+  border-radius: 0.75rem;
+  color: #D4D4D4;
+  transition: all 0.2s ease;
+}
+.navbar-pill-btn:hover {
+  background-color: rgba(64, 64, 64, 0.95);
+  border-color: #93032E;
+  color: #FFFFFF;
+}
+
+#main-navbar a[href="order.html"] {
+  height: 2.5rem !important; /* 40px */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* RTL Layout Rules */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+html[dir="rtl"] .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+html[dir="rtl"] .cart-drawer {
+  left: 0;
+  right: auto;
+  transform: translateX(-100%);
+}
+html[dir="rtl"] .cart-drawer.open {
+  transform: translateX(0);
+}
+html[dir="rtl"] .nav-link::after {
+  left: auto;
+  right: 0;
+}
+html[dir="rtl"] .icon-flip {
+  transform: scaleX(-1);
+}
+
+/* Preloader Animation */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background-color: #151515;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+#preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  display: none !important;
+}
+.loader-bar {
+  width: 220px;
+  height: 3px;
+  background: #383838;
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  margin-top: 24px;
+}
+.loader-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 45%;
+  background: linear-gradient(90deg, #65001F, #93032E, #B51B4C);
+  animation: loadSlide 1.6s ease-in-out infinite;
+  box-shadow: 0 0 12px #93032E;
+}
+@keyframes loadSlide {
+  0% { left: -45%; width: 30%; }
+  50% { left: 40%; width: 60%; }
+  100% { left: 100%; width: 30%; }
+}
+
+/* Toast Notifications */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+html[dir="rtl"] #toast-container {
+  right: auto;
+  left: 24px;
+}
+.toast-item {
+  pointer-events: auto;
+  background-color: #202020;
+  border: 1px solid #383838;
+  border-left: 4px solid #93032E;
+  padding: 14px 20px;
+  border-radius: 8px;
+  color: #FFFFFF;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  min-width: 280px;
+  max-width: 380px;
+}
+html.light .toast-item {
+  background-color: #FFFFFF;
+  color: #151515;
+  border-color: #E2DDE0;
+  border-left-color: #93032E;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+html[dir="rtl"] .toast-item {
+  border-left: 1px solid #383838;
+  border-right: 4px solid #93032E;
+}
+html.light[dir="rtl"] .toast-item {
+  border-left: 1px solid #E2DDE0;
+  border-right: 4px solid #93032E;
+}
+.toast-item.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ============================================================ */
+/* COMPREHENSIVE LIGHT MODE OVERRIDES                           */
+/* ============================================================ */
+html.light body {
+  background-color: #F5F3F4 !important;
+  color: #151515 !important;
+}
+
+/* Backgrounds in Light Mode */
+html.light .bg-\[\#151515\],
+html.light section.bg-\[\#151515\],
+html.light main.bg-\[\#151515\] {
+  background-color: #F5F3F4 !important;
+}
+
+html.light .bg-\[\#1C1C1C\],
+html.light .bg-\[\#202020\],
+html.light .bg-\[\#252525\],
+html.light .bg-neutral-900:not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
+html.light .bg-neutral-900\/90:not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
+html.light .bg-neutral-900\/80:not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
+html.light .bg-neutral-900\/60:not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
+html.light .bg-neutral-800:not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
+html.light .bg-neutral-800\/80:not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]) {
+  background-color: #FFFFFF !important;
+  color: #151515 !important;
+}
+
+/* Card Containers in Light Mode */
+html.light .card-3d,
+html.light .product-card,
+html.light .category-card,
+html.light .feature-card,
+html.light .card-tilt-3d {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+  border-color: #E2DDE0 !important;
+}
+
+/* Borders in Light Mode */
+html.light .border-\[\#383838\],
+html.light .border-neutral-800,
+html.light .border-neutral-800\/80,
+html.light .border-neutral-700,
+html.light .border-neutral-700\/80 {
+  border-color: #E2DDE0 !important;
+}
+
+/* ------------------------------------------------------------ */
+/* TYPOGRAPHY IN LIGHT MODE - HIGH CONTRAST & CLEAR READABILITY */
+/* ------------------------------------------------------------ */
+
+/* Headings outside Hero & Footer become crisp Jet Black (#151515) */
+html.light h1:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
+html.light h2:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
+html.light h3:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
+html.light h4:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
+html.light h5:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
+html.light h6:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
+html.light .font-heading:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
+html.light .font-subheading:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *) {
+  color: #151515 !important;
+}
+
+/* Force dark text for elements with text-white outside Hero & Footer, excluding buttons & accents */
+html.light body *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"]):not([class*="bg-burgundy"] *):not(.bg-\[\#93032E\]):not(.bg-\[\#93032E\] *):not(.btn-burgundy):not(.btn-burgundy *):not(.bg-burgundy-grad):not(.bg-burgundy-grad *):not(.cart-count-badge):not(.whatsapp-cta-card a):not(.whatsapp-cta-card a *):not(.bg-emerald-600):not(.bg-emerald-600 *).text-white {
+  color: #151515 !important;
+}
+
+/* Ensure burgundy buttons and gradient CTAs always have pure crisp white text in all modes */
+.bg-burgundy-grad,
+.bg-burgundy-grad *,
+.btn-burgundy,
+.btn-burgundy *,
+[class*="bg-burgundy"],
+[class*="bg-burgundy"] *,
+.bg-\[\#93032E\],
+.bg-\[\#93032E\] *,
+html.light .bg-burgundy-grad,
+html.light .bg-burgundy-grad *,
+html.light .btn-burgundy,
+html.light .btn-burgundy *,
+html.light [class*="bg-burgundy"],
+html.light [class*="bg-burgundy"] *,
+html.light .bg-\[\#93032E\],
+html.light .bg-\[\#93032E\] * {
+  color: #FFFFFF !important;
+}
+
+/* Subtitles, Paragraphs & Card Descriptions become crisp Dark Charcoal */
+html.light p:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
+html.light .category-card p,
+html.light .product-card p,
+html.light .feature-card p,
+html.light .card-3d p,
+html.light .card-tilt-3d p {
+  color: #4A4A4A !important;
+}
+
+/* Muted & Secondary Text outside Hero & Footer */
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-\[\#B5B5B5\] {
+  color: #4A4A4A !important;
+}
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-neutral-400 {
+  color: #555555 !important;
+}
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-neutral-300 {
+  color: #222222 !important;
+}
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-neutral-500 {
+  color: #666666 !important;
+}
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-\[\#858585\] {
+  color: #666666 !important;
+}
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-metallic {
+  color: #4A4A4A !important;
+}
+
+/* Category & Product Cards Hover & Action Links */
+html.light .category-card h3,
+html.light .product-card h3,
+html.light .card-3d h3,
+html.light .card-tilt-3d h3 {
+  color: #151515 !important;
+}
+html.light .category-card:hover h3,
+html.light .product-card:hover h3,
+html.light .card-3d:hover h3,
+html.light .card-tilt-3d:hover h3 {
+  color: #93032E !important;
+}
+html.light .category-card span:not([class*="bg-burgundy"]):not(.text-\[\#93032E\]),
+html.light .card-3d span:not([class*="bg-burgundy"]):not(.text-\[\#93032E\]),
+html.light .card-tilt-3d span:not([class*="bg-burgundy"]):not(.text-\[\#93032E\]) {
+  color: #333333 !important;
+}
+html.light .category-card:hover span:not([class*="bg-burgundy"]):not(.text-\[\#93032E\]),
+html.light .card-3d:hover span:not([class*="bg-burgundy"]):not(.text-\[\#93032E\]) {
+  color: #93032E !important;
+}
+
+/* Category card specs capsule in light mode */
+html.light .grid.grid-cols-2.gap-2.p-2\.5 {
+  background-color: #F5F3F4 !important;
+  border-color: #E2DDE0 !important;
+  color: #222222 !important;
+}
+html.light .grid.grid-cols-2.gap-2.p-2\.5 div {
+  color: #222222 !important;
+}
+
+/* Newsletter Container in Light Mode */
+html.light .bg-gradient-to-r.from-neutral-950 {
+  background: #FFFFFF !important;
+  border-color: #E2DDE0 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+}
+html.light .bg-gradient-to-r.from-neutral-950 h3 {
+  color: #151515 !important;
+}
+html.light .bg-gradient-to-r.from-neutral-950 p {
+  color: #555555 !important;
+}
+html.light .bg-gradient-to-r.from-neutral-950 input {
+  background-color: #F5F3F4 !important;
+  border-color: #D6D1D5 !important;
+  color: #151515 !important;
+}
+
+/* ------------------------------------------------------------ */
+/* HERO SECTION - ALWAYS DARK CINEMATIC IN BOTH MODES          */
+/* ------------------------------------------------------------ */
+.hero-cinematic,
+html.light .hero-cinematic {
+  background-color: #151515 !important;
+  color: #FFFFFF !important;
+}
+
+.hero-cinematic h1,
+.hero-cinematic h1 *,
+.hero-cinematic .text-white,
+html.light .hero-cinematic h1,
+html.light .hero-cinematic h1 *,
+html.light .hero-cinematic .text-white {
+  color: #FFFFFF !important;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.hero-cinematic p,
+.hero-cinematic .text-neutral-300,
+.hero-cinematic .text-neutral-400,
+.hero-cinematic .text-\[\#B5B5B5\],
+html.light .hero-cinematic p,
+html.light .hero-cinematic .text-neutral-300,
+html.light .hero-cinematic .text-neutral-400,
+html.light .hero-cinematic .text-\[\#B5B5B5\] {
+  color: #FFFFFF !important;
+  font-weight: 500 !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95) !important;
+}
+
+.hero-cinematic .hero-badge,
+html.light .hero-cinematic .hero-badge {
+  background-color: rgba(15, 15, 15, 0.92) !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  color: #FFFFFF !important;
+}
+.hero-cinematic .hero-badge span:not(.bg-\[\#93032E\]),
+html.light .hero-cinematic .hero-badge span:not(.bg-\[\#93032E\]) {
+  color: #FFFFFF !important;
+}
+
+.hero-cinematic .hero-btn-secondary,
+html.light .hero-cinematic .hero-btn-secondary {
+  background-color: rgba(20, 20, 20, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: #FFFFFF !important;
+}
+.hero-cinematic .hero-btn-secondary:hover,
+html.light .hero-cinematic .hero-btn-secondary:hover {
+  background-color: rgba(40, 40, 40, 0.98) !important;
+  border-color: #93032E !important;
+  color: #FFFFFF !important;
+}
+
+.hero-cinematic .grid .text-white,
+html.light .hero-cinematic .grid .text-white {
+  color: #FFFFFF !important;
+}
+.hero-cinematic .grid .text-neutral-400,
+.hero-cinematic .grid .text-neutral-300,
+html.light .hero-cinematic .grid .text-neutral-400,
+html.light .hero-cinematic .grid .text-neutral-300 {
+  color: #D4D4D4 !important;
+}
+
+/* Dark banners & highlights protection in Light Mode */
+.hardware-bundle-banner,
+html.light .hardware-bundle-banner {
+  background: linear-gradient(135deg, #4A0217, #202020, #151515) !important;
+  color: #FFFFFF !important;
+}
+.hardware-bundle-banner h3,
+html.light .hardware-bundle-banner h3 {
+  color: #FFFFFF !important;
+}
+.hardware-bundle-banner p,
+html.light .hardware-bundle-banner p {
+  color: #E0E0E0 !important;
+}
+
+html.light .from-\[\#252525\] {
+  background: #FFFFFF !important;
+  border-color: #93032E !important;
+  box-shadow: 0 10px 30px rgba(147, 3, 46, 0.15) !important;
+}
+html.light .from-\[\#252525\] h3,
+html.light .from-\[\#252525\] .text-2xl,
+html.light .from-\[\#252525\] .font-heading {
+  color: #151515 !important;
+}
+html.light .from-\[\#252525\] p,
+html.light .from-\[\#252525\] span:not([class*="bg-burgundy"]):not(.text-rose-400) {
+  color: #4A4A4A !important;
+}
+html.light .from-\[\#252525\] li span {
+  color: #222222 !important;
+}
+
+/* ------------------------------------------------------------ */
+/* NAVBAR IN LIGHT MODE                                         */
+/* ------------------------------------------------------------ */
+html.light #main-navbar {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-bottom: 1px solid #E2DDE0 !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Logo: CORE is Jet Black (#151515), X is Burgundy (#93032E) */
+html.light #main-navbar .brand-name-core,
+html.light #main-navbar a.group span.text-white {
+  color: #151515 !important;
+}
+
+html.light #main-navbar .brand-tagline,
+html.light #main-navbar a.group span.text-\[\#C8C8C8\] {
+  color: #666666 !important;
+}
+
+html.light #main-navbar .bg-neutral-700 {
+  background-color: #D6D1D5 !important;
+}
+
+/* Navigation Links */
+html.light #main-navbar .nav-link {
+  color: #151515 !important;
+}
+html.light #main-navbar .nav-link:hover,
+html.light #main-navbar .nav-link.active {
+  color: #93032E !important;
+  font-weight: 700 !important;
+}
+html.light #main-navbar .nav-link.active::after {
+  background: #93032E !important;
+  box-shadow: 0 0 6px rgba(147, 3, 46, 0.4) !important;
+}
+
+/* Navbar Buttons & Controls */
+html.light #main-navbar button:not([class*="bg-burgundy"]),
+html.light #main-navbar a[title]:not([class*="bg-burgundy"]) {
+  color: #151515 !important;
+}
+
+html.light .navbar-pill-btn {
+  background-color: #F0EDF0 !important;
+  border: 1px solid #E2DDE0 !important;
+  color: #151515 !important;
+}
+html.light .navbar-pill-btn:hover {
+  background-color: #E4DEE4 !important;
+  border-color: #93032E !important;
+  color: #93032E !important;
+}
+
+/* Dropdown Menu */
+html.light #main-navbar .dropdown-menu {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2DDE0 !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08) !important;
+}
+html.light #main-navbar .dropdown-menu a {
+  color: #333333 !important;
+}
+html.light #main-navbar .dropdown-menu a:hover {
+  background-color: #F5F3F4 !important;
+  color: #93032E !important;
+}
+
+/* Mobile Menu */
+html.light #mobile-menu {
+  background-color: #FFFFFF !important;
+  border-color: #E2DDE0 !important;
+}
+html.light #mobile-menu a {
+  color: #151515 !important;
+}
+html.light #mobile-menu a:hover {
+  color: #93032E !important;
+}
+
+/* ------------------------------------------------------------ */
+/* MODALS, INPUTS & CART DRAWER IN LIGHT MODE                   */
+/* ------------------------------------------------------------ */
+html.light #cart-drawer,
+html.light #search-modal > div {
+  background-color: #FFFFFF !important;
+  color: #151515 !important;
+  border-color: #E2DDE0 !important;
+}
+html.light #cart-drawer .border-b,
+html.light #cart-drawer .border-t {
+  border-color: #E2DDE0 !important;
+}
+html.light #drawer-cart-subtotal,
+html.light #cart-drawer h3 {
+  color: #151515 !important;
+}
+html.light #drawer-cart-empty p {
+  color: #555555 !important;
+}
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: #FFFFFF !important;
+  color: #151515 !important;
+  border-color: #D6D1D5 !important;
+}
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #888888 !important;
+}
+
+/* ------------------------------------------------------------ */
+/* BURGUNDY ACCENTS & CTA PROTECTION IN BOTH MODES              */
+/* ------------------------------------------------------------ */
+.bg-burgundy-grad,
+.bg-burgundy-grad *,
+.btn-burgundy,
+.btn-burgundy *,
+[class*="bg-burgundy"],
+[class*="bg-burgundy"] *,
+button.bg-burgundy-grad,
+a.bg-burgundy-grad,
+.bg-\[\#93032E\],
+.bg-\[\#93032E\] *,
+.cart-count-badge,
+html.light .bg-burgundy-grad,
+html.light .bg-burgundy-grad *,
+html.light .btn-burgundy,
+html.light .btn-burgundy *,
+html.light [class*="bg-burgundy"],
+html.light [class*="bg-burgundy"] *,
+html.light button.bg-burgundy-grad,
+html.light a.bg-burgundy-grad,
+html.light .bg-\[\#93032E\],
+html.light .bg-\[\#93032E\] *,
+html.light .cart-count-badge {
+  color: #FFFFFF !important;
+}
+
+/* Text Burgundy Accent Spans */
+.text-\[\#93032E\],
+html.light .text-\[\#93032E\],
+.text-primary,
+html.light .text-primary {
+  color: #93032E !important;
+}
+
+/* ------------------------------------------------------------ */
+/* FOOTER - ALWAYS DARK LUXURY IN BOTH MODES (IMAGE 2 MATCH)    */
+/* ------------------------------------------------------------ */
+footer,
+html.light footer {
+  background-color: #111111 !important;
+  color: #FFFFFF !important;
+}
+footer .brand-name-core,
+html.light footer .brand-name-core,
+footer .text-white,
+html.light footer .text-white,
+footer h4,
+html.light footer h4,
+footer .font-heading,
+html.light footer .font-heading {
+  color: #FFFFFF !important;
+}
+footer .brand-tagline,
+html.light footer .brand-tagline,
+footer span.text-\[\#C8C8C8\],
+html.light footer span.text-\[\#C8C8C8\] {
+  color: #C8C8C8 !important;
+}
+footer a,
+html.light footer a {
+  color: #B5B5B5 !important;
+}
+footer a:hover,
+html.light footer a:hover {
+  color: #FFFFFF !important;
+}
+footer p,
+html.light footer p {
+  color: #B5B5B5 !important;
+}
+footer .border-\[\#383838\],
+html.light footer .border-\[\#383838\] {
+  border-color: #252525 !important;
+}
+
+/* PC Builder interactive slots in light mode */
+html.light .bg-black\/40,
+html.light .bg-neutral-950\/50 {
+  background-color: #F8F6F8 !important;
+  border-color: #E2DDE0 !important;
+}
+
+html.light #pc-builder-slots select {
+  background-color: #FFFFFF !important;
+  color: #151515 !important;
+  border-color: #D6D1D5 !important;
+}
+
+html.light #pc-builder-summary > div {
+  background: #FFFFFF !important;
+  border-color: #E2DDE0 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ------------------------------------------------------------ */
+/* FORM VALIDATION FEEDBACK STYLING                             */
+/* ------------------------------------------------------------ */
+input.border-red-500,
+textarea.border-red-500,
+select.border-red-500 {
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.4) !important;
+}
+
+input.border-emerald-500,
+textarea.border-emerald-500,
+select.border-emerald-500 {
+  border-color: #10B981 !important;
+}
+
+.field-error-msg {
+  display: block;
+  font-size: 11px;
+  line-height: 1.3;
+  margin-top: 4px;
+  color: #F87171 !important;
+  font-weight: 500;
+  animation: fadeInDown 0.2s ease-out;
+}
+
+html.light .field-error-msg {
+  color: #DC2626 !important;
+  font-weight: 600;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* RICH LIGHT MODE COLOUR SYSTEM & WHATSAPP VISIBILITY FIX      */
+/* ------------------------------------------------------------ */
+
+/* Alternating Section Backgrounds in Light Mode */
+html.light section.bg-\[\#1C1C1C\],
+html.light section.bg-\[\#1C1C1C\]:not(.hero-cinematic) {
+  background-color: #EFECEC !important;
+}
+
+/* Icon Containers in Light Mode (Soft Burgundy Tint) */
+html.light .icon-box-burgundy,
+html.light .card-3d .w-10.h-10,
+html.light .card-3d .w-12.h-12,
+html.light [class*="text-[#93032E]"].w-10.h-10,
+html.light [class*="text-[#93032E]"].w-12.h-12 {
+  background-color: #FDF2F4 !important;
+  border-color: #F5C6D0 !important;
+  color: #93032E !important;
+}
+
+html.light .card-3d .w-10.h-10 svg,
+html.light .card-3d .w-12.h-12 svg,
+html.light [class*="text-[#93032E]"].w-10.h-10 svg,
+html.light [class*="text-[#93032E]"].w-12.h-12 svg {
+  color: #93032E !important;
+}
+
+/* Section Badges / Pills in Light Mode */
+html.light .inline-flex.items-center.rounded-full.bg-neutral-900,
+html.light .inline-flex.items-center.rounded-full.bg-neutral-900\/90 {
+  background-color: #FDF2F4 !important;
+  border-color: #F5C6D0 !important;
+}
+
+html.light .inline-flex.items-center.rounded-full.bg-neutral-900 span:not(.bg-\[\#93032E\]),
+html.light .inline-flex.items-center.rounded-full.bg-neutral-900\/90 span:not(.bg-\[\#93032E\]) {
+  color: #93032E !important;
+}
+
+/* Card Hover States in Light Mode */
+html.light .card-3d:hover,
+html.light .product-card:hover,
+html.light .card-tilt-3d:hover {
+  border-color: #93032E !important;
+  box-shadow: 0 10px 30px rgba(147, 3, 46, 0.12) !important;
+}
+
+/* SLA Badges & Green Status in Light Mode */
+html.light .sla-badge,
+html.light span.text-green-400,
+html.light span.text-emerald-400,
+html.light span.text-green-500 {
+  color: #047857 !important;
+  background-color: #ECFDF5 !important;
+  border-color: #A7F3D0 !important;
+}
+
+/* Input Focus Ring in Light Mode */
+html.light input:focus,
+html.light select:focus,
+html.light textarea:focus {
+  border-color: #93032E !important;
+  box-shadow: 0 0 0 3px rgba(147, 3, 46, 0.15) !important;
+}
+
+/* WhatsApp Card - High Visibility in Both Modes */
+.whatsapp-cta-card {
+  background: linear-gradient(135deg, rgba(6, 78, 59, 0.45) 0%, rgba(20, 20, 20, 0.95) 100%);
+  border-color: rgba(37, 211, 102, 0.35);
+  box-shadow: 0 4px 25px rgba(37, 211, 102, 0.15);
+  transition: all 0.3s ease;
+}
+
+html.light .whatsapp-cta-card {
+  background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%) !important;
+  border: 1px solid #6EE7B7 !important;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.18) !important;
+}
+
+html.light .whatsapp-cta-card h4 {
+  color: #064E3B !important;
+}
+
+html.light .whatsapp-cta-card p {
+  color: #065F46 !important;
+}
+
+html.light .whatsapp-cta-card > div span {
+  color: #047857 !important;
+}
+
+.whatsapp-cta-card a,
+.whatsapp-cta-card a *,
+html.light .whatsapp-cta-card a,
+html.light .whatsapp-cta-card a * {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+}
+
+html.light .whatsapp-cta-card a {
+  background-color: #16A34A !important;
+  box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3) !important;
+}
+
+html.light .whatsapp-cta-card a:hover {
+  background-color: #15803D !important;
+}
+
+/* =================================================== */
+/* FAQ ACCORDION COMPONENT                             */
+/* =================================================== */
+.faq-accordion details summary::-webkit-details-marker,
+.faq-accordion details summary::marker,
+details.faq-item summary::-webkit-details-marker,
+details.faq-item summary::marker {
+  display: none !important;
+  content: "" !important;
+}
+
+.faq-accordion details summary,
+details.faq-item summary {
+  list-style: none !important;
+  outline: none;
+}
+
+.faq-accordion details,
+details.faq-item {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.faq-accordion details[open],
+details.faq-item[open] {
+  border-color: rgba(147, 3, 46, 0.6) !important;
+  box-shadow: 0 8px 25px rgba(147, 3, 46, 0.15) !important;
+}
+
+.faq-accordion details .faq-chevron-icon,
+details.faq-item .faq-chevron-icon {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.faq-accordion details[open] .faq-chevron-icon,
+details.faq-item[open] .faq-chevron-icon {
+  transform: rotate(180deg);
+  background-color: #93032E !important;
+  border-color: #93032E !important;
+}
+
+.faq-accordion details[open] .faq-chevron-icon i,
+details.faq-item[open] .faq-chevron-icon i,
+.faq-accordion details[open] .faq-chevron-icon svg,
+details.faq-item[open] .faq-chevron-icon svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* Light mode FAQ Accordion */
+html.light .faq-accordion details,
+html.light details.faq-item {
+  background-color: #FFFFFF !important;
+  border-color: #E2DDE0 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .faq-accordion details[open],
+html.light details.faq-item[open] {
+  border-color: #93032E !important;
+  box-shadow: 0 8px 28px rgba(147, 3, 46, 0.12) !important;
+}
+
+html.light .faq-accordion details summary span,
+html.light details.faq-item summary span {
+  color: #151515 !important;
+}
+
+html.light .faq-accordion details summary:hover span,
+html.light details.faq-item summary:hover span {
+  color: #93032E !important;
+}
+
+html.light .faq-accordion details .faq-answer,
+html.light details.faq-item .faq-answer {
+  color: #4B5563 !important;
+  border-color: #EBE6EB !important;
+}
+
+html.light .faq-chevron-icon {
+  background-color: #F5F2F5 !important;
+  border-color: #E2DDE0 !important;
+  color: #93032E !important;
+}
+
+html.light .faq-accordion details[open] .faq-chevron-icon,
+html.light details.faq-item[open] .faq-chevron-icon {
+  background-color: #93032E !important;
+  border-color: #93032E !important;
+}
+
+html.light .faq-accordion details[open] .faq-chevron-icon i,
+html.light details.faq-item[open] .faq-chevron-icon i,
+html.light .faq-accordion details[open] .faq-chevron-icon svg,
+html.light details.faq-item[open] .faq-chevron-icon svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+
+
+
