@@ -967,6 +967,14 @@
       }, 100);
     }
 
+    // Ensure hero video autoplays immediately on open
+    const heroVideos = document.querySelectorAll('.hero-cinematic video');
+    heroVideos.forEach(v => {
+      v.muted = true;
+      const p = v.play();
+      if (p !== undefined) p.catch(() => {});
+    });
+
     if (window.lucide) {
       window.lucide.createIcons();
     }

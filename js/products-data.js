@@ -159,7 +159,7 @@ const COREX_PRODUCTS = [
     "stock": "In Stock",
     "featured": false,
     "flashSale": false,
-    "image": "images/products/mb-aorus-b650.jpg",
+    "image": "images/products/mb-msi-b760.jpg",
     "shortDesc": "Reliable Intel LGA 1700 motherboard with DDR5 support, PCIe 4.0 x16, dual M.2 slots, 2.5G LAN, and Wi-Fi 6E.",
     "specs": [
       "LGA 1700 Socket",
@@ -226,7 +226,7 @@ const COREX_PRODUCTS = [
     "stock": "In Stock",
     "featured": false,
     "flashSale": false,
-    "image": "images/products/ram-gskill-trident.jpg",
+    "image": "images/products/ram-crucial-16gb.jpg",
     "shortDesc": "Reliable plug-and-play DDR5 desktop RAM module running at 5600MHz CL46 for smooth everyday computing, office suites, and browser multitasking.",
     "specs": [
       "16GB Single Module",
@@ -291,7 +291,7 @@ const COREX_PRODUCTS = [
     "stock": "In Stock",
     "featured": false,
     "flashSale": false,
-    "image": "images/categories/storage.jpg",
+    "image": "images/products/hdd-seagate-2tb.jpg",
     "shortDesc": "Proven, cost-effective hard drive for mass data backup, home video collections, documents, and office archiving with 256MB cache.",
     "specs": [
       "2TB Capacity",
@@ -323,7 +323,7 @@ const COREX_PRODUCTS = [
     "stock": "In Stock",
     "featured": false,
     "flashSale": false,
-    "image": "images/products/psu-corsair-rm1000x.jpg",
+    "image": "images/products/psu-corsair-rm750e.jpg",
     "shortDesc": "ATX 3.0 and PCIe 5.0 compliant 750-watt power supply with low-noise fan curve, 105°C-rated capacitors, and 12V-2x6 cable included.",
     "specs": [
       "750 Watts Continuous",
@@ -414,7 +414,7 @@ const COREX_PRODUCTS = [
     "stock": "In Stock",
     "featured": true,
     "flashSale": false,
-    "image": "images/products/monitor-rog-pg32.jpg",
+    "image": "images/products/monitor-dell-ultrasharp.jpg",
     "shortDesc": "IPS Black technology with 2000:1 contrast ratio, 98% DCI-P3 color accuracy, and 90W USB-C single cable laptop connectivity with RJ45 Ethernet.",
     "specs": [
       "27\" 4K UHD (3840x2160)",
@@ -476,7 +476,7 @@ const COREX_PRODUCTS = [
     "stock": "In Stock",
     "featured": true,
     "flashSale": false,
-    "image": "images/products/mouse-pro-x-superlight.jpg",
+    "image": "images/products/mouse-logitech-mx3s.jpg",
     "shortDesc": "Quiet Click switches with 8000 DPI sensor tracking on glass, MagSpeed electromagnetic scroll wheel (1,000 lines/sec), and thumb wheel.",
     "specs": [
       "8000 DPI Darkfield Sensor",
@@ -536,7 +536,7 @@ const COREX_PRODUCTS = [
     "stock": "In Stock",
     "featured": true,
     "flashSale": false,
-    "image": "images/categories/accessories.jpg",
+    "image": "images/products/webcam-logitech-brio.jpg",
     "shortDesc": "Ultra 4K resolution at 30 fps or 1080p at 60 fps with RightLight 3 HDR, dual omnidirectional noise-canceling mics, and Windows Hello face login.",
     "specs": [
       "4K Ultra HD at 30 fps",
@@ -566,7 +566,7 @@ const COREX_PRODUCTS = [
     "stock": "In Stock",
     "featured": false,
     "flashSale": true,
-    "image": "images/categories/accessories.jpg",
+    "image": "images/products/speaker-creative-pebble.jpg",
     "shortDesc": "Elevated 45° angled soundstage drivers delivering 30W peak power, Clear Dialog audio processing, Bluetooth 5.3, and customizable RGB lighting.",
     "specs": [
       "30W Peak Power Audio",
@@ -596,7 +596,7 @@ const COREX_PRODUCTS = [
     "stock": "In Stock",
     "featured": true,
     "flashSale": false,
-    "image": "images/categories/accessories.jpg",
+    "image": "images/products/printer-hp-smarttank.jpg",
     "shortDesc": "Print, copy, and scan with dual-band self-healing Wi-Fi, smart guided buttons, and included ink bottles yielding up to 12,000 black pages.",
     "specs": [
       "Print, Copy, Scan All-in-One",
@@ -627,7 +627,7 @@ const COREX_PRODUCTS = [
     "stock": "In Stock",
     "featured": false,
     "flashSale": true,
-    "image": "images/categories/accessories.jpg",
+    "image": "images/products/hub-anker-10in1.jpg",
     "shortDesc": "Massive port expansion: Dual 4K HDMI, Gigabit Ethernet, 100W PD pass-through charging, SD/TF card slots, and USB 3.2 10Gbps ports.",
     "specs": [
       "Dual 4K HDMI Outputs",

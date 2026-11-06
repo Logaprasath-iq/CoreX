@@ -301,9 +301,9 @@ html.light .navbar-scrolled {
 .navbar-pill-btn {
   height: 2.5rem !important; /* 40px */
   box-sizing: border-box !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgba(38, 38, 38, 0.85);
   border: 1px solid rgba(82, 82, 82, 0.7);
   border-radius: 0.75rem;
@@ -316,12 +316,28 @@ html.light .navbar-scrolled {
   color: #FFFFFF;
 }
 
+/* Ensure mobile menu hamburger is strictly hidden on desktop */
+@media (min-width: 1024px) {
+  #mobile-menu-btn,
+  .mobile-menu-btn,
+  button#mobile-menu-btn,
+  .navbar-pill-btn.lg\:hidden {
+    display: none !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .navbar-pill-btn.hidden {
+    display: none !important;
+  }
+}
+
 #main-navbar a[href="order.html"] {
   height: 2.5rem !important; /* 40px */
   box-sizing: border-box !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* RTL Layout Rules */
