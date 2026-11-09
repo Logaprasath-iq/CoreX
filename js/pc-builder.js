@@ -173,50 +173,50 @@
         });
 
         return `
-          <div class="pc-builder-slot-row bg-neutral-900/90 rounded-2xl border ${selectedProd ? 'border-neutral-700' : 'border-neutral-800'} p-4 lg:p-5 transition-all hover:border-[#93032E]">
-            <div class="grid grid-cols-1 lg:grid-cols-[335px_1fr_240px] xl:grid-cols-[355px_1fr_260px] gap-4 items-center">
+          <div class="pc-builder-slot-row bg-neutral-900/90 rounded-2xl border ${selectedProd ? 'border-neutral-700' : 'border-neutral-800'} p-3 sm:p-4 lg:p-5 transition-all hover:border-[#93032E] overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-[335px_1fr_240px] xl:grid-cols-[355px_1fr_260px] gap-3 sm:gap-4 items-center">
               
               <!-- Column 1: Slot Header & Icon (Fixed width via grid, perfectly aligned on one clean line) -->
-              <div class="flex items-center gap-3 min-w-0 pr-1">
-                <div class="w-10 h-10 rounded-xl bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[#93032E] flex-shrink-0">
-                  <i data-lucide="${slot.icon}" class="w-5 h-5"></i>
+              <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 pr-1">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[#93032E] flex-shrink-0">
+                  <i data-lucide="${slot.icon}" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="flex items-center gap-2">
+                  <div class="flex items-center gap-2 flex-wrap">
                     <span class="text-xs sm:text-sm font-bold text-white uppercase tracking-wider whitespace-nowrap">${slot.label}</span>
                     ${slot.required ? '<span class="slot-badge-required text-[9px] px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap flex-shrink-0">Required</span>' : '<span class="slot-badge-optional text-[9px] px-1.5 py-0.5 rounded uppercase font-semibold whitespace-nowrap flex-shrink-0">Optional</span>'}
                   </div>
-                  <span class="text-[11px] text-neutral-400 block mt-0.5 truncate">${slot.category}</span>
+                  <span class="text-[10px] sm:text-[11px] text-neutral-400 block mt-0.5 truncate">${slot.category}</span>
                 </div>
               </div>
 
               <!-- Column 2: Selected Item Details / Empty State (Identical Width & Alignment Across All Cards) -->
               <div class="w-full min-w-0">
                 ${selectedProd ? `
-                  <div class="pc-builder-inner-card is-selected w-full min-h-[76px] flex items-center justify-between gap-3.5 bg-black/40 rounded-xl p-3 border border-neutral-800 transition">
-                    <img src="${selectedProd.image}" alt="${selectedProd.name}" class="w-13 h-13 sm:w-14 sm:h-14 object-cover rounded-lg border border-neutral-700 flex-shrink-0" onerror="this.src='images/logo/corex-symbol.png'">
-                    <div class="min-w-0 flex-1">
-                      <div class="flex items-center gap-2">
-                        <span class="text-[10px] uppercase font-bold text-[#93032E] tracking-wider">${selectedProd.brand}</span>
-                        ${selectedProd.socket ? `<span class="text-[10px] px-1.5 py-0.5 rounded bg-neutral-800 text-neutral-300 font-mono">${selectedProd.socket}</span>` : ''}
+                  <div class="pc-builder-inner-card is-selected w-full min-h-[70px] flex items-center justify-between gap-2.5 sm:gap-3.5 bg-black/40 rounded-xl p-2.5 sm:p-3 border border-neutral-800 transition overflow-hidden">
+                    <img src="${selectedProd.image}" alt="${selectedProd.name}" class="w-10 h-10 sm:w-14 sm:h-14 object-cover rounded-lg border border-neutral-700 flex-shrink-0" onerror="this.src='images/logo/corex-symbol.png'">
+                    <div class="min-w-0 flex-1 overflow-hidden">
+                      <div class="flex items-center gap-1.5 flex-wrap">
+                        <span class="text-[9px] sm:text-[10px] uppercase font-bold text-[#93032E] tracking-wider">${selectedProd.brand}</span>
+                        ${selectedProd.socket ? `<span class="text-[9px] px-1 py-0.5 rounded bg-neutral-800 text-neutral-300 font-mono">${selectedProd.socket}</span>` : ''}
                       </div>
-                      <h4 class="text-xs sm:text-sm font-semibold text-white truncate max-w-xs sm:max-w-md xl:max-w-lg mt-0.5">${selectedProd.name}</h4>
-                      <p class="text-[11px] text-neutral-400 truncate max-w-xs sm:max-w-md xl:max-w-lg mt-0.5">${selectedProd.specs ? selectedProd.specs.join(' • ') : ''}</p>
+                      <h4 class="text-xs sm:text-sm font-semibold text-white truncate mt-0.5">${selectedProd.name}</h4>
+                      <p class="text-[10px] sm:text-[11px] text-neutral-400 truncate mt-0.5">${selectedProd.specs ? selectedProd.specs.join(' • ') : ''}</p>
                     </div>
-                    <div class="text-right flex-shrink-0 pl-2">
+                    <div class="text-right flex-shrink-0 pl-1.5 sm:pl-2">
                       <div class="text-xs sm:text-sm font-bold text-white font-mono">₹${selectedProd.price.toLocaleString('en-IN')}</div>
-                      <button onclick="window.COREX_BUILDER.removeComponent('${slot.key}')" class="text-[11px] text-red-400 hover:text-red-300 transition mt-1 underline block ml-auto">Remove</button>
+                      <button onclick="window.COREX_BUILDER.removeComponent('${slot.key}')" class="text-[10px] sm:text-[11px] text-red-400 hover:text-red-300 transition mt-0.5 underline block ml-auto">Remove</button>
                     </div>
                   </div>
                 ` : `
-                  <div class="pc-builder-inner-card is-empty w-full min-h-[76px] p-3 px-4 bg-neutral-950/50 rounded-xl border border-dashed border-neutral-800 text-neutral-500 text-xs flex items-center justify-between transition">
-                    <div class="flex items-center gap-3 min-w-0">
-                      <div class="w-10 h-10 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-500 flex-shrink-0">
+                  <div class="pc-builder-inner-card is-empty w-full min-h-[70px] p-2.5 sm:p-3 sm:px-4 bg-neutral-950/50 rounded-xl border border-dashed border-neutral-800 text-neutral-500 text-xs flex items-center justify-between transition overflow-hidden">
+                    <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                      <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-500 flex-shrink-0">
                         <i data-lucide="${slot.icon}" class="w-4 h-4 opacity-50"></i>
                       </div>
                       <div class="min-w-0">
                         <span class="text-xs text-neutral-300 font-medium block truncate">No ${slot.label} selected yet</span>
-                        <span class="text-[11px] text-neutral-500 block mt-0.5">Choose an option from the selector</span>
+                        <span class="text-[10px] sm:text-[11px] text-neutral-500 block mt-0.5">Choose an option from the selector</span>
                       </div>
                     </div>
                     <span class="text-[11px] text-neutral-400 font-medium hidden sm:inline-block flex-shrink-0 pl-2">Choose below →</span>
@@ -226,7 +226,7 @@
 
               <!-- Column 3: Dropdown Selector (Fixed width, aligned right) -->
               <div class="w-full min-w-0">
-                <select onchange="window.COREX_BUILDER.selectComponent('${slot.key}', this.value)" class="pc-builder-select w-full bg-neutral-800 border border-neutral-700 text-white rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:border-[#93032E] transition">
+                <select onchange="window.COREX_BUILDER.selectComponent('${slot.key}', this.value)" class="pc-builder-select w-full bg-neutral-800 border border-neutral-700 text-white rounded-xl px-2.5 sm:px-3 py-2 sm:py-2.5 text-xs focus:outline-none focus:border-[#93032E] transition">
                   <option value="">-- Choose ${slot.label} --</option>
                   ${availableProducts.map(p => `
                     <option value="${p.id}" ${selectedId === p.id ? 'selected' : ''}>
@@ -276,20 +276,20 @@
               </div>
 
               <!-- Price & Checkout Actions -->
-              <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 w-full lg:w-auto">
                 <div class="text-left sm:text-right">
                   <span class="text-xs text-neutral-400 uppercase font-semibold">Total Custom Rig Price</span>
-                  <div class="text-3xl font-black text-white font-heading">₹${total.toLocaleString('en-IN')}</div>
-                  <span class="text-[11px] text-neutral-500">Includes assembly, testing & warranty</span>
+                  <div class="text-2xl sm:text-3xl font-black text-white font-heading">₹${total.toLocaleString('en-IN')}</div>
+                  <span class="text-[10px] sm:text-[11px] text-neutral-500">Includes assembly, testing & warranty</span>
                 </div>
-                <div class="flex items-center gap-3">
-                  <button onclick="window.COREX_BUILDER.clearAll()" class="px-4 py-3 rounded-xl border border-neutral-700 hover:border-neutral-500 text-neutral-400 hover:text-white text-xs font-bold transition">
+                <div class="flex flex-wrap items-center gap-2 sm:gap-3 w-full sm:w-auto">
+                  <button onclick="window.COREX_BUILDER.clearAll()" class="px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border border-neutral-700 hover:border-neutral-500 text-neutral-400 hover:text-white text-xs font-bold transition flex-1 sm:flex-none">
                     Reset
                   </button>
-                  <button onclick="window.COREX_BUILDER.addBuildToCart()" class="px-6 py-3.5 rounded-xl bg-burgundy-grad text-white text-sm font-bold shadow-burgundy-glow hover:scale-105 transition flex items-center gap-2">
+                  <button onclick="window.COREX_BUILDER.addBuildToCart()" class="px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl bg-burgundy-grad text-white text-xs sm:text-sm font-bold shadow-burgundy-glow hover:scale-105 transition flex items-center justify-center gap-2 flex-2 sm:flex-none whitespace-nowrap">
                     <i data-lucide="shopping-bag" class="w-4 h-4"></i> Add Rig to Cart
                   </button>
-                  <a href="contact.html?subject=Custom%20PC%20Build%20Enquiry" class="px-5 py-3.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white text-sm font-bold transition flex items-center gap-2">
+                  <a href="contact.html?subject=Custom%20PC%20Build%20Enquiry" class="px-3.5 py-2.5 sm:px-5 sm:py-3.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 flex-1 sm:flex-none whitespace-nowrap">
                     <i data-lucide="message-square" class="w-4 h-4"></i> Enquire Now
                   </a>
                 </div>

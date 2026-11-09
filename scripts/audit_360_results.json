@@ -1,0 +1,101 @@
+[
+  {
+    "page": "index.html",
+    "clientW": 352,
+    "scrollW": 352,
+    "bodyScrollW": 352,
+    "hasDocOverflow": false,
+    "count": 0,
+    "top": []
+  },
+  {
+    "page": "home-2.html",
+    "clientW": 352,
+    "scrollW": 352,
+    "bodyScrollW": 352,
+    "hasDocOverflow": false,
+    "count": 0,
+    "top": []
+  },
+  {
+    "page": "products.html",
+    "clientW": 352,
+    "scrollW": 352,
+    "bodyScrollW": 352,
+    "hasDocOverflow": false,
+    "count": 0,
+    "top": []
+  },
+  {
+    "page": "pricing.html",
+    "clientW": 352,
+    "scrollW": 352,
+    "bodyScrollW": 352,
+    "hasDocOverflow": false,
+    "count": 0,
+    "top": []
+  },
+  {
+    "page": "about.html",
+    "clientW": 352,
+    "scrollW": 352,
+    "bodyScrollW": 352,
+    "hasDocOverflow": false,
+    "count": 0,
+    "top": []
+  },
+  {
+    "page": "build-pc.html",
+    "clientW": 352,
+    "scrollW": 352,
+    "bodyScrollW": 352,
+    "hasDocOverflow": false,
+    "count": 0,
+    "top": []
+  },
+  {
+    "page": "contact.html",
+    "clientW": 352,
+    "scrollW": 352,
+    "bodyScrollW": 352,
+    "hasDocOverflow": false,
+    "count": 0,
+    "top": []
+  },
+  {
+    "page": "blog.html",
+    "clientW": 352,
+    "scrollW": 352,
+    "bodyScrollW": 352,
+    "hasDocOverflow": false,
+    "count": 0,
+    "top": []
+  },
+  {
+    "page": "order.html",
+    "clientW": 352,
+    "scrollW": 352,
+    "bodyScrollW": 352,
+    "hasDocOverflow": false,
+    "count": 0,
+    "top": []
+  },
+  {
+    "page": "product-details.html",
+    "clientW": 352,
+    "scrollW": 352,
+    "bodyScrollW": 352,
+    "hasDocOverflow": false,
+    "count": 0,
+    "top": []
+  },
+  {
+    "page": "blog-details.html",
+    "clientW": 352,
+    "scrollW": 352,
+    "bodyScrollW": 352,
+    "hasDocOverflow": false,
+    "count": 0,
+    "top": []
+  }
+]

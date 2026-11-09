@@ -326,19 +326,69 @@ html.light .navbar-scrolled {
   }
 }
 
-/* Mobile navbar: hide desktop order button and theme button on small screens so hamburger has full focus */
-@media (max-width: 639px) {
+/* Tablet & Mobile navbar (<1024px, including 768px):
+   Hide navbar action buttons (Theme, RTL, Wishlist, Order Now) so only logo and hamburger are visible;
+   all quick action controls remain inside the hamburger dropdown menu */
+@media (max-width: 1023px) {
   #main-navbar .navbar-order-btn,
   #main-navbar .navbar-theme-btn,
-  #main-navbar .navbar-pill-btn.hidden {
+  #main-navbar .navbar-pill-btn:not(#mobile-menu-btn) {
     display: none !important;
   }
 }
 
-@media (min-width: 640px) {
+/* Navbar Responsiveness at 1024px (1024px - 1279px lg range) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  /* Hide the letter-spaced brand tagline below 1280px to save ~80px */
+  #main-navbar .brand-tagline,
+  #main-navbar a span.text-\[9px\] {
+    display: none !important;
+  }
+
+  /* Compact center navigation links */
+  #main-navbar nav {
+    gap: 0.85rem !important; /* ~14px instead of 28px */
+  }
+  #main-navbar nav a,
+  #main-navbar nav button {
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    letter-spacing: 0.03em !important;
+  }
+
+  /* Compact action pills and Order Now button */
+  #main-navbar .navbar-pill-btn {
+    height: 38px !important;
+    width: auto !important;
+    min-width: 38px !important;
+    padding-left: 0.6rem !important;
+    padding-right: 0.6rem !important;
+    font-size: 11px !important;
+  }
+  #main-navbar .navbar-pill-btn.w-10 {
+    width: 38px !important;
+    padding: 0 !important;
+  }
+  #main-navbar .navbar-order-btn {
+    height: 38px !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* Ensure navbar nav links, logo, and buttons never wrap onto multiple lines across all viewports */
+#main-navbar nav a,
+#main-navbar nav button,
+#main-navbar .navbar-order-btn,
+#main-navbar a[href*="index.html"] {
+  white-space: nowrap !important;
+}
+
+@media (min-width: 1024px) {
   #main-navbar .navbar-order-btn {
     display: inline-flex !important;
-    height: 2.5rem !important; /* 40px */
     box-sizing: border-box !important;
     align-items: center;
     justify-content: center;
@@ -530,19 +580,19 @@ html.light .border-neutral-700\/80 {
 /* ------------------------------------------------------------ */
 
 /* Headings outside Hero & Footer become crisp Jet Black (#151515) */
-html.light h1:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
-html.light h2:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
-html.light h3:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
-html.light h4:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
-html.light h5:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
-html.light h6:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
-html.light .font-heading:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
-html.light .font-subheading:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *) {
+html.light h1:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *):not(.home2-newsletter *),
+html.light h2:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *):not(.home2-newsletter *),
+html.light h3:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *):not(.home2-newsletter *),
+html.light h4:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *):not(.home2-newsletter *),
+html.light h5:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *):not(.home2-newsletter *),
+html.light h6:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *):not(.home2-newsletter *),
+html.light .font-heading:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *):not(.home2-newsletter *),
+html.light .font-subheading:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *):not(.home2-newsletter *) {
   color: #151515 !important;
 }
 
 /* Force dark text for elements with text-white outside Hero & Footer, excluding buttons & accents */
-html.light body *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"]):not([class*="bg-burgundy"] *):not(.bg-\[\#93032E\]):not(.bg-\[\#93032E\] *):not(.btn-burgundy):not(.btn-burgundy *):not(.bg-burgundy-grad):not(.bg-burgundy-grad *):not(.cart-count-badge):not(.whatsapp-cta-card a):not(.whatsapp-cta-card a *):not(.bg-emerald-600):not(.bg-emerald-600 *):not(.terminal-monitor-box *):not(.terminal-monitor-box):not(.tier-callout-card *):not(.tier-callout-card):not(.hardware-bundle-banner *):not(.hardware-bundle-banner):not(.product-badge):not(.product-badge *):not(.hero-video-card *):not(.hero-video-card):not(.flash-sale-section *):not(.flash-sale-section):not(.rig-showcase-overlay *):not(.rig-showcase-overlay):not([data-wishlist-id]):not([data-wishlist-id] *).text-white {
+html.light body *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"]):not([class*="bg-burgundy"] *):not(.bg-\[\#93032E\]):not(.bg-\[\#93032E\] *):not(.btn-burgundy):not(.btn-burgundy *):not(.bg-burgundy-grad):not(.bg-burgundy-grad *):not(.cart-count-badge):not(.whatsapp-cta-card a):not(.whatsapp-cta-card a *):not(.bg-emerald-600):not(.bg-emerald-600 *):not(.terminal-monitor-box *):not(.terminal-monitor-box):not(.tier-callout-card *):not(.tier-callout-card):not(.hardware-bundle-banner *):not(.hardware-bundle-banner):not(.product-badge):not(.product-badge *):not(.hero-video-card *):not(.hero-video-card):not(.flash-sale-section *):not(.flash-sale-section):not(.rig-showcase-overlay *):not(.rig-showcase-overlay):not(.home2-newsletter *):not(.home2-newsletter):not([data-wishlist-id]):not([data-wishlist-id] *).text-white {
   color: #151515 !important;
 }
 
@@ -567,7 +617,7 @@ html.light .bg-\[\#93032E\] * {
 }
 
 /* Subtitles, Paragraphs & Card Descriptions become crisp Dark Charcoal */
-html.light p:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *):not(.hardware-bundle-banner *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
+html.light p:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *):not(.hardware-bundle-banner *):not(.flash-sale-section *):not(.rig-showcase-overlay *):not(.home2-newsletter *),
 html.light .category-card p,
 html.light .product-card p,
 html.light .feature-card p,
@@ -577,22 +627,24 @@ html.light .card-tilt-3d p {
 }
 
 /* Muted & Secondary Text outside Hero & Footer */
-html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-\[\#B5B5B5\] {
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.flash-sale-section *):not(.home2-newsletter *).text-\[\#B5B5B5\] {
   color: #4A4A4A !important;
 }
-html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *):not(.tier-callout-card *):not(.hardware-bundle-banner *).text-neutral-400 {
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *):not(.tier-callout-card *):not(.hardware-bundle-banner *):not(.flash-sale-section *):not(.home2-newsletter *).text-neutral-400 {
   color: #555555 !important;
 }
-html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *):not(.tier-callout-card *):not(.hardware-bundle-banner *).text-neutral-300 {
-  color: #222222 !important;
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *):not(.tier-callout-card *):not(.hardware-bundle-banner *):not(.flash-sale-section *):not(.home2-newsletter *).text-neutral-100,
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *):not(.tier-callout-card *):not(.hardware-bundle-banner *):not(.flash-sale-section *):not(.home2-newsletter *).text-neutral-200,
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *):not(.tier-callout-card *):not(.hardware-bundle-banner *):not(.flash-sale-section *):not(.home2-newsletter *).text-neutral-300 {
+  color: #151515 !important;
 }
-html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *).text-neutral-500 {
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *):not(.flash-sale-section *):not(.home2-newsletter *).text-neutral-500 {
   color: #666666 !important;
 }
-html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-\[\#858585\] {
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.flash-sale-section *):not(.home2-newsletter *).text-\[\#858585\] {
   color: #666666 !important;
 }
-html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-metallic {
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.flash-sale-section *):not(.home2-newsletter *).text-metallic {
   color: #4A4A4A !important;
 }
 
@@ -1591,6 +1643,28 @@ html.light .pc-builder-slot-row .text-white {
   border-right-width: 0 !important;
 }
 
+/* Sticky First Column for Specification labels on Tablet & Mobile */
+.package-comparison-table th:first-child,
+.package-comparison-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  border-right: 2px solid rgba(147, 3, 46, 0.45) !important;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.45);
+}
+.package-comparison-table thead th:first-child {
+  background-color: #121212 !important;
+}
+.package-comparison-table tbody tr.comparison-row-odd td:first-child {
+  background-color: #1D1D1D !important;
+}
+.package-comparison-table tbody tr.comparison-row-even td:first-child {
+  background-color: #181818 !important;
+}
+.package-comparison-table tbody tr.comparison-row-action td:first-child {
+  background-color: #141414 !important;
+}
+
 /* Dark Mode Table Styling */
 .package-comparison-table th,
 .package-comparison-table td {
@@ -1655,11 +1729,29 @@ html.light .package-comparison-table tbody tr:hover {
   background-color: #F4EFF3 !important;
 }
 
-/* Light Mode Row 1st Column (Specification labels) */
+/* Light Mode Sticky 1st Column */
+html.light .package-comparison-table th:first-child,
+html.light .package-comparison-table td:first-child {
+  border-right: 2px solid #D6D1D5 !important;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.08) !important;
+}
+html.light .package-comparison-table thead th:first-child {
+  background-color: #EDE8ED !important;
+  color: #151515 !important;
+}
 html.light .package-comparison-table tbody td:first-child {
   color: #151515 !important;
   font-weight: 700 !important;
   background-color: #FAF8FA !important;
+}
+html.light .package-comparison-table tbody tr.comparison-row-odd td:first-child {
+  background-color: #FFFFFF !important;
+}
+html.light .package-comparison-table tbody tr.comparison-row-even td:first-child {
+  background-color: #F8F6F8 !important;
+}
+html.light .package-comparison-table tbody tr.comparison-row-action td:first-child {
+  background-color: #EFECEF !important;
 }
 
 /* Light Mode Values */
@@ -1914,8 +2006,50 @@ html.light .flash-sale-section h2 * {
   color: #FFFFFF !important;
 }
 .flash-sale-section p,
-html.light .flash-sale-section p {
+html.light .flash-sale-section p,
+.flash-sale-section .text-neutral-200,
+html.light .flash-sale-section .text-neutral-200 {
   color: #FEE2E2 !important;
+}
+
+/* Flash Sale Badge - Dark & Light Mode Visibility */
+.flash-sale-badge,
+html:not(.light) .flash-sale-badge {
+  background-color: rgba(0, 0, 0, 0.45) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #FFFFFF !important;
+}
+.flash-sale-badge .flash-sale-badge-text,
+html:not(.light) .flash-sale-badge .flash-sale-badge-text {
+  color: #FFFFFF !important;
+}
+.flash-sale-badge .flash-sale-badge-icon,
+.flash-sale-badge i,
+html:not(.light) .flash-sale-badge i {
+  color: #FDA4AF !important;
+}
+
+html.light .flash-sale-badge {
+  background-color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: #93032E !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+}
+html.light .flash-sale-badge .flash-sale-badge-text,
+html.light .flash-sale-badge span {
+  color: #93032E !important;
+  font-weight: 800 !important;
+}
+html.light .flash-sale-badge .flash-sale-badge-icon,
+html.light .flash-sale-badge i {
+  color: #93032E !important;
+}
+
+/* Countdown Timer Box & Labels in Both Modes */
+.flash-countdown-container,
+html.light .flash-countdown-container {
+  background-color: rgba(0, 0, 0, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
 }
 .flash-sale-section #sale-days,
 .flash-sale-section #sale-hours,
@@ -1926,6 +2060,14 @@ html.light .flash-sale-section #sale-hours,
 html.light .flash-sale-section #sale-mins,
 html.light .flash-sale-section #sale-secs {
   color: #FFFFFF !important;
+}
+.flash-countdown-label,
+html.light .flash-countdown-label,
+.flash-sale-section .flash-countdown-label,
+html.light .flash-sale-section .flash-countdown-label,
+.flash-sale-section .text-neutral-400:not(.card-3d *),
+html.light .flash-sale-section .text-neutral-400:not(.card-3d *) {
+  color: #FDA4AF !important;
 }
 
 /* Cards inside Flash Deals in Light Mode */
@@ -1950,6 +2092,28 @@ html.light .flash-sale-section .card-3d button {
 html.light .flash-sale-section .card-3d button:hover {
   background-color: #93032E !important;
   color: #FFFFFF !important;
+}
+
+/* Home 2 Newsletter Card Light Mode Visibility */
+html.light .home2-newsletter {
+  background: #1C1C1C !important;
+  border-color: #383838 !important;
+}
+html.light .home2-newsletter h3,
+html.light .home2-newsletter .font-heading {
+  color: #FFFFFF !important;
+}
+html.light .home2-newsletter p,
+html.light .home2-newsletter .text-neutral-400 {
+  color: #D4D4D4 !important;
+}
+html.light .home2-newsletter input {
+  background-color: #111111 !important;
+  color: #FFFFFF !important;
+  border-color: #404040 !important;
+}
+html.light .home2-newsletter input::placeholder {
+  color: #737373 !important;
 }
 
 /* ============================================================ */
@@ -1983,6 +2147,53 @@ html.light .rig-showcase-overlay span.font-mono {
 #why-choose-corex-section .card-3d > div.border-t {
   margin-top: 1.25rem !important;
   padding-top: 0.875rem !important;
+}
+
+/* ============================================================ */
+/* BENCHMARK ARENA LIGHT MODE CONTRAST & VISIBILITY             */
+/* ============================================================ */
+html.light #bench-fps-1,
+html.light #bench-fps-2,
+html.light #bench-fps-3,
+html.light .bench-fps-val {
+  color: #151515 !important;
+}
+
+html.light #bench-fps-1 span,
+html.light #bench-fps-2 span,
+html.light #bench-fps-3 span,
+html.light .bench-fps-low {
+  color: #666666 !important;
+}
+
+html:not(.light) #bench-fps-1 {
+  color: #FFFFFF !important;
+}
+
+html:not(.light) #bench-fps-2 {
+  color: #E5E5E5 !important;
+}
+
+html:not(.light) #bench-fps-3 {
+  color: #D4D4D4 !important;
+}
+
+html:not(.light) #bench-fps-1 span,
+html:not(.light) #bench-fps-2 span,
+html:not(.light) #bench-fps-3 span,
+html:not(.light) .bench-fps-low {
+  color: #737373 !important;
+}
+
+html.light .bench-gpu-label,
+html.light .bench-gpu-label span:not(.rounded) {
+  color: #151515 !important;
+}
+
+/* Light mode track for benchmark progress bars */
+html.light .bg-neutral-900.rounded-full.border-neutral-800 {
+  background-color: #E8E5E7 !important;
+  border-color: #D6D1D5 !important;
 }
 
 

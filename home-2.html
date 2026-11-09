@@ -173,24 +173,24 @@
       <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
         
         <!-- Wishlist -->
-        <a href="products.html" class="navbar-pill-btn hidden sm:inline-flex items-center justify-center h-10 w-10 rounded-xl relative text-neutral-300 hover:text-white transition" title="Wishlist">
+        <a href="products.html" class="navbar-pill-btn hidden lg:inline-flex items-center justify-center h-10 w-10 rounded-xl relative text-neutral-300 hover:text-white transition" title="Wishlist">
           <i data-lucide="heart" class="w-4 h-4"></i>
           <span class="wishlist-count-badge hidden absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#93032E] text-white text-[10px] font-bold flex items-center justify-center">0</span>
         </a>
 
         <!-- RTL Toggle Pill -->
-        <button onclick="window.COREX.toggleRTL()" class="navbar-pill-btn hidden sm:inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl text-xs font-bold text-neutral-300 hover:text-white transition" title="Toggle RTL / LTR">
+        <button onclick="window.COREX.toggleRTL()" class="navbar-pill-btn hidden lg:inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl text-xs font-bold text-neutral-300 hover:text-white transition" title="Toggle RTL / LTR">
           <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-[#93032E]"></i>
           <span>RTL</span>
         </button>
 
         <!-- Theme Toggle (Hidden on mobile <640px, available inside Hamburger menu) -->
-        <button onclick="window.COREX.toggleTheme()" class="navbar-pill-btn navbar-theme-btn hidden sm:inline-flex items-center justify-center h-10 w-10 rounded-xl text-neutral-300 hover:text-white transition" title="Toggle Light/Dark Mode">
+        <button onclick="window.COREX.toggleTheme()" class="navbar-pill-btn navbar-theme-btn hidden lg:inline-flex items-center justify-center h-10 w-10 rounded-xl text-neutral-300 hover:text-white transition" title="Toggle Light/Dark Mode">
           <i data-lucide="sun" class="theme-toggle-icon w-4 h-4"></i>
         </button>
 
         <!-- Primary CTA Button: Order Now (Hidden on mobile <640px, available inside Hamburger menu) -->
-        <a href="order.html" class="navbar-order-btn hidden sm:inline-flex h-10 px-4 sm:px-5 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-105 transition items-center justify-center gap-2 flex-shrink-0" title="Order / Cart">
+        <a href="order.html" class="navbar-order-btn hidden lg:inline-flex h-10 px-4 sm:px-5 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-105 transition items-center justify-center gap-2 flex-shrink-0" title="Order / Cart">
           <i data-lucide="shopping-bag" class="w-4 h-4 flex-shrink-0"></i>
           <span class="whitespace-nowrap">Order Now</span>
           <span class="cart-count-badge hidden ml-0.5 px-1.5 py-0.5 rounded-full bg-white text-[#93032E] text-[10px] font-black leading-none">0</span>
@@ -243,32 +243,33 @@
           </button>
 
           <!-- Wishlist inside Mobile Menu -->
-          <a href="products.html" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-white transition" title="Wishlist">
+          <a href="products.html" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-white transition relative" title="Wishlist">
             <i data-lucide="heart" class="w-4 h-4 text-[#93032E]"></i>
             <span class="text-[11px] font-semibold">Wishlist</span>
+            <span class="wishlist-count-badge hidden ml-1 px-1.5 py-0.5 rounded-full bg-[#93032E] text-white text-[10px] font-bold leading-none">0</span>
           </a>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="flex-grow pt-20">
+  <main class="flex-grow pt-24 sm:pt-20">
 
     <!-- ========================================== -->
     <!-- SECTION 1: CINEMATIC ALTERNATIVE HERO      -->
     <!-- ========================================== -->
     <section class="py-16 lg:py-24 bg-[#151515] relative overflow-hidden border-b border-[#383838]">
       <div class="container-custom">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-center">
           
           <!-- Left Column (7 cols): Editorial Typography -->
           <div class="lg:col-span-7 space-y-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-bold text-[#C8C8C8] uppercase tracking-wider">
-              <span class="w-2 h-2 rounded-full bg-[#93032E]"></span>
-              COMPUTER HARDWARE &amp; PERIPHERALS • CHENNAI STORE
+            <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[10px] sm:text-xs font-bold text-[#C8C8C8] uppercase tracking-normal sm:tracking-wider max-w-full">
+              <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#93032E] flex-shrink-0"></span>
+              <span class="truncate sm:whitespace-normal">COMPUTER HARDWARE &amp; PERIPHERALS • CHENNAI STORE</span>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-black font-heading tracking-tight uppercase leading-tight text-white">
+            <h1 class="text-3xl sm:text-5xl lg:text-5xl xl:text-7xl font-black font-heading tracking-tight uppercase leading-tight text-white">
               BUILT FOR <br>
               <span class="hero-perf-text">PERFORMANCE.</span>
             </h1>
@@ -343,7 +344,7 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
             <span class="text-xs uppercase tracking-[0.2em] font-bold text-neutral-400">CURATED TIERS</span>
-            <h2 class="text-3xl sm:text-4xl font-black font-heading text-white uppercase tracking-tight mt-1">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black font-heading text-white uppercase tracking-tight mt-1">
               FEATURED HARDWARE <span class="text-[#93032E]">COLLECTIONS</span>
             </h2>
           </div>
@@ -352,87 +353,87 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 items-stretch">
           
           <!-- Collection 1: Student & Office PC -->
-          <div class="bg-[#202020] rounded-2xl border border-[#383838] p-6 flex flex-col justify-between h-full hover:border-[#93032E] transition card-3d">
+          <div class="bg-[#202020] rounded-2xl border border-[#383838] p-4 sm:p-5 lg:p-6 flex flex-col justify-between h-full hover:border-[#93032E] transition card-3d">
             <div class="flex-1 flex flex-col">
-              <div class="w-full h-44 rounded-xl overflow-hidden bg-black mb-5">
+              <div class="w-full h-40 sm:h-44 rounded-xl overflow-hidden bg-black mb-4 sm:mb-5">
                 <img src="images/products/build-basic.jpg" alt="Student & Office PC" class="w-full h-full object-cover hover:scale-105 transition duration-500">
               </div>
               <span class="text-[10px] uppercase font-bold text-[#93032E] tracking-wider">Productivity Tier</span>
-              <h3 class="text-lg font-bold text-white mt-1 font-heading min-h-[3rem] flex items-center">STUDENT &amp; OFFICE PC</h3>
+              <h3 class="text-sm sm:text-base lg:text-lg font-bold text-white mt-1 font-heading min-h-[2.5rem] lg:min-h-[3rem] flex items-center leading-tight">STUDENT &amp; OFFICE PC</h3>
               <p class="text-xs text-neutral-400 mt-2 leading-relaxed flex-1">
                 Smooth multitasking for online learning, MS Office, Zoom conferences, and coding. Reliable daily computing with fast NVMe storage.
               </p>
               <ul class="mt-4 space-y-1.5 text-xs text-neutral-300 font-mono">
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> Intel Core i5-12400 (6-Core)</li>
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> 16GB DDR4 3200MHz RAM</li>
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> 512GB NVMe M.2 SSD</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i> <span>Intel Core i5-12400 (6-Core)</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i> <span>16GB DDR4 3200MHz RAM</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i> <span>512GB NVMe M.2 SSD</span></li>
               </ul>
             </div>
-            <div class="mt-auto pt-4 border-t border-neutral-800 flex items-center justify-between">
+            <div class="mt-auto pt-3.5 border-t border-neutral-800 flex items-center justify-between gap-1 sm:gap-2">
               <div>
                 <span class="text-[10px] text-neutral-500 uppercase">Starting at</span>
-                <div class="text-lg font-bold text-white font-heading">₹11,990</div>
+                <div class="text-base sm:text-lg font-bold text-white font-heading">₹11,990</div>
               </div>
-              <button onclick="window.COREX.addToCart('pkg-student', 1, true)" class="px-4 py-2 rounded-xl bg-burgundy-grad text-white text-xs font-bold uppercase shadow-burgundy-glow hover:opacity-90 transition">
+              <button onclick="window.COREX.addToCart('pkg-student', 1, true)" class="px-3 sm:px-4 py-2 rounded-xl bg-burgundy-grad text-white text-[11px] sm:text-xs font-bold uppercase shadow-burgundy-glow hover:opacity-90 transition whitespace-nowrap">
                 Select Rig
               </button>
             </div>
           </div>
 
           <!-- Collection 2: Gaming Performance PC -->
-          <div class="bg-[#202020] rounded-2xl border border-[#383838] p-6 flex flex-col justify-between h-full hover:border-[#93032E] transition card-3d">
+          <div class="bg-[#202020] rounded-2xl border border-[#383838] p-4 sm:p-5 lg:p-6 flex flex-col justify-between h-full hover:border-[#93032E] transition card-3d">
             <div class="flex-1 flex flex-col">
-              <div class="w-full h-44 rounded-xl overflow-hidden bg-black mb-5">
+              <div class="w-full h-40 sm:h-44 rounded-xl overflow-hidden bg-black mb-4 sm:mb-5">
                 <img src="images/products/build-gaming.jpg" alt="Gaming PC" class="w-full h-full object-cover hover:scale-105 transition duration-500">
               </div>
               <span class="text-[10px] uppercase font-bold text-[#93032E] tracking-wider">Gaming Performance Tier</span>
-              <h3 class="text-lg font-bold text-white mt-1 font-heading min-h-[3rem] flex items-center">GAMING PERFORMANCE PC</h3>
+              <h3 class="text-sm sm:text-base lg:text-lg font-bold text-white mt-1 font-heading min-h-[2.5rem] lg:min-h-[3rem] flex items-center leading-tight">GAMING PERFORMANCE PC</h3>
               <p class="text-xs text-neutral-400 mt-2 leading-relaxed flex-1">
-                Tuned for high-FPS 1080p and 1440p gaming with Ray Tracing and DLSS 3. High airflow panoramic glass chassis with ARGB cooling.
+                Tuned for high-FPS gaming with Ray Tracing and DLSS 3. Panoramic glass chassis with high-airflow ARGB cooling.
               </p>
               <ul class="mt-4 space-y-1.5 text-xs text-neutral-300 font-mono">
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> Intel Core i5-14400F (10-Core)</li>
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> NVIDIA RTX 4060 8GB GDDR6</li>
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> 16GB DDR5 5600MHz + 1TB NVMe</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i> <span>Intel Core i5-14400F (10-Core)</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i> <span>NVIDIA RTX 4060 8GB GDDR6</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i> <span>16GB DDR5 5600MHz + 1TB NVMe</span></li>
               </ul>
             </div>
-            <div class="mt-auto pt-4 border-t border-neutral-800 flex items-center justify-between">
+            <div class="mt-auto pt-3.5 border-t border-neutral-800 flex items-center justify-between gap-1 sm:gap-2">
               <div>
                 <span class="text-[10px] text-neutral-500 uppercase">Starting at</span>
-                <div class="text-lg font-bold text-white font-heading">₹24,990</div>
+                <div class="text-base sm:text-lg font-bold text-white font-heading">₹24,990</div>
               </div>
-              <button onclick="window.COREX.addToCart('pkg-gaming', 1, true)" class="px-4 py-2 rounded-xl bg-burgundy-grad text-white text-xs font-bold uppercase shadow-burgundy-glow hover:opacity-90 transition">
+              <button onclick="window.COREX.addToCart('pkg-gaming', 1, true)" class="px-3 sm:px-4 py-2 rounded-xl bg-burgundy-grad text-white text-[11px] sm:text-xs font-bold uppercase shadow-burgundy-glow hover:opacity-90 transition whitespace-nowrap">
                 Select Rig
               </button>
             </div>
           </div>
 
           <!-- Collection 3: Professional Workstation -->
-          <div class="bg-[#202020] rounded-2xl border border-[#383838] p-6 flex flex-col justify-between h-full hover:border-[#93032E] transition card-3d">
+          <div class="bg-[#202020] rounded-2xl border border-[#383838] p-4 sm:p-5 lg:p-6 flex flex-col justify-between h-full hover:border-[#93032E] transition card-3d">
             <div class="flex-1 flex flex-col">
-              <div class="w-full h-44 rounded-xl overflow-hidden bg-black mb-5">
+              <div class="w-full h-40 sm:h-44 rounded-xl overflow-hidden bg-black mb-4 sm:mb-5">
                 <img src="images/products/build-pro.jpg" alt="Professional Workstation" class="w-full h-full object-cover hover:scale-105 transition duration-500">
               </div>
               <span class="text-[10px] uppercase font-bold text-[#93032E] tracking-wider">Creator &amp; AI Studio</span>
-              <h3 class="text-lg font-bold text-white mt-1 font-heading min-h-[3rem] flex items-center">PROFESSIONAL WORKSTATION</h3>
+              <h3 class="text-sm sm:text-base lg:text-lg font-bold text-white mt-1 font-heading min-h-[2.5rem] lg:min-h-[3rem] flex items-center leading-tight">PROFESSIONAL WORKSTATION</h3>
               <p class="text-xs text-neutral-400 mt-2 leading-relaxed flex-1">
                 Dedicated workstation for Unreal Engine 5, 4K/8K video editing, CAD, 3D animation, and local machine learning tasks.
               </p>
               <ul class="mt-4 space-y-1.5 text-xs text-neutral-300 font-mono">
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> Intel Core i9-14900K (24-Core)</li>
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> NVIDIA RTX 4080 Super 16GB</li>
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E]"></i> 64GB DDR5 + 2TB NVMe Gen4</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i> <span>Intel Core i9-14900K (24-Core)</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i> <span>NVIDIA RTX 4080 Super 16GB</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i> <span>64GB DDR5 + 2TB NVMe Gen4</span></li>
               </ul>
             </div>
-            <div class="mt-auto pt-4 border-t border-neutral-800 flex items-center justify-between">
+            <div class="mt-auto pt-3.5 border-t border-neutral-800 flex items-center justify-between gap-1 sm:gap-2">
               <div>
                 <span class="text-[10px] text-neutral-500 uppercase">Starting at</span>
-                <div class="text-lg font-bold text-white font-heading">₹39,990</div>
+                <div class="text-base sm:text-lg font-bold text-white font-heading">₹39,990</div>
               </div>
-              <button onclick="window.COREX.addToCart('pkg-workstation', 1, true)" class="px-4 py-2 rounded-xl bg-burgundy-grad text-white text-xs font-bold uppercase shadow-burgundy-glow hover:opacity-90 transition">
+              <button onclick="window.COREX.addToCart('pkg-workstation', 1, true)" class="px-3 sm:px-4 py-2 rounded-xl bg-burgundy-grad text-white text-[11px] sm:text-xs font-bold uppercase shadow-burgundy-glow hover:opacity-90 transition whitespace-nowrap">
                 Select Rig
               </button>
             </div>
@@ -582,7 +583,7 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
             <span class="text-xs uppercase tracking-[0.2em] font-bold text-neutral-400">TACTILE MASTERY</span>
-            <h2 class="text-3xl sm:text-4xl font-black font-heading text-white uppercase tracking-tight mt-1">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black font-heading text-white uppercase tracking-tight mt-1">
               GAMING <span class="text-[#93032E]">PERIPHERALS</span>
             </h2>
           </div>

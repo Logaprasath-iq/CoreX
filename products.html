@@ -152,24 +152,24 @@
       <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
         
         <!-- Wishlist -->
-        <a href="products.html" class="navbar-pill-btn hidden sm:inline-flex items-center justify-center h-10 w-10 rounded-xl relative text-neutral-300 hover:text-white transition" title="Wishlist">
+        <a href="products.html" class="navbar-pill-btn hidden lg:inline-flex items-center justify-center h-10 w-10 rounded-xl relative text-neutral-300 hover:text-white transition" title="Wishlist">
           <i data-lucide="heart" class="w-4 h-4"></i>
           <span class="wishlist-count-badge hidden absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#93032E] text-white text-[10px] font-bold flex items-center justify-center">0</span>
         </a>
 
         <!-- RTL Toggle Pill -->
-        <button onclick="window.COREX.toggleRTL()" class="navbar-pill-btn hidden sm:inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl text-xs font-bold text-neutral-300 hover:text-white transition" title="Toggle RTL / LTR">
+        <button onclick="window.COREX.toggleRTL()" class="navbar-pill-btn hidden lg:inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl text-xs font-bold text-neutral-300 hover:text-white transition" title="Toggle RTL / LTR">
           <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-[#93032E]"></i>
           <span>RTL</span>
         </button>
 
         <!-- Theme Toggle (Hidden on mobile <640px, available inside Hamburger menu) -->
-        <button onclick="window.COREX.toggleTheme()" class="navbar-pill-btn navbar-theme-btn hidden sm:inline-flex items-center justify-center h-10 w-10 rounded-xl text-neutral-300 hover:text-white transition" title="Toggle Light/Dark Mode">
+        <button onclick="window.COREX.toggleTheme()" class="navbar-pill-btn navbar-theme-btn hidden lg:inline-flex items-center justify-center h-10 w-10 rounded-xl text-neutral-300 hover:text-white transition" title="Toggle Light/Dark Mode">
           <i data-lucide="sun" class="theme-toggle-icon w-4 h-4"></i>
         </button>
 
         <!-- Primary CTA Button: Order Now (Hidden on mobile <640px, available inside Hamburger menu) -->
-        <a href="order.html" class="navbar-order-btn hidden sm:inline-flex h-10 px-4 sm:px-5 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-105 transition items-center justify-center gap-2 flex-shrink-0" title="Order / Cart">
+        <a href="order.html" class="navbar-order-btn hidden lg:inline-flex h-10 px-4 sm:px-5 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-105 transition items-center justify-center gap-2 flex-shrink-0" title="Order / Cart">
           <i data-lucide="shopping-bag" class="w-4 h-4 flex-shrink-0"></i>
           <span class="whitespace-nowrap">Order Now</span>
           <span class="cart-count-badge hidden ml-0.5 px-1.5 py-0.5 rounded-full bg-white text-[#93032E] text-[10px] font-black leading-none">0</span>
@@ -222,9 +222,10 @@
           </button>
 
           <!-- Wishlist inside Mobile Menu -->
-          <a href="products.html" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-white transition" title="Wishlist">
+          <a href="products.html" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-white transition relative" title="Wishlist">
             <i data-lucide="heart" class="w-4 h-4 text-[#93032E]"></i>
             <span class="text-[11px] font-semibold">Wishlist</span>
+            <span class="wishlist-count-badge hidden ml-1 px-1.5 py-0.5 rounded-full bg-[#93032E] text-white text-[10px] font-bold leading-none">0</span>
           </a>
         </div>
       </div>
@@ -434,46 +435,46 @@
     <!-- ========================================== -->
     <section class="py-16 bg-[#1C1C1C] border-t border-[#383838]">
       <div class="container-custom">
-        <div class="flex items-center justify-between mb-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-2 md:gap-4 mb-8">
           <div>
             <span class="text-xs font-bold uppercase tracking-wider text-[#93032E]">RECOMMENDED PAIRINGS</span>
-            <h3 class="text-2xl font-black font-heading text-white uppercase mt-0.5">COMPLETE YOUR BATTLE-STATION</h3>
+            <h3 class="text-xl sm:text-2xl font-black font-heading text-white uppercase mt-0.5">COMPLETE YOUR BATTLE-STATION</h3>
           </div>
-          <span class="text-xs text-neutral-400 hidden sm:inline">Certified High-Performance Pairings</span>
+          <span class="text-xs text-neutral-400 whitespace-nowrap">Certified High-Performance Pairings</span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div class="p-5 rounded-2xl bg-[#202020] border border-[#383838] flex items-center gap-4 card-3d">
-            <img src="images/products/cooler-kraken-elite.jpg" alt="Kraken Elite" class="w-20 h-20 object-cover rounded-xl border border-neutral-700 bg-black flex-shrink-0">
-            <div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
+          <div class="p-3.5 sm:p-5 rounded-2xl bg-[#202020] border border-[#383838] flex items-center gap-3 sm:gap-4 card-3d">
+            <img src="images/products/cooler-kraken-elite.jpg" alt="Kraken Elite" class="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-cover rounded-xl border border-neutral-700 bg-black flex-shrink-0">
+            <div class="min-w-0 flex-1">
               <span class="text-[10px] font-bold text-[#93032E] uppercase">NZXT AIO</span>
-              <h4 class="text-xs font-bold text-white">Kraken Elite 360 LCD</h4>
+              <h4 class="text-xs font-bold text-white line-clamp-2 leading-snug min-h-[2rem]">Kraken Elite 360 LCD</h4>
               <div class="text-sm font-bold text-white font-heading mt-1">₹1,490</div>
-              <button onclick="window.COREX.addToCart('cooler-kraken-elite', 1)" class="mt-2 text-[11px] text-[#93032E] font-bold hover:underline">
+              <button onclick="window.COREX.addToCart('cooler-kraken-elite', 1)" class="mt-1.5 text-[11px] text-[#93032E] font-bold hover:underline">
                 + Quick Add
               </button>
             </div>
           </div>
 
-          <div class="p-5 rounded-2xl bg-[#202020] border border-[#383838] flex items-center gap-4 card-3d">
-            <img src="images/products/psu-corsair-rm750e.jpg" alt="Corsair PSU" class="w-20 h-20 object-cover rounded-xl border border-neutral-700 bg-black flex-shrink-0">
-            <div>
+          <div class="p-3.5 sm:p-5 rounded-2xl bg-[#202020] border border-[#383838] flex items-center gap-3 sm:gap-4 card-3d">
+            <img src="images/products/psu-corsair-rm750e.jpg" alt="Corsair PSU" class="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-cover rounded-xl border border-neutral-700 bg-black flex-shrink-0">
+            <div class="min-w-0 flex-1">
               <span class="text-[10px] font-bold text-[#93032E] uppercase">CORSAIR GOLD</span>
-              <h4 class="text-xs font-bold text-white">RM750e Fully Modular</h4>
+              <h4 class="text-xs font-bold text-white line-clamp-2 leading-snug min-h-[2rem]">RM750e Fully Modular</h4>
               <div class="text-sm font-bold text-white font-heading mt-1">₹1,690</div>
-              <button onclick="window.COREX.addToCart('psu-corsair-rm750e', 1)" class="mt-2 text-[11px] text-[#93032E] font-bold hover:underline">
+              <button onclick="window.COREX.addToCart('psu-corsair-rm750e', 1)" class="mt-1.5 text-[11px] text-[#93032E] font-bold hover:underline">
                 + Quick Add
               </button>
             </div>
           </div>
 
-          <div class="p-5 rounded-2xl bg-[#202020] border border-[#383838] flex items-center gap-4 card-3d">
-            <img src="images/products/case-fractal-north.jpg" alt="Fractal North" class="w-20 h-20 object-cover rounded-xl border border-neutral-700 bg-black flex-shrink-0">
-            <div>
+          <div class="p-3.5 sm:p-5 rounded-2xl bg-[#202020] border border-[#383838] flex items-center gap-3 sm:gap-4 card-3d">
+            <img src="images/products/case-fractal-north.jpg" alt="Fractal North" class="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-cover rounded-xl border border-neutral-700 bg-black flex-shrink-0">
+            <div class="min-w-0 flex-1">
               <span class="text-[10px] font-bold text-[#93032E] uppercase">FRACTAL DESIGN</span>
-              <h4 class="text-xs font-bold text-white">North Charcoal Walnut</h4>
+              <h4 class="text-xs font-bold text-white line-clamp-2 leading-snug min-h-[2rem]">North Charcoal Walnut</h4>
               <div class="text-sm font-bold text-white font-heading mt-1">₹1,890</div>
-              <button onclick="window.COREX.addToCart('case-fractal-north', 1)" class="mt-2 text-[11px] text-[#93032E] font-bold hover:underline">
+              <button onclick="window.COREX.addToCart('case-fractal-north', 1)" class="mt-1.5 text-[11px] text-[#93032E] font-bold hover:underline">
                 + Quick Add
               </button>
             </div>

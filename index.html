@@ -178,24 +178,24 @@
       <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
         
         <!-- Wishlist -->
-        <a href="products.html" class="navbar-pill-btn hidden sm:inline-flex items-center justify-center h-10 w-10 rounded-xl relative text-neutral-300 hover:text-white transition" title="Wishlist">
+        <a href="products.html" class="navbar-pill-btn hidden lg:inline-flex items-center justify-center h-10 w-10 rounded-xl relative text-neutral-300 hover:text-white transition" title="Wishlist">
           <i data-lucide="heart" class="w-4 h-4"></i>
           <span class="wishlist-count-badge hidden absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#93032E] text-white text-[10px] font-bold flex items-center justify-center">0</span>
         </a>
 
         <!-- RTL Toggle Pill -->
-        <button onclick="window.COREX.toggleRTL()" class="navbar-pill-btn hidden sm:inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl text-xs font-bold text-neutral-300 hover:text-white transition" title="Toggle RTL / LTR">
+        <button onclick="window.COREX.toggleRTL()" class="navbar-pill-btn hidden lg:inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl text-xs font-bold text-neutral-300 hover:text-white transition" title="Toggle RTL / LTR">
           <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-[#93032E]"></i>
           <span>RTL</span>
         </button>
 
         <!-- Theme Toggle (Hidden on mobile <640px, available inside Hamburger menu) -->
-        <button onclick="window.COREX.toggleTheme()" class="navbar-pill-btn navbar-theme-btn hidden sm:inline-flex items-center justify-center h-10 w-10 rounded-xl text-neutral-300 hover:text-white transition" title="Toggle Light/Dark Mode">
+        <button onclick="window.COREX.toggleTheme()" class="navbar-pill-btn navbar-theme-btn hidden lg:inline-flex items-center justify-center h-10 w-10 rounded-xl text-neutral-300 hover:text-white transition" title="Toggle Light/Dark Mode">
           <i data-lucide="sun" class="theme-toggle-icon w-4 h-4"></i>
         </button>
 
         <!-- Primary CTA Button: Order Now (Hidden on mobile <640px, available inside Hamburger menu) -->
-        <a href="order.html" class="navbar-order-btn hidden sm:inline-flex h-10 px-4 sm:px-5 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-105 transition items-center justify-center gap-2 flex-shrink-0" title="Order / Cart">
+        <a href="order.html" class="navbar-order-btn hidden lg:inline-flex h-10 px-4 sm:px-5 rounded-xl bg-burgundy-grad text-white font-bold text-xs uppercase tracking-wider shadow-burgundy-glow hover:scale-105 transition items-center justify-center gap-2 flex-shrink-0" title="Order / Cart">
           <i data-lucide="shopping-bag" class="w-4 h-4 flex-shrink-0"></i>
           <span class="whitespace-nowrap">Order Now</span>
           <span class="cart-count-badge hidden ml-0.5 px-1.5 py-0.5 rounded-full bg-white text-[#93032E] text-[10px] font-black leading-none">0</span>
@@ -248,9 +248,10 @@
           </button>
 
           <!-- Wishlist inside Mobile Menu -->
-          <a href="products.html" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-white transition" title="Wishlist">
+          <a href="products.html" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-white transition relative" title="Wishlist">
             <i data-lucide="heart" class="w-4 h-4 text-[#93032E]"></i>
             <span class="text-[11px] font-semibold">Wishlist</span>
+            <span class="wishlist-count-badge hidden ml-1 px-1.5 py-0.5 rounded-full bg-[#93032E] text-white text-[10px] font-bold leading-none">0</span>
           </a>
         </div>
       </div>
@@ -789,11 +790,11 @@
             <!-- GPU 1 -->
             <div>
               <div class="flex items-center justify-between text-xs sm:text-sm font-bold mb-2">
-                <span class="text-white flex items-center gap-2">
+                <span class="bench-gpu-label text-white flex items-center gap-2">
                   <span class="w-3 h-3 rounded bg-[#93032E]"></span>
                   NVIDIA GeForce RTX 4090 OC (24GB)
                 </span>
-                <span id="bench-fps-1" class="text-white font-mono text-base font-black">142 FPS <span class="text-neutral-500 text-xs font-normal">(1% Low: 118)</span></span>
+                <span id="bench-fps-1" class="bench-fps-val text-white font-mono text-base font-black">142 FPS <span class="bench-fps-low text-neutral-500 text-xs font-normal">(1% Low: 118)</span></span>
               </div>
               <div class="w-full h-4 bg-neutral-900 rounded-full overflow-hidden border border-neutral-800">
                 <div id="bench-bar-1" class="h-full bg-gradient-to-r from-[#65001F] via-[#93032E] to-[#B51B4C] rounded-full transition-all duration-700 shadow-[0_0_15px_rgba(147,3,46,0.6)]" style="width: 95%;"></div>
@@ -803,11 +804,11 @@
             <!-- GPU 2 -->
             <div>
               <div class="flex items-center justify-between text-xs sm:text-sm font-bold mb-2">
-                <span class="text-neutral-300 flex items-center gap-2">
+                <span class="bench-gpu-label text-neutral-300 flex items-center gap-2">
                   <span class="w-3 h-3 rounded bg-neutral-600"></span>
                   NVIDIA GeForce RTX 4080 Super (16GB)
                 </span>
-                <span id="bench-fps-2" class="text-neutral-200 font-mono text-base font-black">114 FPS <span class="text-neutral-500 text-xs font-normal">(1% Low: 92)</span></span>
+                <span id="bench-fps-2" class="bench-fps-val text-neutral-200 font-mono text-base font-black">114 FPS <span class="bench-fps-low text-neutral-500 text-xs font-normal">(1% Low: 92)</span></span>
               </div>
               <div class="w-full h-4 bg-neutral-900 rounded-full overflow-hidden border border-neutral-800">
                 <div id="bench-bar-2" class="h-full bg-neutral-500 rounded-full transition-all duration-700" style="width: 76%;"></div>
@@ -817,11 +818,11 @@
             <!-- GPU 3 -->
             <div>
               <div class="flex items-center justify-between text-xs sm:text-sm font-bold mb-2">
-                <span class="text-neutral-400 flex items-center gap-2">
+                <span class="bench-gpu-label text-neutral-400 flex items-center gap-2">
                   <span class="w-3 h-3 rounded bg-neutral-700"></span>
                   NVIDIA GeForce RTX 4070 Ti Super (16GB)
                 </span>
-                <span id="bench-fps-3" class="text-neutral-300 font-mono text-base font-black">88 FPS <span class="text-neutral-500 text-xs font-normal">(1% Low: 71)</span></span>
+                <span id="bench-fps-3" class="bench-fps-val text-neutral-300 font-mono text-base font-black">88 FPS <span class="bench-fps-low text-neutral-500 text-xs font-normal">(1% Low: 71)</span></span>
               </div>
               <div class="w-full h-4 bg-neutral-900 rounded-full overflow-hidden border border-neutral-800">
                 <div id="bench-bar-3" class="h-full bg-neutral-600 rounded-full transition-all duration-700" style="width: 58%;"></div>
@@ -851,8 +852,8 @@
         
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-12">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 border border-white/20 mb-3 text-xs font-bold uppercase tracking-wider">
-              <i data-lucide="flame" class="w-4 h-4 text-rose-300"></i> LIMITED TIME DEALS
+            <div class="flash-sale-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full border mb-3 text-xs font-bold uppercase tracking-wider shadow-sm">
+              <i data-lucide="flame" class="w-4 h-4 flash-sale-badge-icon"></i> <span class="flash-sale-badge-text">LIMITED TIME DEALS</span>
             </div>
             <h2 class="text-3xl sm:text-5xl font-black font-heading uppercase tracking-tight">
               COMPUTER &amp; TECH <span class="text-white drop-shadow-lg">OFFERS</span>
@@ -863,82 +864,82 @@
           </div>
 
           <!-- JavaScript Working Countdown Timer -->
-          <div class="flex items-center gap-3 bg-black/60 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-2xl">
-            <div class="text-center px-3">
-              <div id="sale-days" class="text-2xl sm:text-3xl font-black font-heading text-white">02</div>
-              <div class="text-[10px] uppercase font-bold text-neutral-400">Days</div>
+          <div class="flash-countdown-container flex items-center justify-between sm:justify-center gap-1.5 sm:gap-3 bg-black/60 backdrop-blur-md px-2.5 py-3 sm:p-4 rounded-2xl border border-white/20 shadow-2xl max-w-full">
+            <div class="text-center px-1.5 sm:px-3">
+              <div id="sale-days" class="text-xl sm:text-2xl md:text-3xl font-black font-heading text-white">02</div>
+              <div class="flash-countdown-label text-[10px] uppercase font-bold text-rose-200">Days</div>
             </div>
-            <span class="text-xl font-bold text-rose-400">:</span>
-            <div class="text-center px-3">
-              <div id="sale-hours" class="text-2xl sm:text-3xl font-black font-heading text-white">14</div>
-              <div class="text-[10px] uppercase font-bold text-neutral-400">Hours</div>
+            <span class="text-lg sm:text-xl font-bold text-rose-400">:</span>
+            <div class="text-center px-1.5 sm:px-3">
+              <div id="sale-hours" class="text-xl sm:text-2xl md:text-3xl font-black font-heading text-white">14</div>
+              <div class="flash-countdown-label text-[10px] uppercase font-bold text-rose-200">Hours</div>
             </div>
-            <span class="text-xl font-bold text-rose-400">:</span>
-            <div class="text-center px-3">
-              <div id="sale-mins" class="text-2xl sm:text-3xl font-black font-heading text-white">38</div>
-              <div class="text-[10px] uppercase font-bold text-neutral-400">Mins</div>
+            <span class="text-lg sm:text-xl font-bold text-rose-400">:</span>
+            <div class="text-center px-1.5 sm:px-3">
+              <div id="sale-mins" class="text-xl sm:text-2xl md:text-3xl font-black font-heading text-white">38</div>
+              <div class="flash-countdown-label text-[10px] uppercase font-bold text-rose-200">Mins</div>
             </div>
-            <span class="text-xl font-bold text-rose-400">:</span>
-            <div class="text-center px-3">
-              <div id="sale-secs" class="text-2xl sm:text-3xl font-black font-heading text-white">45</div>
-              <div class="text-[10px] uppercase font-bold text-neutral-400">Secs</div>
+            <span class="text-lg sm:text-xl font-bold text-rose-400">:</span>
+            <div class="text-center px-1.5 sm:px-3">
+              <div id="sale-secs" class="text-xl sm:text-2xl md:text-3xl font-black font-heading text-white">45</div>
+              <div class="flash-countdown-label text-[10px] uppercase font-bold text-rose-200">Secs</div>
             </div>
           </div>
         </div>
 
         <!-- Flash Sale Deals Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
           
           <!-- Deal 1 -->
-          <div class="bg-black/60 rounded-2xl border border-white/20 p-5 flex flex-col justify-between backdrop-blur-md card-3d">
-            <div class="flex items-center gap-4">
-              <img src="images/products/cpu-i9-14900ks.jpg" alt="i9 14900KS" class="w-24 h-24 object-cover rounded-xl border border-white/20 bg-neutral-900 flex-shrink-0">
-              <div class="min-w-0">
-                <span class="px-2 py-0.5 rounded text-[10px] font-black bg-rose-600 text-white uppercase">Save ₹2,500</span>
-                <h4 class="text-sm font-bold text-white mt-1 truncate">Intel Core i5-14400 10-Core</h4>
-                <div class="flex items-baseline gap-2 mt-2">
-                  <span class="text-lg font-bold text-white font-heading">₹4,490</span>
+          <div class="bg-black/60 rounded-2xl border border-white/20 p-3.5 sm:p-4 lg:p-5 flex flex-col justify-between backdrop-blur-md card-3d">
+            <div class="flex items-center gap-3 lg:gap-4">
+              <img src="images/products/cpu-i9-14900ks.jpg" alt="i9 14900KS" class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-cover rounded-xl border border-white/20 bg-neutral-900 flex-shrink-0">
+              <div class="min-w-0 flex-1">
+                <span class="px-2 py-0.5 rounded text-[10px] font-black bg-rose-600 text-white uppercase inline-block">Save ₹2,500</span>
+                <h4 class="text-xs sm:text-sm font-bold text-white mt-1 leading-snug line-clamp-2 min-h-[2.25rem]">Intel Core i5-14400 10-Core</h4>
+                <div class="flex items-baseline gap-2 mt-1 sm:mt-2">
+                  <span class="text-base sm:text-lg font-bold text-white font-heading">₹4,490</span>
                   <span class="text-xs text-neutral-400 line-through">₹5,490</span>
                 </div>
               </div>
             </div>
-            <button onclick="window.COREX.addToCart('cpu-i5-14400', 1)" class="w-full mt-4 py-2.5 rounded-xl bg-white text-[#93032E] hover:bg-neutral-100 font-bold text-xs uppercase tracking-wider transition">
+            <button onclick="window.COREX.addToCart('cpu-i5-14400', 1)" class="w-full mt-3 sm:mt-4 py-2 sm:py-2.5 rounded-xl bg-white text-[#93032E] hover:bg-neutral-100 font-bold text-xs uppercase tracking-wider transition shadow-sm">
               Claim Flash Deal
             </button>
           </div>
 
           <!-- Deal 2 -->
-          <div class="bg-black/60 rounded-2xl border border-white/20 p-5 flex flex-col justify-between backdrop-blur-md card-3d">
-            <div class="flex items-center gap-4">
-              <img src="images/products/keyboard-apex-pro.jpg" alt="Apex Pro TKL" class="w-24 h-24 object-cover rounded-xl border border-white/20 bg-neutral-900 flex-shrink-0">
-              <div class="min-w-0">
-                <span class="px-2 py-0.5 rounded text-[10px] font-black bg-rose-600 text-white uppercase">28% Instant Off</span>
-                <h4 class="text-sm font-bold text-white mt-1 truncate">SteelSeries Apex Pro TKL Gen 3</h4>
-                <div class="flex items-baseline gap-2 mt-2">
-                  <span class="text-lg font-bold text-white font-heading">₹1,290</span>
+          <div class="bg-black/60 rounded-2xl border border-white/20 p-3.5 sm:p-4 lg:p-5 flex flex-col justify-between backdrop-blur-md card-3d">
+            <div class="flex items-center gap-3 lg:gap-4">
+              <img src="images/products/keyboard-apex-pro.jpg" alt="Apex Pro TKL" class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-cover rounded-xl border border-white/20 bg-neutral-900 flex-shrink-0">
+              <div class="min-w-0 flex-1">
+                <span class="px-2 py-0.5 rounded text-[10px] font-black bg-rose-600 text-white uppercase inline-block">28% Instant Off</span>
+                <h4 class="text-xs sm:text-sm font-bold text-white mt-1 leading-snug line-clamp-2 min-h-[2.25rem]">SteelSeries Apex Pro TKL Gen 3</h4>
+                <div class="flex items-baseline gap-2 mt-1 sm:mt-2">
+                  <span class="text-base sm:text-lg font-bold text-white font-heading">₹1,290</span>
                   <span class="text-xs text-neutral-400 line-through">₹1,790</span>
                 </div>
               </div>
             </div>
-            <button onclick="window.COREX.addToCart('kb-apex-pro', 1)" class="w-full mt-4 py-2.5 rounded-xl bg-white text-[#93032E] hover:bg-neutral-100 font-bold text-xs uppercase tracking-wider transition">
+            <button onclick="window.COREX.addToCart('kb-apex-pro', 1)" class="w-full mt-3 sm:mt-4 py-2 sm:py-2.5 rounded-xl bg-white text-[#93032E] hover:bg-neutral-100 font-bold text-xs uppercase tracking-wider transition shadow-sm">
               Claim Flash Deal
             </button>
           </div>
 
           <!-- Deal 3 -->
-          <div class="bg-black/60 rounded-2xl border border-white/20 p-5 flex flex-col justify-between backdrop-blur-md card-3d">
-            <div class="flex items-center gap-4">
-              <img src="images/products/gpu-rtx4070ti.jpg" alt="RTX 4060" class="w-24 h-24 object-cover rounded-xl border border-white/20 bg-neutral-900 flex-shrink-0">
-              <div class="min-w-0">
-                <span class="px-2 py-0.5 rounded text-[10px] font-black bg-rose-600 text-white uppercase">Save ₹1,500</span>
-                <h4 class="text-sm font-bold text-white mt-1 truncate">MSI GeForce RTX 4060 OC 8GB</h4>
-                <div class="flex items-baseline gap-2 mt-2">
-                  <span class="text-lg font-bold text-white font-heading">₹6,990</span>
+          <div class="bg-black/60 rounded-2xl border border-white/20 p-3.5 sm:p-4 lg:p-5 flex flex-col justify-between backdrop-blur-md card-3d">
+            <div class="flex items-center gap-3 lg:gap-4">
+              <img src="images/products/gpu-rtx4070ti.jpg" alt="RTX 4060" class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-cover rounded-xl border border-white/20 bg-neutral-900 flex-shrink-0">
+              <div class="min-w-0 flex-1">
+                <span class="px-2 py-0.5 rounded text-[10px] font-black bg-rose-600 text-white uppercase inline-block">Save ₹1,500</span>
+                <h4 class="text-xs sm:text-sm font-bold text-white mt-1 leading-snug line-clamp-2 min-h-[2.25rem]">MSI GeForce RTX 4060 OC 8GB</h4>
+                <div class="flex items-baseline gap-2 mt-1 sm:mt-2">
+                  <span class="text-base sm:text-lg font-bold text-white font-heading">₹6,990</span>
                   <span class="text-xs text-neutral-400 line-through">₹8,490</span>
                 </div>
               </div>
             </div>
-            <button onclick="window.COREX.addToCart('gpu-rtx4060', 1)" class="w-full mt-4 py-2.5 rounded-xl bg-white text-[#93032E] hover:bg-neutral-100 font-bold text-xs uppercase tracking-wider transition">
+            <button onclick="window.COREX.addToCart('gpu-rtx4060', 1)" class="w-full mt-3 sm:mt-4 py-2 sm:py-2.5 rounded-xl bg-white text-[#93032E] hover:bg-neutral-100 font-bold text-xs uppercase tracking-wider transition shadow-sm">
               Claim Flash Deal
             </button>
           </div>
@@ -1026,17 +1027,17 @@
 
             <!-- Right 3D Visual PC Rig -->
             <div class="relative flex items-center justify-center">
-              <div class="relative w-full max-w-lg aspect-square rounded-2xl overflow-hidden bg-black border border-neutral-700 shadow-2xl group card-3d">
+              <div class="relative w-full max-w-md sm:max-w-lg aspect-square rounded-2xl overflow-hidden bg-black border border-neutral-700 shadow-2xl group card-3d">
                 <img src="images/hero/custom-pc-desk.jpg?v=20261109" alt="COREX Custom Battlebox" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 
                 <!-- Floating Info Tag -->
-                <div class="rig-showcase-overlay absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-[#202020]/90 backdrop-blur-md border border-[#383838] flex items-center justify-between">
+                <div class="rig-showcase-overlay absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 p-3 sm:p-4 rounded-xl bg-[#202020]/90 backdrop-blur-md border border-[#383838] flex items-center justify-between">
                   <div>
                     <span class="text-[10px] uppercase font-bold text-[#93032E]">SHOWCASE RIG</span>
-                    <h4 class="text-sm font-bold text-white">Lian Li Vision • RTX 4090 OC</h4>
+                    <h4 class="text-xs sm:text-sm font-bold text-white">Lian Li Vision • RTX 4090 OC</h4>
                   </div>
-                  <span class="text-xs font-mono font-bold text-white bg-black/60 px-3 py-1.5 rounded-lg border border-neutral-700">₹34,990</span>
+                  <span class="text-xs font-mono font-bold text-white bg-black/60 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg border border-neutral-700">₹34,990</span>
                 </div>
               </div>
             </div>
@@ -1551,6 +1552,11 @@ const BENCHMARK_DATA = {
   }
 };
 
+function formatFps(str) {
+  if (!str) return '';
+  return str.replace(/\((1% Low:[^)]+)\)/, '<span class="bench-fps-low text-neutral-500 text-xs font-normal">($1)</span>');
+}
+
 function switchBenchmark(gameKey) {
   const data = BENCHMARK_DATA[gameKey];
   if (!data) return;
@@ -1558,13 +1564,13 @@ function switchBenchmark(gameKey) {
   document.getElementById('bench-game-title').textContent = data.title;
   document.getElementById('bench-setting-tag').textContent = data.setting;
   
-  document.getElementById('bench-fps-1').innerHTML = data.gpu1;
+  document.getElementById('bench-fps-1').innerHTML = formatFps(data.gpu1);
   document.getElementById('bench-bar-1').style.width = data.w1;
 
-  document.getElementById('bench-fps-2').innerHTML = data.gpu2;
+  document.getElementById('bench-fps-2').innerHTML = formatFps(data.gpu2);
   document.getElementById('bench-bar-2').style.width = data.w2;
 
-  document.getElementById('bench-fps-3').innerHTML = data.gpu3;
+  document.getElementById('bench-fps-3').innerHTML = formatFps(data.gpu3);
   document.getElementById('bench-bar-3').style.width = data.w3;
 
   // Update button active state
