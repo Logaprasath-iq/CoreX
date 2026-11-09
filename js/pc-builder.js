@@ -163,7 +163,7 @@
       const compat = this.checkCompatibility();
       const total = this.calculateTotal();
 
-      // Render Slots
+      // Render Slots with Uniform Widths & Aligned Grid
       container.innerHTML = SLOTS.map(slot => {
         const selectedId = currentBuild[slot.key];
         const selectedProd = selectedId ? COREX_PRODUCTS.find(p => p.id === selectedId) : null;
@@ -173,56 +173,64 @@
         });
 
         return `
-          <div class="bg-neutral-900/90 rounded-2xl border ${selectedProd ? 'border-neutral-700' : 'border-neutral-800'} p-5 transition-all hover:border-[#93032E]">
-            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div class="pc-builder-slot-row bg-neutral-900/90 rounded-2xl border ${selectedProd ? 'border-neutral-700' : 'border-neutral-800'} p-4 lg:p-5 transition-all hover:border-[#93032E]">
+            <div class="grid grid-cols-1 lg:grid-cols-[335px_1fr_240px] xl:grid-cols-[355px_1fr_260px] gap-4 items-center">
               
-              <!-- Slot Header & Icon -->
-              <div class="flex items-center gap-3 min-w-[200px]">
+              <!-- Column 1: Slot Header & Icon (Fixed width via grid, perfectly aligned on one clean line) -->
+              <div class="flex items-center gap-3 min-w-0 pr-1">
                 <div class="w-10 h-10 rounded-xl bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[#93032E] flex-shrink-0">
                   <i data-lucide="${slot.icon}" class="w-5 h-5"></i>
                 </div>
-                <div>
+                <div class="min-w-0 flex-1">
                   <div class="flex items-center gap-2">
-                    <span class="text-sm font-bold text-white uppercase tracking-wider">${slot.label}</span>
-                    ${slot.required ? '<span class="text-[10px] text-red-400 font-semibold uppercase">Required</span>' : '<span class="text-[10px] text-neutral-500 uppercase">Optional</span>'}
+                    <span class="text-xs sm:text-sm font-bold text-white uppercase tracking-wider whitespace-nowrap">${slot.label}</span>
+                    ${slot.required ? '<span class="slot-badge-required text-[9px] px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap flex-shrink-0">Required</span>' : '<span class="slot-badge-optional text-[9px] px-1.5 py-0.5 rounded uppercase font-semibold whitespace-nowrap flex-shrink-0">Optional</span>'}
                   </div>
-                  <span class="text-xs text-neutral-400">${slot.category}</span>
+                  <span class="text-[11px] text-neutral-400 block mt-0.5 truncate">${slot.category}</span>
                 </div>
               </div>
 
-              <!-- Selected Item Details -->
-              <div class="flex-1">
+              <!-- Column 2: Selected Item Details / Empty State (Identical Width & Alignment Across All Cards) -->
+              <div class="w-full min-w-0">
                 ${selectedProd ? `
-                  <div class="flex items-center gap-4 bg-black/40 rounded-xl p-3 border border-neutral-800">
-                    <img src="${selectedProd.image}" alt="${selectedProd.name}" class="w-14 h-14 object-cover rounded-lg border border-neutral-700 flex-shrink-0" onerror="this.src='images/logo/corex-symbol.png'">
+                  <div class="pc-builder-inner-card is-selected w-full min-h-[76px] flex items-center justify-between gap-3.5 bg-black/40 rounded-xl p-3 border border-neutral-800 transition">
+                    <img src="${selectedProd.image}" alt="${selectedProd.name}" class="w-13 h-13 sm:w-14 sm:h-14 object-cover rounded-lg border border-neutral-700 flex-shrink-0" onerror="this.src='images/logo/corex-symbol.png'">
                     <div class="min-w-0 flex-1">
                       <div class="flex items-center gap-2">
-                        <span class="text-[10px] uppercase font-bold text-[#93032E]">${selectedProd.brand}</span>
+                        <span class="text-[10px] uppercase font-bold text-[#93032E] tracking-wider">${selectedProd.brand}</span>
                         ${selectedProd.socket ? `<span class="text-[10px] px-1.5 py-0.5 rounded bg-neutral-800 text-neutral-300 font-mono">${selectedProd.socket}</span>` : ''}
                       </div>
-                      <h4 class="text-sm font-semibold text-white truncate">${selectedProd.name}</h4>
-                      <p class="text-xs text-neutral-400 truncate">${selectedProd.specs ? selectedProd.specs.join(' • ') : ''}</p>
+                      <h4 class="text-xs sm:text-sm font-semibold text-white truncate max-w-xs sm:max-w-md xl:max-w-lg mt-0.5">${selectedProd.name}</h4>
+                      <p class="text-[11px] text-neutral-400 truncate max-w-xs sm:max-w-md xl:max-w-lg mt-0.5">${selectedProd.specs ? selectedProd.specs.join(' • ') : ''}</p>
                     </div>
-                    <div class="text-right">
-                      <div class="text-sm font-bold text-white">₹${selectedProd.price.toLocaleString('en-IN')}</div>
-                      <button onclick="window.COREX_BUILDER.removeComponent('${slot.key}')" class="text-[11px] text-red-400 hover:text-red-300 transition mt-1 underline">Remove</button>
+                    <div class="text-right flex-shrink-0 pl-2">
+                      <div class="text-xs sm:text-sm font-bold text-white font-mono">₹${selectedProd.price.toLocaleString('en-IN')}</div>
+                      <button onclick="window.COREX_BUILDER.removeComponent('${slot.key}')" class="text-[11px] text-red-400 hover:text-red-300 transition mt-1 underline block ml-auto">Remove</button>
                     </div>
                   </div>
                 ` : `
-                  <div class="p-3 bg-neutral-950/50 rounded-xl border border-dashed border-neutral-800 text-neutral-500 text-xs flex items-center justify-between">
-                    <span>No ${slot.label} selected yet</span>
-                    <span class="text-[11px] text-neutral-400 font-medium">Choose below</span>
+                  <div class="pc-builder-inner-card is-empty w-full min-h-[76px] p-3 px-4 bg-neutral-950/50 rounded-xl border border-dashed border-neutral-800 text-neutral-500 text-xs flex items-center justify-between transition">
+                    <div class="flex items-center gap-3 min-w-0">
+                      <div class="w-10 h-10 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-500 flex-shrink-0">
+                        <i data-lucide="${slot.icon}" class="w-4 h-4 opacity-50"></i>
+                      </div>
+                      <div class="min-w-0">
+                        <span class="text-xs text-neutral-300 font-medium block truncate">No ${slot.label} selected yet</span>
+                        <span class="text-[11px] text-neutral-500 block mt-0.5">Choose an option from the selector</span>
+                      </div>
+                    </div>
+                    <span class="text-[11px] text-neutral-400 font-medium hidden sm:inline-block flex-shrink-0 pl-2">Choose below →</span>
                   </div>
                 `}
               </div>
 
-              <!-- Dropdown Selector -->
-              <div class="w-full lg:w-64 flex-shrink-0">
-                <select onchange="window.COREX_BUILDER.selectComponent('${slot.key}', this.value)" class="w-full bg-neutral-800 border border-neutral-700 text-white rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#93032E] transition">
+              <!-- Column 3: Dropdown Selector (Fixed width, aligned right) -->
+              <div class="w-full min-w-0">
+                <select onchange="window.COREX_BUILDER.selectComponent('${slot.key}', this.value)" class="pc-builder-select w-full bg-neutral-800 border border-neutral-700 text-white rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:border-[#93032E] transition">
                   <option value="">-- Choose ${slot.label} --</option>
                   ${availableProducts.map(p => `
                     <option value="${p.id}" ${selectedId === p.id ? 'selected' : ''}>
-                      ${p.brand} - ${p.name.slice(0, 32)}... (₹${p.price.toLocaleString('en-IN')})
+                      ${p.brand} - ${p.name.slice(0, 26)}... (₹${p.price.toLocaleString('en-IN')})
                     </option>
                   `).join('')}
                 </select>

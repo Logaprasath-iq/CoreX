@@ -493,14 +493,14 @@ html.light main.bg-\[\#151515\] {
 }
 
 html.light .bg-\[\#1C1C1C\],
-html.light .bg-\[\#202020\],
+html.light .bg-\[\#202020\]:not(.terminal-monitor-box),
 html.light .bg-\[\#252525\],
-html.light .bg-neutral-900:not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
-html.light .bg-neutral-900\/90:not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
-html.light .bg-neutral-900\/80:not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
-html.light .bg-neutral-900\/60:not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
-html.light .bg-neutral-800:not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
-html.light .bg-neutral-800\/80:not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]) {
+html.light .bg-neutral-900:not(.faq-chevron-icon):not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
+html.light .bg-neutral-900\/90:not(.faq-chevron-icon):not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
+html.light .bg-neutral-900\/80:not(.faq-chevron-icon):not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
+html.light .bg-neutral-900\/60:not(.faq-chevron-icon):not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
+html.light .bg-neutral-800:not(.faq-chevron-icon):not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]),
+html.light .bg-neutral-800\/80:not(.faq-chevron-icon):not(.hero-badge):not(.hero-btn-secondary):not(footer *):not([class*="bg-burgundy"]) {
   background-color: #FFFFFF !important;
   color: #151515 !important;
 }
@@ -530,19 +530,19 @@ html.light .border-neutral-700\/80 {
 /* ------------------------------------------------------------ */
 
 /* Headings outside Hero & Footer become crisp Jet Black (#151515) */
-html.light h1:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
-html.light h2:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
-html.light h3:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
-html.light h4:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
-html.light h5:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
-html.light h6:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
-html.light .font-heading:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
-html.light .font-subheading:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *) {
+html.light h1:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
+html.light h2:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
+html.light h3:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
+html.light h4:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
+html.light h5:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
+html.light h6:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
+html.light .font-heading:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
+html.light .font-subheading:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.hardware-bundle-banner *):not(.hero-video-card *):not(.flash-sale-section *):not(.rig-showcase-overlay *) {
   color: #151515 !important;
 }
 
 /* Force dark text for elements with text-white outside Hero & Footer, excluding buttons & accents */
-html.light body *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"]):not([class*="bg-burgundy"] *):not(.bg-\[\#93032E\]):not(.bg-\[\#93032E\] *):not(.btn-burgundy):not(.btn-burgundy *):not(.bg-burgundy-grad):not(.bg-burgundy-grad *):not(.cart-count-badge):not(.whatsapp-cta-card a):not(.whatsapp-cta-card a *):not(.bg-emerald-600):not(.bg-emerald-600 *).text-white {
+html.light body *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"]):not([class*="bg-burgundy"] *):not(.bg-\[\#93032E\]):not(.bg-\[\#93032E\] *):not(.btn-burgundy):not(.btn-burgundy *):not(.bg-burgundy-grad):not(.bg-burgundy-grad *):not(.cart-count-badge):not(.whatsapp-cta-card a):not(.whatsapp-cta-card a *):not(.bg-emerald-600):not(.bg-emerald-600 *):not(.terminal-monitor-box *):not(.terminal-monitor-box):not(.tier-callout-card *):not(.tier-callout-card):not(.hardware-bundle-banner *):not(.hardware-bundle-banner):not(.product-badge):not(.product-badge *):not(.hero-video-card *):not(.hero-video-card):not(.flash-sale-section *):not(.flash-sale-section):not(.rig-showcase-overlay *):not(.rig-showcase-overlay):not([data-wishlist-id]):not([data-wishlist-id] *).text-white {
   color: #151515 !important;
 }
 
@@ -567,7 +567,7 @@ html.light .bg-\[\#93032E\] * {
 }
 
 /* Subtitles, Paragraphs & Card Descriptions become crisp Dark Charcoal */
-html.light p:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *),
+html.light p:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *):not(.hardware-bundle-banner *):not(.flash-sale-section *):not(.rig-showcase-overlay *),
 html.light .category-card p,
 html.light .product-card p,
 html.light .feature-card p,
@@ -580,13 +580,13 @@ html.light .card-tilt-3d p {
 html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-\[\#B5B5B5\] {
   color: #4A4A4A !important;
 }
-html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-neutral-400 {
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *):not(.tier-callout-card *):not(.hardware-bundle-banner *).text-neutral-400 {
   color: #555555 !important;
 }
-html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-neutral-300 {
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *):not(.tier-callout-card *):not(.hardware-bundle-banner *).text-neutral-300 {
   color: #222222 !important;
 }
-html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-neutral-500 {
+html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *):not(.terminal-monitor-box *).text-neutral-500 {
   color: #666666 !important;
 }
 html.light *:not(.hero-cinematic *):not(footer *):not([class*="bg-burgundy"] *).text-\[\#858585\] {
@@ -609,13 +609,13 @@ html.light .card-3d:hover h3,
 html.light .card-tilt-3d:hover h3 {
   color: #93032E !important;
 }
-html.light .category-card span:not([class*="bg-burgundy"]):not(.text-\[\#93032E\]),
-html.light .card-3d span:not([class*="bg-burgundy"]):not(.text-\[\#93032E\]),
-html.light .card-tilt-3d span:not([class*="bg-burgundy"]):not(.text-\[\#93032E\]) {
+html.light .category-card span:not([class*="bg-"]):not([class*="text-"]):not(.absolute):not(.blog-card-badge),
+html.light .card-3d span:not([class*="bg-"]):not([class*="text-"]):not(.absolute):not(.blog-card-badge),
+html.light .card-tilt-3d span:not([class*="bg-"]):not([class*="text-"]):not(.absolute):not(.blog-card-badge) {
   color: #333333 !important;
 }
-html.light .category-card:hover span:not([class*="bg-burgundy"]):not(.text-\[\#93032E\]),
-html.light .card-3d:hover span:not([class*="bg-burgundy"]):not(.text-\[\#93032E\]) {
+html.light .category-card:hover span:not([class*="bg-"]):not([class*="text-"]):not(.absolute):not(.blog-card-badge),
+html.light .card-3d:hover span:not([class*="bg-"]):not([class*="text-"]):not(.absolute):not(.blog-card-badge) {
   color: #93032E !important;
 }
 
@@ -718,15 +718,90 @@ html.light .hero-cinematic .grid .text-neutral-300 {
 .hardware-bundle-banner,
 html.light .hardware-bundle-banner {
   background: linear-gradient(135deg, #4A0217, #202020, #151515) !important;
+  border-color: #383838 !important;
   color: #FFFFFF !important;
 }
 .hardware-bundle-banner h3,
-html.light .hardware-bundle-banner h3 {
+.hardware-bundle-banner .font-heading,
+.hardware-bundle-banner .text-white,
+html.light .hardware-bundle-banner h3,
+html.light .hardware-bundle-banner .font-heading,
+html.light .hardware-bundle-banner .text-white {
   color: #FFFFFF !important;
 }
 .hardware-bundle-banner p,
-html.light .hardware-bundle-banner p {
-  color: #E0E0E0 !important;
+.hardware-bundle-banner .text-neutral-300,
+html.light .hardware-bundle-banner p,
+html.light .hardware-bundle-banner .text-neutral-300 {
+  color: #E2E8F0 !important;
+}
+
+/* Product card badges & tags in Light Mode */
+html.light .product-badge,
+html.light [class*="product-badge"],
+html.light .card-tilt-3d span.product-badge,
+html.light .card-tilt-3d span.text-rose-300,
+html.light .product-card span.text-rose-300,
+html.light .card-3d span.text-rose-300 {
+  background-color: #93032E !important;
+  color: #FFFFFF !important;
+  border-color: #93032E !important;
+  font-weight: 700 !important;
+}
+
+/* Filter Reset Button in Light Mode */
+html.light button[onclick="resetFilters()"],
+html.light .reset-filters-btn {
+  background-color: #F3F4F6 !important;
+  border-color: #D1D5DB !important;
+  color: #374151 !important;
+}
+html.light button[onclick="resetFilters()"]:hover,
+html.light .reset-filters-btn:hover {
+  background-color: #E5E7EB !important;
+  color: #111827 !important;
+  border-color: #9CA3AF !important;
+}
+
+/* Product Card Discounts, Details Buttons & Specs in Light Mode */
+html.light .card-tilt-3d span.text-green-400,
+html.light .product-card span.text-green-400 {
+  color: #15803D !important;
+  font-weight: 800 !important;
+}
+html.light .card-tilt-3d a.border-neutral-700,
+html.light .product-card a.border-neutral-700 {
+  border-color: #D1D5DB !important;
+  color: #1F2937 !important;
+  background-color: #FFFFFF !important;
+}
+html.light .card-tilt-3d a.border-neutral-700:hover,
+html.light .product-card a.border-neutral-700:hover {
+  background-color: #F3F4F6 !important;
+  border-color: #9CA3AF !important;
+  color: #111827 !important;
+}
+html.light .card-tilt-3d .bg-neutral-900\/80,
+html.light .product-card .bg-neutral-900\/80 {
+  background-color: #F3F4F6 !important;
+  border-color: #E5E7EB !important;
+}
+html.light .card-tilt-3d .bg-neutral-900\/80 div,
+html.light .product-card .bg-neutral-900\/80 div {
+  color: #374151 !important;
+}
+
+/* Product card uniform title & alignment */
+.product-card-title {
+  height: 4.5rem !important;
+  line-height: 1.35 !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 3 !important;
+  overflow: hidden !important;
+}
+html.light .product-card-title {
+  color: #151515 !important;
 }
 
 html.light .from-\[\#252525\] {
@@ -1069,9 +1144,9 @@ html.light .card-tilt-3d:hover {
 
 /* SLA Badges & Green Status in Light Mode */
 html.light .sla-badge,
-html.light span.text-green-400,
-html.light span.text-emerald-400,
-html.light span.text-green-500 {
+html.light span.text-green-400:not(.terminal-monitor-box *),
+html.light span.text-emerald-400:not(.terminal-monitor-box *),
+html.light span.text-green-500:not(.terminal-monitor-box *) {
   color: #047857 !important;
   background-color: #ECFDF5 !important;
   border-color: #A7F3D0 !important;
@@ -1206,26 +1281,708 @@ html.light details.faq-item .faq-answer {
   border-color: #EBE6EB !important;
 }
 
-html.light .faq-chevron-icon {
+/* Closed state in Light Mode */
+html.light .faq-chevron-icon,
+html.light details:not([open]) .faq-chevron-icon {
   background-color: #F5F2F5 !important;
   border-color: #E2DDE0 !important;
   color: #93032E !important;
 }
+html.light .faq-chevron-icon svg,
+html.light details:not([open]) .faq-chevron-icon svg {
+  color: #93032E !important;
+  stroke: #93032E !important;
+}
 
+/* Open state in Light Mode - Solid Burgundy Pill with White Icon (Matching Dark Mode) */
 html.light .faq-accordion details[open] .faq-chevron-icon,
-html.light details.faq-item[open] .faq-chevron-icon {
+html.light details.faq-item[open] .faq-chevron-icon,
+html.light details[open] .faq-chevron-icon,
+html.light details[open] summary .faq-chevron-icon,
+html.light details[open] summary div.faq-chevron-icon {
+  transform: rotate(180deg) !important;
   background-color: #93032E !important;
   border-color: #93032E !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(147, 3, 46, 0.35) !important;
 }
 
 html.light .faq-accordion details[open] .faq-chevron-icon i,
 html.light details.faq-item[open] .faq-chevron-icon i,
 html.light .faq-accordion details[open] .faq-chevron-icon svg,
-html.light details.faq-item[open] .faq-chevron-icon svg {
+html.light details.faq-item[open] .faq-chevron-icon svg,
+html.light details[open] .faq-chevron-icon svg,
+html.light details[open] summary .faq-chevron-icon svg,
+html.light details[open] summary div.faq-chevron-icon svg {
   color: #FFFFFF !important;
   stroke: #FFFFFF !important;
 }
 
 
+
+
+
+/* ============================================================ */
+/* ============================================================ */
+/* BLOG & CARD BADGES - GUARANTEED HIGH CONTRAST IN ALL THEMES  */
+/* ============================================================ */
+.blog-card-badge,
+#article-badge,
+span.blog-card-badge,
+.card-3d .blog-card-badge,
+.card-3d span.blog-card-badge,
+html.light .blog-card-badge,
+html.light #article-badge,
+html.light span.blog-card-badge,
+html.light .card-3d .blog-card-badge,
+html.light .card-3d span.blog-card-badge,
+html.light .card-3d:hover .blog-card-badge,
+html.light .card-3d:hover span.blog-card-badge {
+  background-color: #93032E !important;
+  color: #FFFFFF !important;
+}
+
+.blog-card-badge *,
+#article-badge *,
+html.light .blog-card-badge *,
+html.light #article-badge * {
+  color: #FFFFFF !important;
+}
+
+/* Technical Specification Tag Pills in Light Mode (Glossary DDR5, Cooling, etc.) */
+html.light .font-mono.bg-neutral-900,
+html.light span.font-mono.bg-neutral-900,
+html.light .card-3d .font-mono.bg-neutral-900,
+html.light .card-3d:hover .font-mono.bg-neutral-900 {
+  background-color: #EDE8EB !important;
+  border-color: #D6D1D5 !important;
+  color: #151515 !important;
+}
+
+/* Terminal Monitor Console - Dark Technical Look in Both Modes */
+.terminal-monitor-box,
+html.light .terminal-monitor-box {
+  background-color: #181818 !important;
+  border-color: #333333 !important;
+  color: #D4D4D4 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+.terminal-monitor-box span.text-white,
+.terminal-monitor-box .text-white,
+html.light .terminal-monitor-box span.text-white,
+html.light .terminal-monitor-box .text-white {
+  color: #FFFFFF !important;
+}
+
+.terminal-monitor-box span.text-green-400,
+.terminal-monitor-box .text-green-400,
+html.light .terminal-monitor-box span.text-green-400,
+html.light .terminal-monitor-box .text-green-400 {
+  color: #4ADE80 !important;
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+.terminal-monitor-box span.text-neutral-500,
+.terminal-monitor-box .text-neutral-500,
+html.light .terminal-monitor-box span.text-neutral-500,
+html.light .terminal-monitor-box .text-neutral-500 {
+  color: #737373 !important;
+}
+
+.terminal-monitor-box span.text-neutral-400,
+.terminal-monitor-box .text-neutral-400,
+.terminal-monitor-box p,
+html.light .terminal-monitor-box span.text-neutral-400,
+html.light .terminal-monitor-box .text-neutral-400,
+html.light .terminal-monitor-box p {
+  color: #A3A3A3 !important;
+}
+
+.terminal-monitor-box .border-neutral-800,
+html.light .terminal-monitor-box .border-neutral-800 {
+  border-color: #2E2E2E !important;
+}
+
+.terminal-monitor-box span.text-\[\#93032E\],
+.terminal-monitor-box .text-\[\#93032E\],
+html.light .terminal-monitor-box span.text-\[\#93032E\],
+html.light .terminal-monitor-box .text-\[\#93032E\] {
+  color: #E11D48 !important; /* Rose-600 / Bright Crimson for excellent contrast on dark terminal */
+}
+
+.terminal-monitor-box a,
+html.light .terminal-monitor-box a {
+  color: #E11D48 !important;
+}
+.terminal-monitor-box a:hover,
+html.light .terminal-monitor-box a:hover {
+  color: #F43F5E !important;
+}
+
+/* Blog Details Layout in Light Mode */
+html.light #article-title {
+  color: #151515 !important;
+}
+html.light #article-author {
+  color: #151515 !important;
+}
+html.light #article-role,
+html.light #article-date,
+html.light #article-read-time {
+  color: #666666 !important;
+}
+html.light #article-author-avatar {
+  background-color: #93032E !important;
+  border-color: #65001F !important;
+  color: #FFFFFF !important;
+}
+html.light #article-body h3 {
+  color: #151515 !important;
+}
+html.light #article-body p {
+  color: #333333 !important;
+}
+html.light #article-body .border-l-4 {
+  background-color: #FFFFFF !important;
+  border-left-color: #93032E !important;
+  border-top: 1px solid #E2DDE0 !important;
+  border-right: 1px solid #E2DDE0 !important;
+  border-bottom: 1px solid #E2DDE0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+html.light #article-body .border-l-4 strong {
+  color: #93032E !important;
+}
+html.light #article-body .border-l-4 p {
+  color: #333333 !important;
+}
+html.light #article-body .border-\[\#383838\].bg-\[\#1C1C1C\] {
+  background-color: #FFFFFF !important;
+  border-color: #E2DDE0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+html.light #article-body .border-\[\#383838\].bg-\[\#1C1C1C\] h4 {
+  color: #151515 !important;
+}
+html.light #article-body .border-\[\#383838\].bg-\[\#1C1C1C\] .font-mono {
+  color: #151515 !important;
+}
+html.light #related-articles-grid .card-3d {
+  background-color: #FFFFFF !important;
+  border-color: #E2DDE0 !important;
+}
+html.light #related-articles-grid .card-3d h4 {
+  color: #151515 !important;
+}
+html.light #related-articles-grid .card-3d:hover h4 {
+  color: #93032E !important;
+}
+html.light #related-articles-grid .card-3d p {
+  color: #555555 !important;
+}
+html.light #related-articles-grid .card-3d span.font-mono {
+  color: #666666 !important;
+}
+
+/* ============================================================ */
+/* PC BUILDER CONFIGURATOR - PRECISION ALIGNMENT & THEME STYLES */
+/* ============================================================ */
+.pc-builder-inner-card {
+  transition: all 0.25s ease;
+}
+
+/* Slot Badges */
+.slot-badge-required {
+  background-color: rgba(147, 3, 46, 0.2);
+  color: #F43F5E;
+  border: 1px solid rgba(244, 63, 94, 0.35);
+}
+.slot-badge-optional {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #9CA3AF;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+html.light .slot-badge-required {
+  background-color: #FDF2F4 !important;
+  color: #93032E !important;
+  border: 1px solid #F5C6D0 !important;
+}
+html.light .slot-badge-optional {
+  background-color: #F0EDF0 !important;
+  color: #666666 !important;
+  border: 1px solid #D6D1D5 !important;
+}
+
+html.light .pc-builder-slot-row {
+  background-color: #FFFFFF !important;
+  border-color: #E2DDE0 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .pc-builder-slot-row:hover {
+  border-color: #93032E !important;
+  box-shadow: 0 6px 22px rgba(147, 3, 46, 0.08) !important;
+}
+
+html.light .pc-builder-inner-card.is-selected {
+  background-color: #F8F6F8 !important;
+  border-color: #E2DDE0 !important;
+}
+
+html.light .pc-builder-inner-card.is-selected h4,
+html.light .pc-builder-inner-card.is-selected .text-white {
+  color: #151515 !important;
+}
+
+html.light .pc-builder-inner-card.is-selected p {
+  color: #666666 !important;
+}
+
+html.light .pc-builder-inner-card.is-empty {
+  background-color: #FBF9FA !important;
+  border-color: #D6D1D5 !important;
+  border-style: dashed !important;
+}
+
+html.light .pc-builder-inner-card.is-empty span.text-neutral-300 {
+  color: #333333 !important;
+}
+
+html.light .pc-builder-inner-card.is-empty span.text-neutral-500 {
+  color: #666666 !important;
+}
+
+html.light .pc-builder-inner-card.is-empty div.bg-neutral-900 {
+  background-color: #EDE8EB !important;
+  border-color: #D6D1D5 !important;
+  color: #888888 !important;
+}
+
+html.light .pc-builder-select {
+  background-color: #FFFFFF !important;
+  border-color: #D6D1D5 !important;
+  color: #151515 !important;
+}
+html.light .pc-builder-select option {
+  background-color: #FFFFFF !important;
+  color: #151515 !important;
+}
+
+html.light .pc-builder-slot-row .text-white {
+  color: #151515 !important;
+}
+
+/* ============================================================ */
+/* PACKAGE COMPARISON TABLE - HIGH-CONTRAST & VERTICAL SEPARATION */
+/* ============================================================ */
+.package-comparison-card {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.package-comparison-table th,
+.package-comparison-table td {
+  border-right-width: 1px;
+}
+.package-comparison-table th:last-child,
+.package-comparison-table td:last-child {
+  border-right-width: 0 !important;
+}
+
+/* Dark Mode Table Styling */
+.package-comparison-table th,
+.package-comparison-table td {
+  border-color: rgba(56, 56, 56, 0.7);
+}
+.package-comparison-table thead tr {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom-color: #383838;
+}
+.package-comparison-table tbody tr.comparison-row-odd {
+  background-color: transparent;
+}
+.package-comparison-table tbody tr.comparison-row-even {
+  background-color: rgba(255, 255, 255, 0.025);
+}
+.package-comparison-table tbody tr.comparison-row-action {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-top: 1px solid #383838;
+}
+
+/* Light Mode Table Styling */
+html.light .package-comparison-card {
+  background-color: #FFFFFF !important;
+  border-color: #E2DDE0 !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Light Mode Borders */
+html.light .package-comparison-table th,
+html.light .package-comparison-table td {
+  border-color: #E2DDE0 !important;
+}
+html.light .package-comparison-table tbody {
+  border-color: #E2DDE0 !important;
+}
+html.light .package-comparison-table tbody tr {
+  border-bottom: 1px solid #E2DDE0 !important;
+}
+
+/* Light Mode Header Row */
+html.light .package-comparison-table thead tr,
+html.light .package-comparison-table thead tr.comparison-header-row {
+  background-color: #F3F0F3 !important;
+  border-bottom: 2px solid #D6D1D5 !important;
+}
+html.light .package-comparison-table thead th {
+  color: #151515 !important;
+  font-weight: 800 !important;
+}
+html.light .package-comparison-table thead th.office-col-header {
+  color: #93032E !important;
+}
+
+/* Light Mode Alternating Rows */
+html.light .package-comparison-table tbody tr.comparison-row-odd {
+  background-color: #FFFFFF !important;
+}
+html.light .package-comparison-table tbody tr.comparison-row-even {
+  background-color: #F8F6F8 !important;
+}
+html.light .package-comparison-table tbody tr:hover {
+  background-color: #F4EFF3 !important;
+}
+
+/* Light Mode Row 1st Column (Specification labels) */
+html.light .package-comparison-table tbody td:first-child {
+  color: #151515 !important;
+  font-weight: 700 !important;
+  background-color: #FAF8FA !important;
+}
+
+/* Light Mode Values */
+html.light .package-comparison-table tbody td {
+  color: #2D2D2D !important;
+}
+html.light .package-comparison-table tbody td.font-bold,
+html.light .package-comparison-table tbody td.text-white {
+  color: #151515 !important;
+}
+html.light .package-comparison-table tbody td.office-col-cell {
+  background-color: rgba(147, 3, 46, 0.02) !important;
+}
+
+/* Light Mode Custom Build Column */
+html.light .package-comparison-table tbody td:last-child {
+  color: #93032E !important;
+  font-weight: 700 !important;
+}
+
+/* Light Mode Action Row */
+html.light .package-comparison-table tbody tr.comparison-row-action {
+  background-color: #EFECEF !important;
+  border-top: 2px solid #D6D1D5 !important;
+}
+html.light .package-comparison-table tbody tr.comparison-row-action button,
+html.light .package-comparison-table tbody tr.comparison-row-action a {
+  color: #93032E !important;
+  font-weight: 800 !important;
+}
+html.light .package-comparison-table tbody tr.comparison-row-action button:hover,
+html.light .package-comparison-table tbody tr.comparison-row-action a:hover {
+  color: #65001F !important;
+}
+
+/* ============================================================ */
+/* SECTION 6A: RESOLUTION & FPS CALCULATOR - LIGHT/DARK STYLES */
+/* ============================================================ */
+.tier-callout-card,
+html.light .tier-callout-card,
+html.light .bg-gradient-to-br.from-\[\#202020\].to-\[\#151515\] {
+  background: linear-gradient(135deg, #1E1E1E 0%, #121212 100%) !important;
+  border-color: #93032E !important;
+  box-shadow: 0 8px 30px rgba(147, 3, 46, 0.28) !important;
+}
+
+.tier-callout-card #calc-tier-name,
+html.light .tier-callout-card #calc-tier-name,
+html.light .tier-callout-card h4,
+html.light .bg-gradient-to-br.from-\[\#202020\].to-\[\#151515\] h4,
+html.light .bg-gradient-to-br.from-\[\#202020\].to-\[\#151515\] #calc-tier-name {
+  color: #FFFFFF !important;
+}
+
+.tier-callout-card #calc-tier-specs,
+html.light .tier-callout-card #calc-tier-specs,
+html.light .tier-callout-card p,
+html.light .bg-gradient-to-br.from-\[\#202020\].to-\[\#151515\] p,
+html.light .bg-gradient-to-br.from-\[\#202020\].to-\[\#151515\] #calc-tier-specs {
+  color: #D4D4D4 !important;
+}
+
+.tier-callout-card #calc-tier-price,
+html.light .tier-callout-card #calc-tier-price,
+html.light .tier-callout-card .text-2xl,
+html.light .bg-gradient-to-br.from-\[\#202020\].to-\[\#151515\] #calc-tier-price,
+html.light .bg-gradient-to-br.from-\[\#202020\].to-\[\#151515\] .text-2xl {
+  color: #FFFFFF !important;
+}
+
+.tier-callout-card #calc-match-badge,
+html.light .tier-callout-card #calc-match-badge,
+html.light .bg-gradient-to-br.from-\[\#202020\].to-\[\#151515\] #calc-match-badge {
+  background-color: rgba(147, 3, 46, 0.4) !important;
+  border-color: rgba(225, 29, 72, 0.6) !important;
+  color: #FDA4AF !important;
+}
+
+.tier-callout-card span.text-\[\#93032E\],
+html.light .tier-callout-card span.text-\[\#93032E\],
+html.light .bg-gradient-to-br.from-\[\#202020\].to-\[\#151515\] span.text-\[\#93032E\] {
+  color: #FB7185 !important;
+}
+
+/* Financing Cards Precision Alignment */
+.financing-card {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+}
+
+html.light .financing-card {
+  background-color: #FFFFFF !important;
+  border-color: #E2DDE0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .financing-card:hover {
+  border-color: #93032E !important;
+  box-shadow: 0 8px 28px rgba(147, 3, 46, 0.1) !important;
+}
+
+html.light .financing-card h3 {
+  color: #151515 !important;
+}
+
+html.light .financing-card p {
+  color: #555555 !important;
+}
+
+html.light .financing-card .border-t {
+  border-color: #E2DDE0 !important;
+}
+
+html.light .financing-card div.bg-neutral-900 {
+  background-color: #F5F2F5 !important;
+  border-color: #E2DDE0 !important;
+  color: #93032E !important;
+}
+
+/* ============================================================ */
+/* HOME 2 HERO - PERFORMANCE GRADIENT & VIDEO OVERLAYS         */
+/* ============================================================ */
+.hero-perf-text {
+  background: linear-gradient(to right, #FFFFFF, #C8C8C8 50%, #93032E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.light .hero-perf-text {
+  background: linear-gradient(135deg, #151515 0%, #75001E 45%, #93032E 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #93032E !important;
+}
+
+/* Home 2 Hero Video Card Overlays in Light Mode (keep dark floating glass with crisp white/pink text) */
+.hero-video-card .hero-video-badge,
+html.light .hero-video-card .hero-video-badge {
+  background: rgba(10, 10, 10, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #FFFFFF !important;
+}
+
+.hero-video-card .hero-video-badge span,
+html.light .hero-video-card .hero-video-badge span,
+html.light .hero-video-card .hero-video-badge * {
+  color: #FFFFFF !important;
+}
+
+.hero-video-card .hero-video-footer,
+html.light .hero-video-card .hero-video-footer {
+  background: rgba(24, 24, 24, 0.95) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.hero-video-card h4,
+.hero-video-card .hero-video-footer h4,
+html.light .hero-video-card h4,
+html.light .hero-video-card .hero-video-footer h4,
+html.light .hero-video-card .hero-video-footer .text-white {
+  color: #FFFFFF !important;
+}
+
+.hero-video-card .hero-video-footer span.text-\[\#FDA4AF\],
+.hero-video-card .hero-video-footer span.text-\[\#93032E\],
+html.light .hero-video-card .hero-video-footer span {
+  color: #FDA4AF !important;
+}
+
+.hero-video-card .hero-video-footer a,
+html.light .hero-video-card .hero-video-footer a,
+html.light .hero-video-card .hero-video-footer a * {
+  color: #FFFFFF !important;
+}
+
+/* ============================================================ */
+/* UNIVERSAL HERO TITLE GRADIENT FIX IN LIGHT MODE              */
+/* ============================================================ */
+html.light .bg-gradient-to-r.from-white.via-\[\#C8C8C8\].to-\[\#93032E\]:not(.hero-cinematic *),
+html.light .hero-perf-text {
+  background: linear-gradient(135deg, #151515 0%, #75001E 45%, #93032E 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #93032E !important;
+}
+
+/* ============================================================ */
+/* HOME 2 NEWSLETTER BOX IN LIGHT MODE                          */
+/* ============================================================ */
+html.light .home2-newsletter {
+  background: #FFFFFF !important;
+  background-image: none !important;
+  border-color: #E2DDE0 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+}
+html.light .home2-newsletter h3 {
+  color: #151515 !important;
+}
+html.light .home2-newsletter p {
+  color: #555555 !important;
+}
+html.light .home2-newsletter input {
+  background-color: #F5F3F4 !important;
+  border-color: #D6D1D5 !important;
+  color: #151515 !important;
+}
+
+/* ============================================================ */
+/* PRODUCT CARD FLOATING WISHLIST (HEART) BUTTON IN ALL MODES   */
+/* ============================================================ */
+[data-wishlist-id],
+html.light [data-wishlist-id] {
+  color: #FFFFFF !important;
+  background-color: rgba(10, 10, 10, 0.7) !important;
+  backdrop-filter: blur(6px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+[data-wishlist-id] i,
+[data-wishlist-id] svg,
+html.light [data-wishlist-id] i,
+html.light [data-wishlist-id] svg {
+  color: #FFFFFF !important;
+}
+[data-wishlist-id]:hover,
+html.light [data-wishlist-id]:hover {
+  background-color: rgba(147, 3, 46, 0.95) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+[data-wishlist-id].text-burgundy,
+html.light [data-wishlist-id].text-burgundy,
+[data-wishlist-id] i.text-\[\#93032E\],
+html.light [data-wishlist-id] i.text-\[\#93032E\],
+[data-wishlist-id] svg.text-\[\#93032E\],
+html.light [data-wishlist-id] svg.text-\[\#93032E\] {
+  color: #FDA4AF !important;
+}
+
+/* ============================================================ */
+/* SECTION 4: BURGUNDY FLASH DEALS & WORKING COUNTDOWN TIMER   */
+/* ============================================================ */
+.flash-sale-section,
+html.light .flash-sale-section {
+  color: #FFFFFF !important;
+}
+.flash-sale-section h2,
+html.light .flash-sale-section h2,
+.flash-sale-section h2 *,
+html.light .flash-sale-section h2 * {
+  color: #FFFFFF !important;
+}
+.flash-sale-section p,
+html.light .flash-sale-section p {
+  color: #FEE2E2 !important;
+}
+.flash-sale-section #sale-days,
+.flash-sale-section #sale-hours,
+.flash-sale-section #sale-mins,
+.flash-sale-section #sale-secs,
+html.light .flash-sale-section #sale-days,
+html.light .flash-sale-section #sale-hours,
+html.light .flash-sale-section #sale-mins,
+html.light .flash-sale-section #sale-secs {
+  color: #FFFFFF !important;
+}
+
+/* Cards inside Flash Deals in Light Mode */
+html.light .flash-sale-section .card-3d,
+html.light .flash-sale-section .card-3d:hover {
+  background-color: #FFFFFF !important;
+  border-color: #E2DDE0 !important;
+}
+html.light .flash-sale-section .card-3d h4,
+html.light .flash-sale-section .card-3d .font-heading,
+html.light .flash-sale-section .card-3d .text-white {
+  color: #151515 !important;
+}
+html.light .flash-sale-section .card-3d .text-neutral-400 {
+  color: #777777 !important;
+}
+html.light .flash-sale-section .card-3d button {
+  background-color: #F5F3F4 !important;
+  color: #93032E !important;
+  border: 1px solid #E2DDE0 !important;
+}
+html.light .flash-sale-section .card-3d button:hover {
+  background-color: #93032E !important;
+  color: #FFFFFF !important;
+}
+
+/* ============================================================ */
+/* PC CONFIGURATOR RIG SHOWCASE OVERLAY (HOME 1)                */
+/* ============================================================ */
+.rig-showcase-overlay,
+html.light .rig-showcase-overlay {
+  background: rgba(20, 20, 20, 0.92) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+.rig-showcase-overlay h4,
+html.light .rig-showcase-overlay h4,
+.rig-showcase-overlay .text-white,
+html.light .rig-showcase-overlay .text-white {
+  color: #FFFFFF !important;
+}
+.rig-showcase-overlay span.text-\[\#93032E\],
+html.light .rig-showcase-overlay span.text-\[\#93032E\] {
+  color: #FDA4AF !important;
+}
+.rig-showcase-overlay span.font-mono,
+html.light .rig-showcase-overlay span.font-mono {
+  color: #FFFFFF !important;
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* ============================================================ */
+/* WHY CHOOSE COREX FEATURE CARDS SEPARATOR SPACING             */
+/* ============================================================ */
+#why-choose-corex-section .card-3d > div.border-t {
+  margin-top: 1.25rem !important;
+  padding-top: 0.875rem !important;
+}
 
 

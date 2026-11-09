@@ -135,8 +135,8 @@
             <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform group-hover:rotate-180"></i>
           </button>
           <div class="dropdown-menu absolute top-full left-0 w-52 bg-[#1C1C1C] border border-[#383838] rounded-xl shadow-2xl p-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200">
-            <a href="index.html" class="block px-3 py-2 rounded-lg text-xs text-neutral-300 hover:bg-neutral-800 transition">Home 1 (Cinematic Store)</a>
-            <a href="home-2.html" class="block px-3 py-2 rounded-lg text-xs text-neutral-300 hover:text-white hover:bg-neutral-800 transition">Home 2 (Editorial Tech)</a>
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-xs text-neutral-300 hover:bg-neutral-800 transition">Cinematic Store</a>
+            <a href="home-2.html" class="block px-3 py-2 rounded-lg text-xs text-neutral-300 hover:text-white hover:bg-neutral-800 transition">Editorial Tech</a>
           </div>
         </div>
 
@@ -187,8 +187,8 @@
       <div class="border-b border-neutral-800 pb-2">
         <span class="text-[10px] uppercase font-bold text-neutral-500 tracking-wider">Home Editions</span>
         <div class="grid grid-cols-2 gap-2 mt-2">
-          <a href="index.html" class="px-3 py-2 rounded-lg text-xs font-bold text-[#93032E] bg-neutral-900 border border-neutral-800">Home 1 (Cinematic)</a>
-          <a href="home-2.html" class="px-3 py-2 rounded-lg text-xs font-medium text-neutral-300 bg-neutral-900/60 border border-neutral-800">Home 2 (Editorial)</a>
+          <a href="index.html" class="px-3 py-2 rounded-lg text-xs font-bold text-[#93032E] bg-neutral-900 border border-neutral-800">Cinematic Store</a>
+          <a href="home-2.html" class="px-3 py-2 rounded-lg text-xs font-medium text-neutral-300 bg-neutral-900/60 border border-neutral-800">Editorial Tech</a>
         </div>
       </div>
       <a href="about.html" class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white">About COREX</a>
@@ -238,10 +238,9 @@
     <!-- ========================================== -->
     <section class="hero-cinematic relative min-h-[460px] lg:min-h-[500px] flex items-center justify-center overflow-hidden border-b border-[#383838]">
       <div class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-        <img src="images/blog/blog-hero.jpg" alt="Hardware Intelligence" class="w-full h-full object-cover filter brightness-[0.45] contrast-110 scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#151515] via-[#151515]/70 to-[#151515]/60"></div>
-        <div class="absolute inset-0 bg-radial-gradient from-transparent via-[#151515]/60 to-[#151515]"></div>
-        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#93032E]/25 rounded-full blur-[140px] pointer-events-none"></div>
+        <img src="images/blog/blog-hero.jpg" alt="Hardware Intelligence" class="w-full h-full object-cover filter brightness-[0.95] contrast-[1.08] saturate-[1.05] scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#151515] via-black/45 to-black/25"></div>
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#93032E]/20 rounded-full blur-[140px] pointer-events-none"></div>
       </div>
 
       <div class="container-custom relative z-10 py-16 text-center">
@@ -267,7 +266,7 @@
           <div class="lg:col-span-7 h-72 lg:h-96 w-full bg-black relative">
             <img src="images/blog/blog-gpu-guide.jpg" alt="Best GPUs 2026" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#93032E] text-white text-[10px] font-bold uppercase tracking-wider">
+            <span class="blog-card-badge absolute top-4 left-4 px-3 py-1 rounded-full bg-[#93032E] text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
               FEATURED BENCHMARK
             </span>
           </div>
@@ -466,7 +465,7 @@
             </div>
           </div>
 
-          <div class="lg:col-span-6 bg-[#202020] rounded-3xl border border-[#383838] p-8 shadow-2xl relative overflow-hidden">
+          <div class="lg:col-span-6 bg-[#202020] rounded-3xl border border-[#383838] p-8 shadow-2xl relative overflow-hidden terminal-monitor-box">
             <div class="flex items-center justify-between pb-4 border-b border-neutral-800">
               <div class="flex items-center gap-2">
                 <i data-lucide="terminal" class="w-5 h-5 text-[#93032E]"></i>
@@ -511,7 +510,7 @@
             <div class="flex-1 flex flex-col">
               <div class="w-full h-48 bg-black overflow-hidden relative">
                 <img src="images/blog/blog-intel-vs-amd.jpg" alt="How to Choose Processor" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded bg-black/70 text-rose-300 text-[10px] font-bold uppercase">Processors</span>
+                <span class="blog-card-badge absolute top-3 left-3 px-3 py-1 rounded-full bg-[#93032E] text-white text-[10px] font-bold uppercase tracking-wider shadow-md">Processors</span>
               </div>
               <div class="p-5 space-y-2 flex-1 flex flex-col">
                 <div class="flex items-center gap-2 text-[11px] text-neutral-500">
@@ -538,7 +537,7 @@
             <div class="flex-1 flex flex-col">
               <div class="w-full h-48 bg-black overflow-hidden relative">
                 <img src="images/blog/blog-ssd-vs-hdd.jpg" alt="SSD vs HDD" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded bg-black/70 text-rose-300 text-[10px] font-bold uppercase">Storage Guide</span>
+                <span class="blog-card-badge absolute top-3 left-3 px-3 py-1 rounded-full bg-[#93032E] text-white text-[10px] font-bold uppercase tracking-wider shadow-md">Storage Guide</span>
               </div>
               <div class="p-5 space-y-2 flex-1 flex flex-col">
                 <div class="flex items-center gap-2 text-[11px] text-neutral-500">
@@ -565,7 +564,7 @@
             <div class="flex-1 flex flex-col">
               <div class="w-full h-48 bg-black overflow-hidden relative">
                 <img src="images/blog/blog-gaming-monitors.jpg" alt="Best Monitors" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded bg-black/70 text-rose-300 text-[10px] font-bold uppercase">Displays</span>
+                <span class="blog-card-badge absolute top-3 left-3 px-3 py-1 rounded-full bg-[#93032E] text-white text-[10px] font-bold uppercase tracking-wider shadow-md">Displays</span>
               </div>
               <div class="p-5 space-y-2 flex-1 flex flex-col">
                 <div class="flex items-center gap-2 text-[11px] text-neutral-500">
@@ -704,28 +703,30 @@
     <!-- ========================================== -->
   <!-- FOOTER (ALIGNED, MATCHING IMAGE 2 & 3)     -->
   <!-- ========================================== -->
-  <footer class="bg-[#111111] text-white pt-16 pb-10 border-t border-[#383838]">
+  <footer id="site-footer" class="bg-[#111111] text-white pt-16 pb-10 border-t border-[#383838]">
     <div class="container-custom">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 items-start pb-14 border-b border-[#383838]">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 xl:gap-10 items-stretch pb-14 border-b border-[#383838]">
         
-        <!-- Column 1: Brand & Official Channels (4 cols) -->
-        <div class="lg:col-span-4 space-y-5">
-          <div class="h-10 flex items-center">
-            <a href="index.html" class="flex items-center gap-3 group">
-              <img src="images/logo/corex-symbol.png" alt="COREX" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.src='images/logo/corex-logo-full.png'">
-              <div class="h-8 w-[1px] bg-neutral-700 hidden sm:block"></div>
-              <div class="flex flex-col whitespace-nowrap justify-center">
-                <span class="text-2xl font-black font-heading tracking-wider text-white leading-none whitespace-nowrap">CORE<span class="text-[#93032E] text-3xl font-black inline-block ml-0.5">X</span></span>
-                <span class="text-[9px] uppercase tracking-[0.24em] text-[#C8C8C8] font-bold mt-1">BUILT FOR PERFORMANCE</span>
-              </div>
-            </a>
+        <!-- Column 1: Brand & Official Channels -->
+        <div class="flex flex-col justify-between h-full">
+          <div>
+            <div class="h-10 flex items-center">
+              <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo/corex-symbol.png" alt="COREX" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.src='images/logo/corex-logo-full.png'">
+                <div class="h-8 w-[1px] bg-neutral-700 hidden sm:block"></div>
+                <div class="flex flex-col whitespace-nowrap justify-center">
+                  <span class="text-2xl font-black font-heading tracking-wider text-white leading-none whitespace-nowrap brand-name-core">CORE<span class="text-[#93032E] text-3xl font-black inline-block ml-0.5">X</span></span>
+                  <span class="text-[9px] uppercase tracking-[0.24em] text-[#C8C8C8] font-bold mt-1 brand-tagline">BUILT FOR PERFORMANCE</span>
+                </div>
+              </a>
+            </div>
+
+            <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm pt-4">
+              India's dedicated premier computer hardware and custom workstation lab. Delivering extreme performance gaming rigs, verified OEM components, and cleanroom engineering across South India and PAN-India.
+            </p>
           </div>
 
-          <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm pt-1">
-            India's dedicated premier computer hardware and custom workstation lab. Delivering extreme performance gaming rigs, verified OEM components, and cleanroom engineering across South India and PAN-India.
-          </p>
-
-          <div class="pt-2">
+          <div class="pt-6">
             <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white mb-3 font-subheading">OFFICIAL CHANNELS</h4>
             <div class="flex items-center gap-3">
               <!-- WhatsApp -->
@@ -748,74 +749,80 @@
           </div>
         </div>
 
-        <!-- Column 2: CATALOG & STORE (2.5 cols) -->
-        <div class="lg:col-span-2 space-y-3">
-          <div class="h-10 flex items-center">
-            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CATALOG &amp; STORE</h4>
-          </div>
-          <ul class="space-y-2.5 text-xs sm:text-sm text-neutral-400 pt-1">
-            <li><a href="index.html" class="hover:text-white transition">Home 1 (Cinematic Store)</a></li>
-            <li><a href="home-2.html" class="hover:text-white transition">Home 2 (Editorial Tech)</a></li>
-            <li><a href="products.html" class="hover:text-white transition">All Hardware Models</a></li>
-            <li><a href="products.html" class="hover:text-white transition">Gaming &amp; Workstations</a></li>
-            <li><a href="build-pc.html" class="hover:text-white transition">Custom PC Configurator</a></li>
-            <li><a href="pricing.html" class="hover:text-white transition">Prebuilt Rig Packages</a></li>
-            <li><a href="products.html" class="hover:text-white transition">Original OEM Accessories</a></li>
-          </ul>
-        </div>
-
-        <!-- Column 3: CUSTOMER SUPPORT (2.5 cols) -->
-        <div class="lg:col-span-3 space-y-3">
-          <div class="h-10 flex items-center">
-            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CUSTOMER SUPPORT</h4>
-          </div>
-          <ul class="space-y-2.5 text-xs sm:text-sm text-neutral-400 pt-1">
-            <li>
-              <a href="order.html" class="inline-flex items-center text-[#93032E] hover:text-[#B51B4C] font-semibold transition">
-                <span>Your Cart &amp; Orders</span>
-                <span class="ml-2 px-2 py-0.5 rounded text-[10px] font-bold bg-[#93032E] text-white uppercase tracking-wider">Track</span>
-              </a>
-            </li>
-            <li><a href="about.html" class="hover:text-white transition">About Our Brand &amp; Heritage</a></li>
-            <li><a href="contact.html#faqs" class="hover:text-white transition">Equipment &amp; Pricing FAQs</a></li>
-            <li><a href="about.html" class="hover:text-white transition">Cleanroom Diagnostic Lab</a></li>
-            <li><a href="blog.html" class="hover:text-white transition">Hardware Buyer Guides</a></li>
-            <li><a href="pricing.html" class="hover:text-white transition">Service &amp; Warranty Tariffs</a></li>
-            <li><a href="contact.html" class="hover:text-white transition">Contact Storefront &amp; Dispatch</a></li>
-          </ul>
-        </div>
-
-        <!-- Column 4: CHENNAI OUTPOST (3 cols) -->
-        <div class="lg:col-span-3 space-y-3">
-          <div class="h-10 flex items-center">
-            <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CHENNAI OUTPOST</h4>
-          </div>
-          <div class="text-xs sm:text-sm space-y-3 text-neutral-400 pt-1">
-            <div class="flex items-start gap-2.5">
-              <i data-lucide="map-pin" class="w-4 h-4 text-[#93032E] flex-shrink-0 mt-0.5"></i>
-              <div>
-                <p class="font-bold text-white leading-snug">COREX Tech Plaza — Chennai</p>
-                <p class="text-xs text-neutral-400 mt-0.5">42 Rajiv Gandhi Salai (OMR), Sholinganallur</p>
-                <p class="text-xs text-neutral-400">Chennai, Tamil Nadu 600119, India</p>
-              </div>
+        <!-- Column 2: CATALOG & STORE -->
+        <div class="flex flex-col justify-between h-full">
+          <div>
+            <div class="h-10 flex items-center">
+              <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CATALOG &amp; STORE</h4>
             </div>
-            
-            <div class="pt-2.5 space-y-2 text-xs text-neutral-400 border-t border-neutral-800/80">
-              <div class="flex items-center gap-2.5">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
-                <p><span class="font-semibold text-white">Hours:</span> Mon – Sat: 09:30 AM – 08:30 PM</p>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-neutral-400 pt-4">
+              <li><a href="index.html" class="hover:text-white transition">Cinematic Store</a></li>
+              <li><a href="home-2.html" class="hover:text-white transition">Editorial Tech</a></li>
+              <li><a href="products.html" class="hover:text-white transition">All Hardware Models</a></li>
+              <li><a href="products.html" class="hover:text-white transition">Gaming &amp; Workstations</a></li>
+              <li><a href="build-pc.html" class="hover:text-white transition">Custom PC Configurator</a></li>
+              <li><a href="pricing.html" class="hover:text-white transition">Prebuilt Rig Packages</a></li>
+              <li><a href="products.html" class="hover:text-white transition">Original OEM Accessories</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Column 3: CUSTOMER SUPPORT -->
+        <div class="flex flex-col justify-between h-full">
+          <div>
+            <div class="h-10 flex items-center">
+              <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CUSTOMER SUPPORT</h4>
+            </div>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-neutral-400 pt-4">
+              <li>
+                <a href="order.html" class="inline-flex items-center text-[#93032E] hover:text-[#B51B4C] font-semibold transition">
+                  <span>Your Cart &amp; Orders</span>
+                  <span class="ml-2 px-2 py-0.5 rounded text-[10px] font-bold bg-[#93032E] text-white uppercase tracking-wider">Track</span>
+                </a>
+              </li>
+              <li><a href="about.html" class="hover:text-white transition">About Our Brand &amp; Heritage</a></li>
+              <li><a href="contact.html#faqs" class="hover:text-white transition">Equipment &amp; Pricing FAQs</a></li>
+              <li><a href="about.html" class="hover:text-white transition">Cleanroom Diagnostic Lab</a></li>
+              <li><a href="blog.html" class="hover:text-white transition">Hardware Buyer Guides</a></li>
+              <li><a href="pricing.html" class="hover:text-white transition">Service &amp; Warranty Tariffs</a></li>
+              <li><a href="contact.html" class="hover:text-white transition">Contact Storefront &amp; Dispatch</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Column 4: CHENNAI OUTPOST -->
+        <div class="flex flex-col justify-between h-full">
+          <div>
+            <div class="h-10 flex items-center">
+              <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white font-subheading leading-none">CHENNAI OUTPOST</h4>
+            </div>
+            <div class="text-xs sm:text-sm text-neutral-400 pt-4">
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="map-pin" class="w-4 h-4 text-[#93032E] flex-shrink-0 mt-0.5"></i>
+                <div>
+                  <p class="font-bold text-white leading-snug">COREX Tech Plaza — Chennai</p>
+                  <p class="text-xs text-neutral-400 mt-0.5">42 Rajiv Gandhi Salai (OMR), Sholinganallur</p>
+                  <p class="text-xs text-neutral-400">Chennai, Tamil Nadu 600119, India</p>
+                </div>
               </div>
-              <div class="flex items-center gap-2.5">
-                <i data-lucide="phone" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
-                <p><span class="font-semibold text-white">Phone:</span> <a href="tel:+919876543210" class="hover:text-white transition">+91 98765 43210</a></p>
-              </div>
-              <div class="flex items-center gap-2.5">
-                <svg class="w-3.5 h-3.5 fill-[#25D366] flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 00-3.48-8.413z"/></svg>
-                <p><span class="font-semibold text-white">WhatsApp:</span> <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="hover:text-white transition">+91 98765 43210</a></p>
-              </div>
-              <div class="flex items-center gap-2.5">
-                <i data-lucide="mail" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
-                <p><span class="font-semibold text-white">Email:</span> <a href="mailto:support@core-x.in" class="hover:text-white transition">support@core-x.in</a></p>
+              
+              <div class="pt-7 space-y-3.5 text-xs text-neutral-400 border-t border-neutral-800/80">
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="clock" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
+                  <p><span class="font-semibold text-white">Hours:</span> Mon – Sat: 09:30 AM – 08:30 PM</p>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="phone" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
+                  <p><span class="font-semibold text-white">Phone:</span> <a href="tel:+919876543210" class="hover:text-white transition">+91 98765 43210</a></p>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <svg class="w-3.5 h-3.5 fill-[#25D366] flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 00-3.48-8.413z"/></svg>
+                  <p><span class="font-semibold text-white">WhatsApp:</span> <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="hover:text-white transition">+91 98765 43210</a></p>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="mail" class="w-3.5 h-3.5 text-[#93032E] flex-shrink-0"></i>
+                  <p><span class="font-semibold text-white">Email:</span> <a href="mailto:support@core-x.in" class="hover:text-white transition">support@core-x.in</a></p>
+                </div>
               </div>
             </div>
           </div>
