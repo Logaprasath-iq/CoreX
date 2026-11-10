@@ -518,7 +518,7 @@
     <!-- ========================================== -->
     <!-- SECTION 3: FEATURED PRODUCTS               -->
     <!-- ========================================== -->
-    <section class="py-24 bg-[#151515]">
+    <section id="featured-hardware-section" class="py-24 bg-[#151515]">
       <div class="container-custom">
         
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
@@ -537,10 +537,10 @@
         </div>
 
         <!-- Product Cards (Equal Height, Structured after Reference) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="featured-hardware-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 lg:gap-3 xl:gap-6">
           
           <!-- Card 1: RTX 4090 -->
-          <div class="group h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-5 hover:border-[#93032E] transition-all card-tilt-3d">
+          <div class="group h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-4 sm:p-5 lg:p-3.5 xl:p-5 hover:border-[#93032E] transition-all card-tilt-3d">
             <div>
               <div class="flex items-center justify-between text-xs mb-3">
                 <span class="product-badge px-2.5 py-0.5 rounded-full bg-[#93032E]/30 text-rose-300 font-bold uppercase tracking-wider text-[10px] border border-[#93032E]/40">FLAGSHIP BEAST</span>
@@ -559,9 +559,9 @@
               <h3 class="text-base font-bold text-white mt-1 group-hover:text-[#93032E] transition line-clamp-2">ASUS ROG Strix GeForce RTX 4090 OC 24GB</h3>
               
               <!-- Specs Capsule -->
-              <div class="mt-3 grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-neutral-900/80 border border-neutral-800 text-[11px] text-neutral-300 font-mono">
-                <div>24GB GDDR6X</div>
-                <div class="text-right">Boost 2640 MHz</div>
+              <div class="mt-3 grid grid-cols-2 gap-1.5 xl:gap-2 p-2 xl:p-2.5 rounded-xl bg-neutral-900/80 border border-neutral-800 text-[10px] xl:text-[11px] text-neutral-300 font-mono whitespace-nowrap">
+                <div class="whitespace-nowrap">24GB GDDR6X</div>
+                <div class="text-right whitespace-nowrap">Boost 2640 MHz</div>
               </div>
             </div>
 
@@ -578,11 +578,11 @@
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 gap-2">
-                <a href="product-details.html?id=gpu-rtx4090" class="py-2.5 rounded-xl border border-neutral-700 text-neutral-300 text-center font-bold text-xs uppercase hover:bg-neutral-800 transition">
+              <div class="grid grid-cols-2 gap-1.5 xl:gap-2">
+                <a href="product-details.html?id=gpu-rtx4090" class="py-2 xl:py-2.5 px-1 rounded-xl border border-neutral-700 text-neutral-300 text-center font-bold text-[11px] xl:text-xs uppercase hover:bg-neutral-800 transition whitespace-nowrap">
                   Details
                 </a>
-                <button onclick="window.COREX.addToCart('gpu-rtx4090', 1)" class="py-2.5 rounded-xl bg-burgundy-grad text-white text-center font-bold text-xs uppercase tracking-wider hover:opacity-90 transition shadow-burgundy-glow">
+                <button onclick="window.COREX.addToCart('gpu-rtx4090', 1)" class="py-2 xl:py-2.5 px-1 rounded-xl bg-burgundy-grad text-white text-center font-bold text-[11px] xl:text-xs uppercase tracking-wider hover:opacity-90 transition shadow-burgundy-glow whitespace-nowrap">
                   Add to Cart
                 </button>
               </div>
@@ -590,7 +590,7 @@
           </div>
 
           <!-- Card 2: Ryzen 7 7800X3D -->
-          <div class="group h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-5 hover:border-[#93032E] transition-all card-tilt-3d">
+          <div class="group h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-4 sm:p-5 lg:p-3.5 xl:p-5 hover:border-[#93032E] transition-all card-tilt-3d">
             <div>
               <div class="flex items-center justify-between text-xs mb-3">
                 <span class="product-badge px-2.5 py-0.5 rounded-full bg-[#93032E]/30 text-rose-300 font-bold uppercase tracking-wider text-[10px] border border-[#93032E]/40">#1 GAMING CPU</span>
@@ -607,9 +607,9 @@
               <span class="text-[11px] font-bold uppercase tracking-wider text-[#93032E]">AMD RYZEN</span>
               <h3 class="text-base font-bold text-white mt-1 group-hover:text-[#93032E] transition line-clamp-2">AMD Ryzen 7 7800X3D (3D V-Cache)</h3>
               
-              <div class="mt-3 grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-neutral-900/80 border border-neutral-800 text-[11px] text-neutral-300 font-mono">
-                <div>8 Cores / 16 Th</div>
-                <div class="text-right">96MB L3 Cache</div>
+              <div class="mt-3 grid grid-cols-2 gap-1.5 xl:gap-2 p-2 xl:p-2.5 rounded-xl bg-neutral-900/80 border border-neutral-800 text-[10px] xl:text-[11px] text-neutral-300 font-mono whitespace-nowrap">
+                <div class="whitespace-nowrap">8 Cores / 16T</div>
+                <div class="text-right whitespace-nowrap">96MB L3 Cache</div>
               </div>
             </div>
 
@@ -625,11 +625,11 @@
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 gap-2">
-                <a href="product-details.html?id=cpu-ryzen-7800x3d" class="py-2.5 rounded-xl border border-neutral-700 text-neutral-300 text-center font-bold text-xs uppercase hover:bg-neutral-800 transition">
+              <div class="grid grid-cols-2 gap-1.5 xl:gap-2">
+                <a href="product-details.html?id=cpu-ryzen-7800x3d" class="py-2 xl:py-2.5 px-1 rounded-xl border border-neutral-700 text-neutral-300 text-center font-bold text-[11px] xl:text-xs uppercase hover:bg-neutral-800 transition whitespace-nowrap">
                   Details
                 </a>
-                <button onclick="window.COREX.addToCart('cpu-ryzen-7800x3d', 1)" class="py-2.5 rounded-xl bg-burgundy-grad text-white text-center font-bold text-xs uppercase tracking-wider hover:opacity-90 transition shadow-burgundy-glow">
+                <button onclick="window.COREX.addToCart('cpu-ryzen-7800x3d', 1)" class="py-2 xl:py-2.5 px-1 rounded-xl bg-burgundy-grad text-white text-center font-bold text-[11px] xl:text-xs uppercase tracking-wider hover:opacity-90 transition shadow-burgundy-glow whitespace-nowrap">
                   Add to Cart
                 </button>
               </div>
@@ -637,7 +637,7 @@
           </div>
 
           <!-- Card 3: Samsung 990 Pro 2TB -->
-          <div class="group h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-5 hover:border-[#93032E] transition-all card-tilt-3d">
+          <div class="group h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-4 sm:p-5 lg:p-3.5 xl:p-5 hover:border-[#93032E] transition-all card-tilt-3d">
             <div>
               <div class="flex items-center justify-between text-xs mb-3">
                 <span class="product-badge px-2.5 py-0.5 rounded-full bg-[#93032E]/30 text-rose-300 font-bold uppercase tracking-wider text-[10px] border border-[#93032E]/40">BLAZING GEN4</span>
@@ -654,9 +654,9 @@
               <span class="text-[11px] font-bold uppercase tracking-wider text-[#93032E]">SAMSUNG</span>
               <h3 class="text-base font-bold text-white mt-1 group-hover:text-[#93032E] transition line-clamp-2">Samsung 990 PRO 2TB NVMe M.2 with Heatsink</h3>
               
-              <div class="mt-3 grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-neutral-900/80 border border-neutral-800 text-[11px] text-neutral-300 font-mono">
-                <div>7,450 MB/s Read</div>
-                <div class="text-right">Heatsink Included</div>
+              <div class="mt-3 grid grid-cols-2 gap-1.5 xl:gap-2 p-2 xl:p-2.5 rounded-xl bg-neutral-900/80 border border-neutral-800 text-[10px] xl:text-[11px] text-neutral-300 font-mono whitespace-nowrap">
+                <div class="whitespace-nowrap">7,450 MB/s Read</div>
+                <div class="text-right whitespace-nowrap">Heatsink Included</div>
               </div>
             </div>
 
@@ -672,11 +672,11 @@
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 gap-2">
-                <a href="product-details.html?id=ssd-samsung-990pro" class="py-2.5 rounded-xl border border-neutral-700 text-neutral-300 text-center font-bold text-xs uppercase hover:bg-neutral-800 transition">
+              <div class="grid grid-cols-2 gap-1.5 xl:gap-2">
+                <a href="product-details.html?id=ssd-samsung-990pro" class="py-2 xl:py-2.5 px-1 rounded-xl border border-neutral-700 text-neutral-300 text-center font-bold text-[11px] xl:text-xs uppercase hover:bg-neutral-800 transition whitespace-nowrap">
                   Details
                 </a>
-                <button onclick="window.COREX.addToCart('ssd-samsung-990pro', 1)" class="py-2.5 rounded-xl bg-burgundy-grad text-white text-center font-bold text-xs uppercase tracking-wider hover:opacity-90 transition shadow-burgundy-glow">
+                <button onclick="window.COREX.addToCart('ssd-samsung-990pro', 1)" class="py-2 xl:py-2.5 px-1 rounded-xl bg-burgundy-grad text-white text-center font-bold text-[11px] xl:text-xs uppercase tracking-wider hover:opacity-90 transition shadow-burgundy-glow whitespace-nowrap">
                   Add to Cart
                 </button>
               </div>
@@ -684,7 +684,7 @@
           </div>
 
           <!-- Card 4: Dell UltraSharp 27" 4K Monitor -->
-          <div class="group h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-5 hover:border-[#93032E] transition-all card-tilt-3d">
+          <div class="group h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-4 sm:p-5 lg:p-3.5 xl:p-5 hover:border-[#93032E] transition-all card-tilt-3d">
             <div>
               <div class="flex items-center justify-between text-xs mb-3">
                 <span class="product-badge px-2.5 py-0.5 rounded-full bg-[#93032E]/30 text-rose-300 font-bold uppercase tracking-wider text-[10px] border border-[#93032E]/40">4K PRODUCTIVITY</span>
@@ -701,9 +701,9 @@
               <span class="text-[11px] font-bold uppercase tracking-wider text-[#93032E]">DELL ULTRASHARP</span>
               <h3 class="text-base font-bold text-white mt-1 group-hover:text-[#93032E] transition line-clamp-2">Dell UltraSharp 27" 4K UHD USB-C Hub Monitor</h3>
               
-              <div class="mt-3 grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-neutral-900/80 border border-neutral-800 text-[11px] text-neutral-300 font-mono">
-                <div>4K IPS Black</div>
-                <div class="text-right">90W USB-C PD Hub</div>
+              <div class="mt-3 grid grid-cols-2 gap-1.5 xl:gap-2 p-2 xl:p-2.5 rounded-xl bg-neutral-900/80 border border-neutral-800 text-[10px] xl:text-[11px] text-neutral-300 font-mono whitespace-nowrap">
+                <div class="whitespace-nowrap">4K IPS Black</div>
+                <div class="text-right whitespace-nowrap">90W USB-C Hub</div>
               </div>
             </div>
 
@@ -719,11 +719,11 @@
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 gap-2">
-                <a href="product-details.html?id=monitor-dell-ultrasharp" class="py-2.5 rounded-xl border border-neutral-700 text-neutral-300 text-center font-bold text-xs uppercase hover:bg-neutral-800 transition">
+              <div class="grid grid-cols-2 gap-1.5 xl:gap-2">
+                <a href="product-details.html?id=monitor-dell-ultrasharp" class="py-2 xl:py-2.5 px-1 rounded-xl border border-neutral-700 text-neutral-300 text-center font-bold text-[11px] xl:text-xs uppercase hover:bg-neutral-800 transition whitespace-nowrap">
                   Details
                 </a>
-                <button onclick="window.COREX.addToCart('monitor-dell-ultrasharp', 1)" class="py-2.5 rounded-xl bg-burgundy-grad text-white text-center font-bold text-xs uppercase tracking-wider hover:opacity-90 transition shadow-burgundy-glow">
+                <button onclick="window.COREX.addToCart('monitor-dell-ultrasharp', 1)" class="py-2 xl:py-2.5 px-1 rounded-xl bg-burgundy-grad text-white text-center font-bold text-[11px] xl:text-xs uppercase tracking-wider hover:opacity-90 transition shadow-burgundy-glow whitespace-nowrap">
                   Add to Cart
                 </button>
               </div>
@@ -1072,7 +1072,7 @@
           <!-- Stage 1 -->
           <div class="p-6 rounded-2xl bg-[#202020] border border-[#383838] relative card-3d flex flex-col justify-between h-full">
             <div>
-              <span class="text-3xl font-black font-heading text-[#93032E]/30 absolute top-5 right-5">01</span>
+              <span class="stage-step-num text-3xl font-black font-heading absolute top-5 right-5">01</span>
               <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#93032E] mb-5">
                 <i data-lucide="wind" class="w-6 h-6"></i>
               </div>
@@ -1086,7 +1086,7 @@
           <!-- Stage 2 -->
           <div class="p-6 rounded-2xl bg-[#202020] border border-[#383838] relative card-3d flex flex-col justify-between h-full">
             <div>
-              <span class="text-3xl font-black font-heading text-[#93032E]/30 absolute top-5 right-5">02</span>
+              <span class="stage-step-num text-3xl font-black font-heading absolute top-5 right-5">02</span>
               <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#93032E] mb-5">
                 <i data-lucide="layers" class="w-6 h-6"></i>
               </div>
@@ -1100,7 +1100,7 @@
           <!-- Stage 3 -->
           <div class="p-6 rounded-2xl bg-[#202020] border border-[#383838] relative card-3d flex flex-col justify-between h-full">
             <div>
-              <span class="text-3xl font-black font-heading text-[#93032E]/30 absolute top-5 right-5">03</span>
+              <span class="stage-step-num text-3xl font-black font-heading absolute top-5 right-5">03</span>
               <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#93032E] mb-5">
                 <i data-lucide="activity" class="w-6 h-6"></i>
               </div>
@@ -1114,7 +1114,7 @@
           <!-- Stage 4 -->
           <div class="p-6 rounded-2xl bg-[#202020] border border-[#383838] relative card-3d flex flex-col justify-between h-full">
             <div>
-              <span class="text-3xl font-black font-heading text-[#93032E]/30 absolute top-5 right-5">04</span>
+              <span class="stage-step-num text-3xl font-black font-heading absolute top-5 right-5">04</span>
               <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#93032E] mb-5">
                 <i data-lucide="box" class="w-6 h-6"></i>
               </div>

@@ -302,7 +302,7 @@
     <!-- ========================================== -->
     <!-- SECTION 6A: HARDWARE GLOSSARY & KNOWLEDGE  -->
     <!-- ========================================== -->
-    <section class="py-20 bg-[#151515] border-b border-[#383838]">
+    <section id="hardware-glossary" class="py-20 bg-[#151515] border-b border-[#383838]">
       <div class="container-custom">
         <div class="text-center max-w-3xl mx-auto mb-12">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-bold text-[#C8C8C8] uppercase tracking-wider mb-2">
@@ -330,9 +330,9 @@
                 While primary latency indicates clock delay before read execution, secondary sub-timings (specifically tREFI refresh intervals and tRFC) govern 1% low frame-time stability in esports titles by over 18%.
               </p>
             </div>
-            <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between text-[10px] uppercase font-bold tracking-wider text-neutral-400">
-              <span>Standard: JEDEC / EXPO</span>
-              <span class="text-[#93032E]">+18% 1% Low FPS</span>
+            <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between gap-2 text-[10px] uppercase font-bold tracking-normal xl:tracking-wider text-neutral-400">
+              <span class="whitespace-nowrap">Standard: JEDEC / EXPO</span>
+              <span class="text-[#93032E] whitespace-nowrap">+18% 1% Low FPS</span>
             </div>
           </div>
 
@@ -348,9 +348,9 @@
                 Removing the copper Integrated Heat Spreader (IHS) to seat copper cold-plates directly against the bare silicon die eliminates thermal barrier junctions, dropping peak junction temps by 15°C to 22°C.
               </p>
             </div>
-            <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between text-[10px] uppercase font-bold tracking-wider text-neutral-400">
-              <span>Junction Delta: -22°C</span>
-              <span class="text-[#93032E]">Sub-Ambient Heatflow</span>
+            <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between gap-2 text-[10px] uppercase font-bold tracking-normal xl:tracking-wider text-neutral-400">
+              <span class="whitespace-nowrap">Junction Delta: -22°C</span>
+              <span class="text-[#93032E] whitespace-nowrap">Sub-Ambient Flow</span>
             </div>
           </div>
 
@@ -366,9 +366,9 @@
                 The updated ATX 3.1 standard recesses sense pins by 1.7mm, preventing power delivery unless the high-current cable is 100% fully seated, eliminating thermal runaway risk at 600W power loads.
               </p>
             </div>
-            <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between text-[10px] uppercase font-bold tracking-wider text-neutral-400">
-              <span>Safety Standard: ATX 3.1</span>
-              <span class="text-[#93032E]">600W Direct Rail</span>
+            <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between gap-2 text-[10px] uppercase font-bold tracking-normal xl:tracking-wider text-neutral-400">
+              <span class="whitespace-nowrap">Safety: ATX 3.1</span>
+              <span class="text-[#93032E] whitespace-nowrap">600W Direct Rail</span>
             </div>
           </div>
 
@@ -384,9 +384,9 @@
                 Gen5 M.2 drives sustain up to 14,000 MB/s read rates but pull up to 14W. Without dedicated multi-fin heatsinks or heatpipes, the Phison controller thermal-throttles to SATA speeds in under 90 seconds.
               </p>
             </div>
-            <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between text-[10px] uppercase font-bold tracking-wider text-neutral-400">
-              <span>Read Rate: 14,000 MB/s</span>
-              <span class="text-[#93032E]">Active Heatsink Required</span>
+            <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between gap-2 text-[10px] uppercase font-bold tracking-normal xl:tracking-wider text-neutral-400">
+              <span class="whitespace-nowrap">Read Rate: 14,000 MB/s</span>
+              <span class="text-[#93032E] whitespace-nowrap">Heatsink Required</span>
             </div>
           </div>
 
@@ -402,9 +402,9 @@
                 Tuning intake CFM to exceed exhaust CFM creates positive interior pressure, forcing air out of unfiltered panel cracks and guaranteeing long-term dust exclusion across high-end glass enclosures.
               </p>
             </div>
-            <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between text-[10px] uppercase font-bold tracking-wider text-neutral-400">
-              <span>Tuning: +15% Intake Bias</span>
-              <span class="text-[#93032E]">Zero Dust Ingress</span>
+            <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between gap-2 text-[10px] uppercase font-bold tracking-normal xl:tracking-wider text-neutral-400">
+              <span class="whitespace-nowrap">Tuning: +15% Intake</span>
+              <span class="text-[#93032E] whitespace-nowrap">Zero Dust Ingress</span>
             </div>
           </div>
 
@@ -420,9 +420,9 @@
                 Factory silicon ships with conservative voltage margins. Negative curve undervolting (-25mV to -40mV) allows CPUs and GPUs to sustain higher boost clocks within identical power envelope thresholds.
               </p>
             </div>
-            <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between text-[10px] uppercase font-bold tracking-wider text-neutral-400">
-              <span>Offset: -35mV Curve</span>
-              <span class="text-[#93032E]">+200MHz Boost Lock</span>
+            <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between gap-2 text-[10px] uppercase font-bold tracking-normal xl:tracking-wider text-neutral-400">
+              <span class="whitespace-nowrap">Offset: -35mV Curve</span>
+              <span class="text-[#93032E] whitespace-nowrap">+200MHz Boost Lock</span>
             </div>
           </div>
         </div>
@@ -594,20 +594,20 @@
     <!-- ========================================== -->
     <!-- SECTION 4 TO 6: NEWS, GUIDES, TUTORIALS    -->
     <!-- ========================================== -->
-    <section class="py-16 bg-[#1C1C1C] border-b border-[#383838]">
+    <section id="buying-guides-peripherals" class="py-16 bg-[#1C1C1C] border-b border-[#383838]">
       <div class="container-custom">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-6 xl:gap-8">
           
           <!-- Column 1: Buying Guides & Memory Science -->
           <div class="space-y-4">
-            <h3 class="text-xl font-bold font-heading text-white uppercase flex items-center gap-2">
-              <i data-lucide="book-open" class="w-5 h-5 text-[#93032E]"></i> Buying Guides &amp; Memory Advice
+            <h3 class="text-lg lg:text-base xl:text-xl font-bold font-heading text-white uppercase flex items-center gap-2">
+              <i data-lucide="book-open" class="w-5 h-5 text-[#93032E] flex-shrink-0"></i> <span>Buying Guides &amp; Memory Advice</span>
             </h3>
 
             <!-- Item 1: RAM Guide -->
-            <a href="blog-details.html?id=blog-ram-guide" class="flex gap-4 p-4 rounded-2xl bg-[#202020] border border-[#383838] hover:border-[#93032E] transition group card-3d">
-              <img src="images/blog/blog-ram-guide.jpg" alt="RAM Guide" class="w-24 h-24 object-cover rounded-xl bg-black border border-neutral-800 flex-shrink-0">
-              <div class="min-w-0">
+            <a href="blog-details.html?id=blog-ram-guide" class="flex gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-[#202020] border border-[#383838] hover:border-[#93032E] transition group card-3d">
+              <img src="images/blog/blog-ram-guide.jpg" alt="RAM Guide" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-xl bg-black border border-neutral-800 flex-shrink-0">
+              <div class="min-w-0 flex-1">
                 <span class="text-[10px] font-bold text-[#93032E] uppercase">RAM &amp; Memory</span>
                 <h4 class="text-sm font-bold text-white group-hover:text-[#93032E] transition line-clamp-1">
                   How Much RAM Do You Need? 8GB, 16GB, 32GB or 64GB
@@ -620,9 +620,9 @@
             </a>
 
             <!-- Item 2: Keyboards Guide -->
-            <a href="blog-details.html?id=blog-keyboard-guide" class="flex gap-4 p-4 rounded-2xl bg-[#202020] border border-[#383838] hover:border-[#93032E] transition group card-3d">
-              <img src="images/blog/blog-keyboards.jpg" alt="Keyboards" class="w-24 h-24 object-cover rounded-xl bg-black border border-neutral-800 flex-shrink-0">
-              <div class="min-w-0">
+            <a href="blog-details.html?id=blog-keyboard-guide" class="flex gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-[#202020] border border-[#383838] hover:border-[#93032E] transition group card-3d">
+              <img src="images/blog/blog-keyboards.jpg" alt="Keyboards" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-xl bg-black border border-neutral-800 flex-shrink-0">
+              <div class="min-w-0 flex-1">
                 <span class="text-[10px] font-bold text-[#93032E] uppercase">Peripherals</span>
                 <h4 class="text-sm font-bold text-white group-hover:text-[#93032E] transition line-clamp-1">
                   Wired vs Wireless Keyboard: Mechanical Switches &amp; Ergonomics
@@ -637,14 +637,14 @@
 
           <!-- Column 2: Peripherals & Essential Accessories -->
           <div class="space-y-4">
-            <h3 class="text-xl font-bold font-heading text-white uppercase flex items-center gap-2">
-              <i data-lucide="mouse" class="w-5 h-5 text-[#93032E]"></i> Peripherals &amp; Essential Accessories
+            <h3 class="text-lg lg:text-base xl:text-xl font-bold font-heading text-white uppercase flex items-center gap-2">
+              <i data-lucide="mouse" class="w-5 h-5 text-[#93032E] flex-shrink-0"></i> <span>Peripherals &amp; Essential Accessories</span>
             </h3>
 
             <!-- Item 3: Mouse Guide -->
-            <a href="blog-details.html?id=blog-mouse-guide" class="flex gap-4 p-4 rounded-2xl bg-[#202020] border border-[#383838] hover:border-[#93032E] transition group card-3d">
-              <img src="images/categories/mice.jpg" alt="Mouse Guide" class="w-24 h-24 object-cover rounded-xl bg-black border border-neutral-800 flex-shrink-0">
-              <div class="min-w-0">
+            <a href="blog-details.html?id=blog-mouse-guide" class="flex gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-[#202020] border border-[#383838] hover:border-[#93032E] transition group card-3d">
+              <img src="images/categories/mice.jpg" alt="Mouse Guide" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-xl bg-black border border-neutral-800 flex-shrink-0">
+              <div class="min-w-0 flex-1">
                 <span class="text-[10px] font-bold text-[#93032E] uppercase">Mice &amp; Ergonomics</span>
                 <h4 class="text-sm font-bold text-white group-hover:text-[#93032E] transition line-clamp-1">
                   How to Select a Computer Mouse: Optical Sensors, Grip &amp; DPI
@@ -657,9 +657,9 @@
             </a>
 
             <!-- Item 4: Accessories Guide -->
-            <a href="blog-details.html?id=blog-accessories-guide" class="flex gap-4 p-4 rounded-2xl bg-[#202020] border border-[#383838] hover:border-[#93032E] transition group card-3d">
-              <img src="images/categories/accessories.jpg" alt="Accessories Guide" class="w-24 h-24 object-cover rounded-xl bg-black border border-neutral-800 flex-shrink-0">
-              <div class="min-w-0">
+            <a href="blog-details.html?id=blog-accessories-guide" class="flex gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-[#202020] border border-[#383838] hover:border-[#93032E] transition group card-3d">
+              <img src="images/categories/accessories.jpg" alt="Accessories Guide" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-xl bg-black border border-neutral-800 flex-shrink-0">
+              <div class="min-w-0 flex-1">
                 <span class="text-[10px] font-bold text-[#93032E] uppercase">Accessories</span>
                 <h4 class="text-sm font-bold text-white group-hover:text-[#93032E] transition line-clamp-1">
                   Essential Computer Accessories: Hubs, Webcams, UPS &amp; Cables

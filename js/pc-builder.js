@@ -276,20 +276,20 @@
               </div>
 
               <!-- Price & Checkout Actions -->
-              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 w-full lg:w-auto">
-                <div class="text-left sm:text-right">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 w-full lg:w-auto">
+                <div class="text-left sm:text-right flex-shrink-0">
                   <span class="text-xs text-neutral-400 uppercase font-semibold">Total Custom Rig Price</span>
                   <div class="text-2xl sm:text-3xl font-black text-white font-heading">₹${total.toLocaleString('en-IN')}</div>
                   <span class="text-[10px] sm:text-[11px] text-neutral-500">Includes assembly, testing & warranty</span>
                 </div>
-                <div class="flex flex-wrap items-center gap-2 sm:gap-3 w-full sm:w-auto">
-                  <button onclick="window.COREX_BUILDER.clearAll()" class="px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border border-neutral-700 hover:border-neutral-500 text-neutral-400 hover:text-white text-xs font-bold transition flex-1 sm:flex-none">
+                <div class="flex items-center gap-2 sm:gap-2.5 w-full sm:w-auto flex-nowrap">
+                  <button onclick="window.COREX_BUILDER.clearAll()" class="px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl border border-neutral-700 hover:border-neutral-500 text-neutral-400 hover:text-white text-xs font-bold transition flex-shrink-0">
                     Reset
                   </button>
-                  <button onclick="window.COREX_BUILDER.addBuildToCart()" class="px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl bg-burgundy-grad text-white text-xs sm:text-sm font-bold shadow-burgundy-glow hover:scale-105 transition flex items-center justify-center gap-2 flex-2 sm:flex-none whitespace-nowrap">
+                  <button onclick="window.COREX_BUILDER.addBuildToCart()" class="px-3.5 py-2.5 sm:px-5 sm:py-3.5 rounded-xl bg-burgundy-grad text-white text-xs sm:text-sm font-bold shadow-burgundy-glow hover:scale-105 transition flex items-center justify-center gap-1.5 sm:gap-2 flex-shrink-0 whitespace-nowrap">
                     <i data-lucide="shopping-bag" class="w-4 h-4"></i> Add Rig to Cart
                   </button>
-                  <a href="contact.html?subject=Custom%20PC%20Build%20Enquiry" class="px-3.5 py-2.5 sm:px-5 sm:py-3.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 flex-1 sm:flex-none whitespace-nowrap">
+                  <a href="contact.html?subject=Custom%20PC%20Build%20Enquiry" class="px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 sm:gap-2 flex-shrink-0 whitespace-nowrap">
                     <i data-lucide="message-square" class="w-4 h-4"></i> Enquire Now
                   </a>
                 </div>

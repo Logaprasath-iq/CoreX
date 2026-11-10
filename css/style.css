@@ -339,42 +339,84 @@ html.light .navbar-scrolled {
 
 /* Navbar Responsiveness at 1024px (1024px - 1279px lg range) */
 @media (min-width: 1024px) and (max-width: 1279px) {
-  /* Hide the letter-spaced brand tagline below 1280px to save ~80px */
+  #main-navbar .container-custom {
+    width: calc(100% - 36px) !important;
+    max-width: 100% !important;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
+
+  /* Compact brand logo: hide ONLY the tagline, preserve the red X */
+  #main-navbar a[href*="index.html"] {
+    gap: 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+  #main-navbar a[href*="index.html"] img {
+    height: 2.25rem !important; /* 36px */
+  }
+  #main-navbar a[href*="index.html"] .h-8.w-\[1px\] {
+    height: 1.5rem !important;
+  }
+  #main-navbar a[href*="index.html"] .flex-col > span:first-child,
+  #main-navbar .brand-name-core {
+    font-size: 1.35rem !important; /* ~22px */
+    display: inline-block !important;
+    line-height: 1 !important;
+  }
+  #main-navbar a[href*="index.html"] .flex-col > span:first-child span {
+    font-size: 1.65rem !important;
+    display: inline-block !important;
+  }
   #main-navbar .brand-tagline,
-  #main-navbar a span.text-\[9px\] {
+  #main-navbar a[href*="index.html"] .flex-col > span:last-child {
     display: none !important;
   }
 
-  /* Compact center navigation links */
+  /* Center navigation links with balanced spacing */
   #main-navbar nav {
-    gap: 0.85rem !important; /* ~14px instead of 28px */
+    gap: 0.65rem !important; /* ~10.5px */
+    margin-left: 0.75rem !important;
+    margin-right: 0.75rem !important;
   }
   #main-navbar nav a,
   #main-navbar nav button {
     font-size: 11px !important;
+    padding-left: 0.2rem !important;
+    padding-right: 0.2rem !important;
+    letter-spacing: 0.02em !important;
     white-space: nowrap !important;
-    letter-spacing: 0.03em !important;
   }
 
   /* Compact action pills and Order Now button */
-  #main-navbar .navbar-pill-btn {
-    height: 38px !important;
-    width: auto !important;
-    min-width: 38px !important;
-    padding-left: 0.6rem !important;
-    padding-right: 0.6rem !important;
-    font-size: 11px !important;
+  #main-navbar .container-custom > div:last-child {
+    gap: 0.375rem !important; /* ~6px */
+    flex-shrink: 0 !important;
   }
-  #main-navbar .navbar-pill-btn.w-10 {
-    width: 38px !important;
+  #main-navbar .navbar-pill-btn:not(#mobile-menu-btn):not(.lg\:hidden) {
+    height: 36px !important;
+    width: 36px !important;
+    min-width: 36px !important;
     padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  #main-navbar #mobile-menu-btn,
+  #main-navbar .lg\:hidden {
+    display: none !important;
+  }
+  #main-navbar button[onclick*="toggleRTL"] span {
+    display: none !important;
   }
   #main-navbar .navbar-order-btn {
-    height: 38px !important;
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
+    height: 36px !important;
+    width: auto !important;
+    min-width: auto !important;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
     font-size: 11px !important;
     white-space: nowrap !important;
+    gap: 0.35rem !important;
   }
 }
 
@@ -2195,5 +2237,162 @@ html.light .bg-neutral-900.rounded-full.border-neutral-800 {
   background-color: #E8E5E7 !important;
   border-color: #D6D1D5 !important;
 }
+
+/* ============================================================ */
+/* THE 4-STAGE ENGINEERING PROTOCOL NUMBERS (HOME 1)           */
+/* ============================================================ */
+.stage-step-num {
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  font-weight: 900;
+  color: #FB7185; /* Vibrant crimson rose for crystal-clear contrast in dark mode */
+  letter-spacing: -0.02em;
+  transition: all 0.25s ease;
+}
+
+.card-3d:hover .stage-step-num {
+  color: #FFFFFF;
+  text-shadow: 0 0 16px rgba(251, 113, 133, 0.7);
+}
+
+html.light .stage-step-num {
+  color: #93032E !important;
+  text-shadow: none !important;
+}
+
+html.light .card-3d:hover .stage-step-num {
+  color: #151515 !important;
+}
+
+/* ============================================================ */
+/* BUILD PC PRESET CARDS AT 768px TABLET VIEWPORT              */
+/* ============================================================ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .preset-card-footer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.375rem !important;
+  }
+  .preset-card-footer span {
+    font-size: 0.9375rem !important; /* ~15px */
+    white-space: nowrap !important;
+  }
+  .preset-card-footer button {
+    padding-left: 0.625rem !important;
+    padding-right: 0.625rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    font-size: 0.6875rem !important; /* 11px */
+    letter-spacing: 0.02em !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* ============================================================ */
+/* FEATURED HARDWARE GRID AT 1024px VIEWPORT (HOME 1)           */
+/* ============================================================ */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  #featured-hardware-section .featured-hardware-grid {
+    gap: 0.75rem !important;
+  }
+  #featured-hardware-section .featured-hardware-grid > div {
+    padding: 0.875rem !important;
+  }
+  #featured-hardware-section .featured-hardware-grid .font-mono {
+    font-size: 9.5px !important;
+    padding: 0.4rem 0.5rem !important;
+    white-space: nowrap !important;
+  }
+  #featured-hardware-section .featured-hardware-grid .grid-cols-2:last-child {
+    gap: 0.375rem !important;
+  }
+  #featured-hardware-section .featured-hardware-grid .grid-cols-2:last-child a,
+  #featured-hardware-section .featured-hardware-grid .grid-cols-2:last-child button {
+    font-size: 10.5px !important;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    white-space: nowrap !important;
+    letter-spacing: 0.01em !important;
+  }
+}
+
+/* ============================================================ */
+/* PC BUILDER SUMMARY BAR - LIGHT MODE & 1024PX RESPONSIVENESS */
+/* ============================================================ */
+html.light #pc-builder-summary {
+  background-color: #FFFFFF !important;
+  border-color: #E2DDE0 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06) !important;
+}
+html.light #pc-builder-summary .font-heading {
+  color: #151515 !important;
+}
+html.light #pc-builder-summary a[href*="contact.html"] {
+  background-color: #F3EFF1 !important;
+  border: 1px solid #D8D2D6 !important;
+  color: #151515 !important;
+}
+html.light #pc-builder-summary a[href*="contact.html"]:hover {
+  background-color: #E7E1E5 !important;
+  color: #93032E !important;
+  border-color: #93032E !important;
+}
+html.light #pc-builder-summary button[onclick*="clearAll"] {
+  background-color: #FFFFFF !important;
+  border: 1px solid #D8D2D6 !important;
+  color: #4A4A4A !important;
+}
+html.light #pc-builder-summary button[onclick*="clearAll"]:hover {
+  background-color: #F8F6F7 !important;
+  color: #151515 !important;
+  border-color: #93032E !important;
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  #pc-builder-summary .flex-col.lg\:flex-row {
+    gap: 1rem !important;
+  }
+  #pc-builder-summary .text-2xl.sm\:text-3xl {
+    font-size: 1.5rem !important;
+  }
+  #pc-builder-summary button,
+  #pc-builder-summary a[href*="contact.html"] {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 11px !important;
+  }
+}
+
+/* ============================================================ */
+/* BLOG ARTICLES AT 1024PX RESPONSIVENESS                      */
+/* ============================================================ */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  #hardware-glossary .card-3d .border-t,
+  #deep-dives .card-3d .border-t {
+    gap: 0.5rem !important;
+    font-size: 9.5px !important;
+    letter-spacing: 0.01em !important;
+  }
+  #hardware-glossary .card-3d .border-t span,
+  #deep-dives .card-3d .border-t span {
+    white-space: nowrap !important;
+  }
+  #buying-guides-peripherals h3 {
+    font-size: 1rem !important;
+  }
+  #buying-guides-peripherals .card-3d {
+    padding: 0.875rem !important;
+    gap: 0.75rem !important;
+  }
+  #buying-guides-peripherals .card-3d img {
+    width: 5rem !important;
+    height: 5rem !important;
+  }
+}
+
+
+
 
 
