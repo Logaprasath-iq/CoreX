@@ -1757,7 +1757,7 @@ html.light .package-comparison-table thead th {
   font-weight: 800 !important;
 }
 html.light .package-comparison-table thead th.office-col-header {
-  color: #93032E !important;
+  color: #151515 !important;
 }
 
 /* Light Mode Alternating Rows */
@@ -2184,11 +2184,59 @@ html.light .rig-showcase-overlay span.font-mono {
 }
 
 /* ============================================================ */
-/* WHY CHOOSE COREX FEATURE CARDS SEPARATOR SPACING             */
+/* BENCHMARK GAME TABS - STRICT STRAIGHT ROW ORDER              */
 /* ============================================================ */
+#benchmark-buttons {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  overflow-x: auto !important;
+  white-space: nowrap !important;
+  -webkit-overflow-scrolling: touch;
+}
+#benchmark-buttons .bench-btn {
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+/* ============================================================ */
+/* WHY CHOOSE COREX FEATURE CARDS & VISIBLE OUTLINES IN DARK/LIGHT */
+/* ============================================================ */
+#why-choose-corex-section .card-3d {
+  border: 1px solid #484848 !important;
+  background-color: #202020;
+}
+#why-choose-corex-section .card-3d:hover {
+  border-color: #93032E !important;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45), 0 0 20px rgba(147, 3, 46, 0.3) !important;
+}
+html.light #why-choose-corex-section .card-3d {
+  background-color: #FFFFFF !important;
+  border-color: #E2DDE0 !important;
+}
 #why-choose-corex-section .card-3d > div.border-t {
   margin-top: 1.25rem !important;
   padding-top: 0.875rem !important;
+}
+.feature-tag-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 0.5rem !important;
+  font-family: 'Rajdhani', monospace, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  border: 1px solid #5A5A5A !important;
+  background-color: #141414 !important;
+  color: #FB7185 !important;
+}
+html.light .feature-tag-badge {
+  border: 1px solid #E2DDE0 !important;
+  background-color: #FDF2F4 !important;
+  color: #93032E !important;
 }
 
 /* ============================================================ */

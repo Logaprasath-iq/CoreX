@@ -743,7 +743,7 @@
     <section class="py-20 bg-[#1C1C1C] border-b border-[#383838]">
       <div class="container-custom">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div class="flex flex-col xl:flex-row xl:items-end justify-between gap-6 mb-12">
           <div>
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-700 text-xs font-bold text-neutral-300 uppercase tracking-wider mb-3">
               <span class="w-2 h-2 rounded-full bg-[#93032E]"></span> REAL HARDWARE BENCHMARKS
@@ -756,18 +756,18 @@
             </p>
           </div>
 
-          <!-- Game Selector Buttons -->
-          <div id="benchmark-buttons" class="flex flex-wrap gap-2">
-            <button onclick="switchBenchmark('cyberpunk')" class="bench-btn active px-4 py-2 rounded-xl text-xs font-bold bg-[#93032E] text-white border border-[#93032E] transition shadow-burgundy-glow">
+          <!-- Game Selector Buttons - Kept in Straight Row Order -->
+          <div id="benchmark-buttons" class="flex flex-nowrap items-center gap-2 overflow-x-auto pb-1 xl:pb-0 flex-shrink-0 max-w-full">
+            <button onclick="switchBenchmark('cyberpunk')" class="bench-btn active px-4 py-2 rounded-xl text-xs font-bold bg-[#93032E] text-white border border-[#93032E] transition shadow-burgundy-glow whitespace-nowrap flex-shrink-0">
               Cyberpunk 2077
             </button>
-            <button onclick="switchBenchmark('wukong')" class="bench-btn px-4 py-2 rounded-xl text-xs font-bold bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-700 transition">
+            <button onclick="switchBenchmark('wukong')" class="bench-btn px-4 py-2 rounded-xl text-xs font-bold bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-700 transition whitespace-nowrap flex-shrink-0">
               Black Myth: Wukong
             </button>
-            <button onclick="switchBenchmark('cod')" class="bench-btn px-4 py-2 rounded-xl text-xs font-bold bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-700 transition">
+            <button onclick="switchBenchmark('cod')" class="bench-btn px-4 py-2 rounded-xl text-xs font-bold bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-700 transition whitespace-nowrap flex-shrink-0">
               Warzone 3
             </button>
-            <button onclick="switchBenchmark('valorant')" class="bench-btn px-4 py-2 rounded-xl text-xs font-bold bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-700 transition">
+            <button onclick="switchBenchmark('valorant')" class="bench-btn px-4 py-2 rounded-xl text-xs font-bold bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-700 transition whitespace-nowrap flex-shrink-0">
               Valorant / CS2
             </button>
           </div>
@@ -1136,8 +1136,8 @@
       <div class="container-custom">
         
         <div class="text-center max-w-2xl mx-auto mb-16">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-700 text-xs font-bold text-neutral-400 uppercase tracking-wider mb-2">
-            THE PERFORMANCE STANDARD
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-600 text-xs font-bold text-neutral-200 uppercase tracking-wider mb-2">
+            <span class="w-2 h-2 rounded-full bg-[#93032E]"></span> THE PERFORMANCE STANDARD
           </div>
           <h2 class="text-3xl sm:text-4xl font-black font-heading text-white uppercase tracking-tight">
             WHY CHOOSE <span class="text-[#93032E]">COREX</span>
@@ -1151,9 +1151,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           
           <!-- Feature 1 -->
-          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-6 hover:border-[#93032E] transition card-3d">
+          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#484848] p-6 hover:border-[#93032E] transition card-3d">
             <div class="flex flex-col">
-              <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#93032E] mb-5">
+              <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-rose-400 mb-5">
                 <i data-lucide="badge-check" class="w-6 h-6"></i>
               </div>
               <h3 class="text-base font-bold text-white font-heading uppercase min-h-[1.75rem] flex items-center">Genuine Products</h3>
@@ -1161,15 +1161,15 @@
                 100% factory-sealed components sourced directly from authorized brand partners (Intel, AMD, NVIDIA, ASUS, Corsair). Official GST invoice and manufacturer warranty included.
               </p>
             </div>
-            <div class="mt-5 pt-3.5 border-t border-neutral-800 text-[11px] text-[#93032E] font-semibold uppercase tracking-wider">
-              100% Direct OEM
+            <div class="mt-5 pt-3.5 border-t border-neutral-800 flex items-center">
+              <span class="feature-tag-badge">100% Direct OEM</span>
             </div>
           </div>
 
           <!-- Feature 2 -->
-          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-6 hover:border-[#93032E] transition card-3d">
+          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#484848] p-6 hover:border-[#93032E] transition card-3d">
             <div class="flex flex-col">
-              <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#93032E] mb-5">
+              <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-rose-400 mb-5">
                 <i data-lucide="gem" class="w-6 h-6"></i>
               </div>
               <h3 class="text-base font-bold text-white font-heading uppercase min-h-[1.75rem] flex items-center">Premium Quality</h3>
@@ -1177,15 +1177,15 @@
                 Precision cable combs, thermal pad upgrades, custom vibration dampening, and rigorous architectural symmetry in every single hand-assembled workstation.
               </p>
             </div>
-            <div class="mt-5 pt-3.5 border-t border-neutral-800 text-[11px] text-[#93032E] font-semibold uppercase tracking-wider">
-              Enthusiast Precision
+            <div class="mt-5 pt-3.5 border-t border-neutral-800 flex items-center">
+              <span class="feature-tag-badge">Enthusiast Precision</span>
             </div>
           </div>
 
           <!-- Feature 3 -->
-          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-6 hover:border-[#93032E] transition card-3d">
+          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#484848] p-6 hover:border-[#93032E] transition card-3d">
             <div class="flex flex-col">
-              <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#93032E] mb-5">
+              <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-rose-400 mb-5">
                 <i data-lucide="truck" class="w-6 h-6"></i>
               </div>
               <h3 class="text-base font-bold text-white font-heading uppercase min-h-[1.75rem] flex items-center">Fast Delivery</h3>
@@ -1193,15 +1193,15 @@
                 Expedited insured freight transit across all India pin codes with same-day white-glove courier delivery in Chennai. Real-time GPS tracking and live updates.
               </p>
             </div>
-            <div class="mt-5 pt-3.5 border-t border-neutral-800 text-[11px] text-[#93032E] font-semibold uppercase tracking-wider">
-              Insured Transit
+            <div class="mt-5 pt-3.5 border-t border-neutral-800 flex items-center">
+              <span class="feature-tag-badge">Insured Transit</span>
             </div>
           </div>
 
           <!-- Feature 4 -->
-          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-6 hover:border-[#93032E] transition card-3d">
+          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#484848] p-6 hover:border-[#93032E] transition card-3d">
             <div class="flex flex-col">
-              <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#93032E] mb-5">
+              <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-rose-400 mb-5">
                 <i data-lucide="lock" class="w-6 h-6"></i>
               </div>
               <h3 class="text-base font-bold text-white font-heading uppercase min-h-[1.75rem] flex items-center">Secure Payments</h3>
@@ -1209,15 +1209,15 @@
                 Bank-grade 256-bit encrypted checkout integrations supporting UPI, Net Banking, Credit Cards with No-Cost EMI plans, and verified corporate NEFT transfers.
               </p>
             </div>
-            <div class="mt-5 pt-3.5 border-t border-neutral-800 text-[11px] text-[#93032E] font-semibold uppercase tracking-wider">
-              256-Bit Encrypted
+            <div class="mt-5 pt-3.5 border-t border-neutral-800 flex items-center">
+              <span class="feature-tag-badge">256-Bit Encrypted</span>
             </div>
           </div>
 
           <!-- Feature 5 -->
-          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-6 hover:border-[#93032E] transition card-3d">
+          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#484848] p-6 hover:border-[#93032E] transition card-3d">
             <div class="flex flex-col">
-              <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#93032E] mb-5">
+              <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-rose-400 mb-5">
                 <i data-lucide="headphones" class="w-6 h-6"></i>
               </div>
               <h3 class="text-base font-bold text-white font-heading uppercase min-h-[1.75rem] flex items-center">Expert Support</h3>
@@ -1225,15 +1225,15 @@
                 Dedicated direct phone and WhatsApp priority assistance from veteran system builders who know RAM timings, BIOS voltages, and driver optimizations inside out.
               </p>
             </div>
-            <div class="mt-5 pt-3.5 border-t border-neutral-800 text-[11px] text-[#93032E] font-semibold uppercase tracking-wider">
-              7 Days Active Support
+            <div class="mt-5 pt-3.5 border-t border-neutral-800 flex items-center">
+              <span class="feature-tag-badge">7 Days Active Support</span>
             </div>
           </div>
 
           <!-- Feature 6 -->
-          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#383838] p-6 hover:border-[#93032E] transition card-3d">
+          <div class="h-full flex flex-col justify-between bg-[#202020] rounded-2xl border border-[#484848] p-6 hover:border-[#93032E] transition card-3d">
             <div class="flex flex-col">
-              <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#93032E] mb-5">
+              <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-rose-400 mb-5">
                 <i data-lucide="shield-check" class="w-6 h-6"></i>
               </div>
               <h3 class="text-base font-bold text-white font-heading uppercase min-h-[1.75rem] flex items-center">Warranty Protection</h3>
@@ -1241,8 +1241,8 @@
                 Up to 3 to 10 years manufacturer warranty on all individual components, fully backed by COREX's comprehensive 3-year labor and diagnostic guarantee.
               </p>
             </div>
-            <div class="mt-5 pt-3.5 border-t border-neutral-800 text-[11px] text-[#93032E] font-semibold uppercase tracking-wider">
-              Zero-Downtime Cover
+            <div class="mt-5 pt-3.5 border-t border-neutral-800 flex items-center">
+              <span class="feature-tag-badge">Zero-Downtime Cover</span>
             </div>
           </div>
 
