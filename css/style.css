@@ -1696,6 +1696,7 @@ html.light .pc-builder-slot-row .text-white {
 }
 .package-comparison-table thead th:first-child {
   background-color: #121212 !important;
+  color: #FFFFFF !important;
 }
 .package-comparison-table tbody tr.comparison-row-odd td:first-child {
   background-color: #1D1D1D !important;
