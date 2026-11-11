@@ -392,7 +392,7 @@ html.light .navbar-scrolled {
     gap: 0.375rem !important; /* ~6px */
     flex-shrink: 0 !important;
   }
-  #main-navbar .navbar-pill-btn:not(#mobile-menu-btn):not(.lg\:hidden) {
+  #main-navbar .navbar-pill-btn:not(#mobile-menu-btn):not(.lg\:hidden):not(.navbar-rtl-btn):not([onclick*="toggleRTL"]) {
     height: 36px !important;
     width: 36px !important;
     min-width: 36px !important;
@@ -401,12 +401,27 @@ html.light .navbar-scrolled {
     align-items: center !important;
     justify-content: center !important;
   }
+  #main-navbar .navbar-rtl-btn,
+  #main-navbar button[onclick*="toggleRTL"] {
+    height: 36px !important;
+    width: auto !important;
+    min-width: 38px !important;
+    padding-left: 0.55rem !important;
+    padding-right: 0.55rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
   #main-navbar #mobile-menu-btn,
   #main-navbar .lg\:hidden {
     display: none !important;
   }
-  #main-navbar button[onclick*="toggleRTL"] span {
-    display: none !important;
+  #main-navbar button[onclick*="toggleRTL"] span,
+  #main-navbar .navbar-rtl-btn span {
+    display: inline-block !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
   }
   #main-navbar .navbar-order-btn {
     height: 36px !important;
