@@ -1133,6 +1133,31 @@ footer a:hover,
 html.light footer a:hover {
   color: #FFFFFF !important;
 }
+
+/* Footer Social Action Icons on Hover - Preserve Icon Contrast */
+footer a[href*="x.com"]:hover,
+html.light footer a[href*="x.com"]:hover {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: #FFFFFF !important;
+}
+footer a[href*="x.com"]:hover svg,
+html.light footer a[href*="x.com"]:hover svg {
+  color: #000000 !important;
+  fill: #000000 !important;
+}
+
+footer a[href*="wa.me"]:hover,
+html.light footer a[href*="wa.me"]:hover {
+  background-color: #25D366 !important;
+  color: #000000 !important;
+  border-color: #25D366 !important;
+}
+footer a[href*="wa.me"]:hover svg,
+html.light footer a[href*="wa.me"]:hover svg {
+  color: #000000 !important;
+  fill: #000000 !important;
+}
 footer p,
 html.light footer p {
   color: #B5B5B5 !important;
@@ -2256,8 +2281,15 @@ html.light .feature-tag-badge {
 }
 
 /* ============================================================ */
-/* BENCHMARK ARENA LIGHT MODE CONTRAST & VISIBILITY             */
+/* BENCHMARK ARENA CONTRAST & VISIBILITY (DARK & LIGHT)         */
 /* ============================================================ */
+#bench-setting-tag {
+  color: #FB7185 !important;
+}
+html.light #bench-setting-tag {
+  color: #93032E !important;
+}
+
 html.light #bench-fps-1,
 html.light #bench-fps-2,
 html.light #bench-fps-3,
@@ -2288,7 +2320,7 @@ html:not(.light) #bench-fps-1 span,
 html:not(.light) #bench-fps-2 span,
 html:not(.light) #bench-fps-3 span,
 html:not(.light) .bench-fps-low {
-  color: #737373 !important;
+  color: #A3A3A3 !important;
 }
 
 html.light .bench-gpu-label,
